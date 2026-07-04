@@ -1,0 +1,542 @@
+{
+  "_readme": "Mock API responses for OpenYourEyes.in frontend development. Each key matches a FastAPI route. Use with MSW (Mock Service Worker) or Next.js route handlers.",
+
+  "GET /api/v1/health": {
+    "status": "ok",
+    "db": "connected",
+    "redis": "connected",
+    "opensearch": "connected"
+  },
+
+  "GET /api/v1/politicians/search?q=singh&state=Uttar Pradesh&page=1&limit=20": {
+    "total": 3,
+    "page": 1,
+    "limit": 20,
+    "results": [
+      {
+        "id": "a1b2c3d4-0001-0001-0001-000000000001",
+        "name_en": "NARAYAN PRASAD SINGH",
+        "name_hi": "नारायण प्रसाद सिंह",
+        "latest_party": { "id": 1, "abbreviation": "BJP", "full_name_en": "Bharatiya Janata Party" },
+        "latest_constituency": { "id": 1, "name_en": "Varanasi", "state": "Uttar Pradesh" },
+        "latest_election_year": 2024,
+        "elections_contested": 4,
+        "elections_won": 4,
+        "net_assets_inr": 115000000,
+        "criminal_cases_count": 4,
+        "serious_cases_count": 1
+      },
+      {
+        "id": "a1b2c3d4-0004-0004-0004-000000000004",
+        "name_en": "FATIMA BEGUM",
+        "name_hi": "फातिमा बेगम",
+        "latest_party": { "id": 4, "abbreviation": "SP", "full_name_en": "Samajwadi Party" },
+        "latest_constituency": { "id": 3, "name_en": "Lucknow", "state": "Uttar Pradesh" },
+        "latest_election_year": 2009,
+        "elections_contested": 1,
+        "elections_won": 0,
+        "net_assets_inr": 3400000,
+        "criminal_cases_count": 0,
+        "serious_cases_count": 0
+      },
+      {
+        "id": "a1b2c3d4-0012-0012-0012-000000000012",
+        "name_en": "SUNITA YADAV",
+        "name_hi": "सुनीता यादव",
+        "latest_party": { "id": 4, "abbreviation": "SP", "full_name_en": "Samajwadi Party" },
+        "latest_constituency": { "id": 3, "name_en": "Lucknow", "state": "Uttar Pradesh" },
+        "latest_election_year": 2024,
+        "elections_contested": 2,
+        "elections_won": 0,
+        "net_assets_inr": 7800000,
+        "criminal_cases_count": 0,
+        "serious_cases_count": 0
+      }
+    ]
+  },
+
+  "GET /api/v1/politicians/search?page=1&limit=20": {
+    "total": 12,
+    "page": 1,
+    "limit": 20,
+    "results": [
+      {
+        "id": "a1b2c3d4-0001-0001-0001-000000000001",
+        "name_en": "NARAYAN PRASAD SINGH",
+        "name_hi": "नारायण प्रसाद सिंह",
+        "latest_party": { "id": 1, "abbreviation": "BJP", "full_name_en": "Bharatiya Janata Party" },
+        "latest_constituency": { "id": 1, "name_en": "Varanasi", "state": "Uttar Pradesh" },
+        "latest_election_year": 2024,
+        "elections_contested": 4,
+        "elections_won": 4,
+        "net_assets_inr": 115000000,
+        "criminal_cases_count": 4,
+        "serious_cases_count": 1
+      },
+      {
+        "id": "a1b2c3d4-0002-0002-0002-000000000002",
+        "name_en": "PRIYA SHARMA",
+        "name_hi": "प्रिया शर्मा",
+        "latest_party": { "id": 2, "abbreviation": "INC", "full_name_en": "Indian National Congress" },
+        "latest_constituency": { "id": 2, "name_en": "Amethi", "state": "Uttar Pradesh" },
+        "latest_election_year": 2024,
+        "elections_contested": 4,
+        "elections_won": 4,
+        "net_assets_inr": 120000000,
+        "criminal_cases_count": 0,
+        "serious_cases_count": 0
+      },
+      {
+        "id": "a1b2c3d4-0003-0003-0003-000000000003",
+        "name_en": "ARJUN REDDY",
+        "name_hi": "అర్జున్ రెడ్డి",
+        "latest_party": { "id": 11, "abbreviation": "YSRCP", "full_name_en": "YSR Congress Party" },
+        "latest_constituency": { "id": 8, "name_en": "Vijayawada", "state": "Andhra Pradesh" },
+        "latest_election_year": 2024,
+        "elections_contested": 4,
+        "elections_won": 3,
+        "net_assets_inr": 264000000,
+        "criminal_cases_count": 1,
+        "serious_cases_count": 1
+      },
+      {
+        "id": "a1b2c3d4-0005-0005-0005-000000000005",
+        "name_en": "SANJAY MEHTA",
+        "name_hi": "संजय मेहता",
+        "latest_party": { "id": 3, "abbreviation": "AAP", "full_name_en": "Aam Aadmi Party" },
+        "latest_constituency": { "id": 4, "name_en": "New Delhi", "state": "Delhi" },
+        "latest_election_year": 2024,
+        "elections_contested": 2,
+        "elections_won": 2,
+        "net_assets_inr": 27600000,
+        "criminal_cases_count": 0,
+        "serious_cases_count": 0
+      },
+      {
+        "id": "a1b2c3d4-0006-0006-0006-000000000006",
+        "name_en": "KAVITHA KRISHNAMURTHY",
+        "name_hi": "கவிதா கிருஷ்ணமூர்த்தி",
+        "latest_party": { "id": 7, "abbreviation": "DMK", "full_name_en": "Dravida Munnetra Kazhagam" },
+        "latest_constituency": { "id": 7, "name_en": "Chennai North", "state": "Tamil Nadu" },
+        "latest_election_year": 2024,
+        "elections_contested": 3,
+        "elections_won": 3,
+        "net_assets_inr": 16000000,
+        "criminal_cases_count": 0,
+        "serious_cases_count": 0
+      },
+      {
+        "id": "a1b2c3d4-0007-0007-0007-000000000007",
+        "name_en": "SURESH PATEL",
+        "name_hi": "सुरेश पटेल",
+        "latest_party": { "id": 1, "abbreviation": "BJP", "full_name_en": "Bharatiya Janata Party" },
+        "latest_constituency": { "id": 10, "name_en": "Surat", "state": "Gujarat" },
+        "latest_election_year": 2024,
+        "elections_contested": 3,
+        "elections_won": 3,
+        "net_assets_inr": 682000000,
+        "criminal_cases_count": 0,
+        "serious_cases_count": 0
+      },
+      {
+        "id": "a1b2c3d4-0008-0008-0008-000000000008",
+        "name_en": "MEENA DEVI",
+        "name_hi": "मीना देवी",
+        "latest_party": { "id": 5, "abbreviation": "BSP", "full_name_en": "Bahujan Samaj Party" },
+        "latest_constituency": { "id": 11, "name_en": "Agra", "state": "Uttar Pradesh" },
+        "latest_election_year": 2024,
+        "elections_contested": 3,
+        "elections_won": 0,
+        "net_assets_inr": 5900000,
+        "criminal_cases_count": 0,
+        "serious_cases_count": 0
+      },
+      {
+        "id": "a1b2c3d4-0009-0009-0009-000000000009",
+        "name_en": "ROHIT BANERJEE",
+        "name_hi": "রোহিত ব্যানার্জি",
+        "latest_party": { "id": 6, "abbreviation": "TMC", "full_name_en": "All India Trinamool Congress" },
+        "latest_constituency": { "id": 6, "name_en": "Kolkata South", "state": "West Bengal" },
+        "latest_election_year": 2024,
+        "elections_contested": 4,
+        "elections_won": 4,
+        "net_assets_inr": 33600000,
+        "criminal_cases_count": 0,
+        "serious_cases_count": 0
+      },
+      {
+        "id": "a1b2c3d4-0010-0010-0010-000000000010",
+        "name_en": "ANAND GOSWAMI",
+        "name_hi": "आनंद गोस्वामी",
+        "latest_party": { "id": 9, "abbreviation": "NCP", "full_name_en": "Nationalist Congress Party" },
+        "latest_constituency": { "id": 9, "name_en": "Pune", "state": "Maharashtra" },
+        "latest_election_year": 2024,
+        "elections_contested": 4,
+        "elections_won": 4,
+        "net_assets_inr": 196000000,
+        "criminal_cases_count": 1,
+        "serious_cases_count": 0
+      },
+      {
+        "id": "a1b2c3d4-0011-0011-0011-000000000011",
+        "name_en": "VIKRAM CHAUHAN",
+        "name_hi": "विक्रम चौहान",
+        "latest_party": { "id": 1, "abbreviation": "BJP", "full_name_en": "Bharatiya Janata Party" },
+        "latest_constituency": { "id": 3, "name_en": "Lucknow", "state": "Uttar Pradesh" },
+        "latest_election_year": 2019,
+        "elections_contested": 2,
+        "elections_won": 2,
+        "net_assets_inr": 40000000,
+        "criminal_cases_count": 1,
+        "serious_cases_count": 0
+      }
+    ]
+  },
+
+  "GET /api/v1/politicians/a1b2c3d4-0001-0001-0001-000000000001": {
+    "id": "a1b2c3d4-0001-0001-0001-000000000001",
+    "name_en": "NARAYAN PRASAD SINGH",
+    "name_hi": "नारायण प्रसाद सिंह",
+    "dob": "1958-03-12",
+    "sex": "M",
+    "education_level": "Post Graduate",
+    "education_detail": "M.A. Political Science, BHU 1982",
+    "elections": [
+      {
+        "candidacy_id": 101,
+        "election": { "id": 3, "year": 2009, "lok_sabha_no": 15, "election_type": "GENERAL" },
+        "constituency": { "id": 1, "name_en": "Varanasi", "state": "Uttar Pradesh" },
+        "party": { "id": 1, "abbreviation": "BJP" },
+        "age_at_election": 51,
+        "result": {
+          "votes": 212182, "votes_pct": 48.3, "winner": true,
+          "margin": 17834, "total_valid_votes": 439168, "poll_pct": 43.4
+        },
+        "assets": {
+          "total_assets_inr": 24500000, "total_liabilities_inr": 1200000,
+          "net_assets_inr": 23300000, "movable_assets_inr": 8200000,
+          "immovable_assets_inr": 16300000, "cash_inr": 480000
+        },
+        "criminal_cases_count": 0, "serious_cases_count": 0
+      },
+      {
+        "candidacy_id": 201,
+        "election": { "id": 4, "year": 2014, "lok_sabha_no": 16, "election_type": "GENERAL" },
+        "constituency": { "id": 1, "name_en": "Varanasi", "state": "Uttar Pradesh" },
+        "party": { "id": 1, "abbreviation": "BJP" },
+        "age_at_election": 56,
+        "result": {
+          "votes": 581022, "votes_pct": 77.1, "winner": true,
+          "margin": 371784, "total_valid_votes": 753318, "poll_pct": 42.9
+        },
+        "assets": {
+          "total_assets_inr": 48200000, "total_liabilities_inr": 3100000,
+          "net_assets_inr": 45100000, "movable_assets_inr": 14200000,
+          "immovable_assets_inr": 34000000, "cash_inr": 920000
+        },
+        "criminal_cases_count": 2, "serious_cases_count": 1
+      },
+      {
+        "candidacy_id": 301,
+        "election": { "id": 5, "year": 2019, "lok_sabha_no": 17, "election_type": "GENERAL" },
+        "constituency": { "id": 1, "name_en": "Varanasi", "state": "Uttar Pradesh" },
+        "party": { "id": 1, "abbreviation": "BJP" },
+        "age_at_election": 61,
+        "result": {
+          "votes": 674664, "votes_pct": 63.6, "winner": true,
+          "margin": 479505, "total_valid_votes": 1060534, "poll_pct": 61.0
+        },
+        "assets": {
+          "total_assets_inr": 78400000, "total_liabilities_inr": 6200000,
+          "net_assets_inr": 72200000, "movable_assets_inr": 24100000,
+          "immovable_assets_inr": 54300000, "cash_inr": 1800000
+        },
+        "criminal_cases_count": 3, "serious_cases_count": 1
+      },
+      {
+        "candidacy_id": 401,
+        "election": { "id": 6, "year": 2024, "lok_sabha_no": 18, "election_type": "GENERAL" },
+        "constituency": { "id": 1, "name_en": "Varanasi", "state": "Uttar Pradesh" },
+        "party": { "id": 1, "abbreviation": "BJP" },
+        "age_at_election": 66,
+        "result": {
+          "votes": 612340, "votes_pct": 54.2, "winner": true,
+          "margin": 152320, "total_valid_votes": 1129210, "poll_pct": 58.8
+        },
+        "assets": {
+          "total_assets_inr": 124800000, "total_liabilities_inr": 9800000,
+          "net_assets_inr": 115000000, "movable_assets_inr": 38200000,
+          "immovable_assets_inr": 86600000, "cash_inr": 2800000
+        },
+        "criminal_cases_count": 4, "serious_cases_count": 1
+      }
+    ],
+    "mplads": [
+      { "fy_start": 2015, "funds_released_lakh": 500, "funds_utilised_lakh": 492.3, "utilisation_pct": 98.46, "works_sanctioned": 48 },
+      { "fy_start": 2016, "funds_released_lakh": 500, "funds_utilised_lakh": 487.8, "utilisation_pct": 97.56, "works_sanctioned": 52 },
+      { "fy_start": 2017, "funds_released_lakh": 500, "funds_utilised_lakh": 498.2, "utilisation_pct": 99.64, "works_sanctioned": 61 },
+      { "fy_start": 2018, "funds_released_lakh": 500, "funds_utilised_lakh": 412.4, "utilisation_pct": 82.48, "works_sanctioned": 38 },
+      { "fy_start": 2020, "funds_released_lakh": 250, "funds_utilised_lakh": 241.8, "utilisation_pct": 96.72, "works_sanctioned": 22 },
+      { "fy_start": 2021, "funds_released_lakh": 500, "funds_utilised_lakh": 489.6, "utilisation_pct": 97.92, "works_sanctioned": 55 },
+      { "fy_start": 2022, "funds_released_lakh": 500, "funds_utilised_lakh": 501.2, "utilisation_pct": 100.24, "works_sanctioned": 58 },
+      { "fy_start": 2023, "funds_released_lakh": 500, "funds_utilised_lakh": 478.9, "utilisation_pct": 95.78, "works_sanctioned": 49 }
+    ],
+    "court_cases": [
+      {
+        "case_id_source": "JD/UP/2012/CR/00428", "court": "Sessions Court Varanasi",
+        "state": "Uttar Pradesh", "year_filed": 2012,
+        "ipc_sections": ["302", "34"], "case_type": "Criminal", "status": "PENDING",
+        "oer_attribution": "Data: justice_data project (ODbL)"
+      },
+      {
+        "case_id_source": "JD/UP/2010/CR/01102", "court": "CJM Varanasi",
+        "state": "Uttar Pradesh", "year_filed": 2010,
+        "ipc_sections": ["420", "120B"], "case_type": "Criminal", "status": "PENDING",
+        "oer_attribution": "Data: justice_data project (ODbL)"
+      },
+      {
+        "case_id_source": "JD/UP/2018/CR/00234", "court": "Sessions Court Varanasi",
+        "state": "Uttar Pradesh", "year_filed": 2018,
+        "ipc_sections": ["147", "148"], "case_type": "Criminal", "status": "PENDING",
+        "oer_attribution": "Data: justice_data project (ODbL)"
+      }
+    ]
+  },
+
+  "GET /api/v1/politicians/a1b2c3d4-0007-0007-0007-000000000007": {
+    "id": "a1b2c3d4-0007-0007-0007-000000000007",
+    "name_en": "SURESH PATEL",
+    "name_hi": "सुरेश पटेल",
+    "dob": "1960-08-22",
+    "sex": "M",
+    "education_level": "Graduate",
+    "education_detail": "B.Com, Gujarat University 1982",
+    "elections": [
+      {
+        "candidacy_id": 206,
+        "election": { "id": 4, "year": 2014, "lok_sabha_no": 16, "election_type": "GENERAL" },
+        "constituency": { "id": 10, "name_en": "Surat", "state": "Gujarat" },
+        "party": { "id": 1, "abbreviation": "BJP" },
+        "age_at_election": 54,
+        "result": {
+          "votes": 682434, "votes_pct": 89.4, "winner": true,
+          "margin": 589123, "total_valid_votes": 763120, "poll_pct": 47.0
+        },
+        "assets": {
+          "total_assets_inr": 340000000, "total_liabilities_inr": 42000000,
+          "net_assets_inr": 298000000
+        },
+        "criminal_cases_count": 0, "serious_cases_count": 0
+      },
+      {
+        "candidacy_id": 306,
+        "election": { "id": 5, "year": 2019, "lok_sabha_no": 17, "election_type": "GENERAL" },
+        "constituency": { "id": 10, "name_en": "Surat", "state": "Gujarat" },
+        "party": { "id": 1, "abbreviation": "BJP" },
+        "age_at_election": 59,
+        "result": {
+          "votes": 892000, "votes_pct": 91.3, "winner": true,
+          "margin": 797830, "total_valid_votes": 977120, "poll_pct": 53.9
+        },
+        "assets": {
+          "total_assets_inr": 520000000, "total_liabilities_inr": 68000000,
+          "net_assets_inr": 452000000
+        },
+        "criminal_cases_count": 0, "serious_cases_count": 0
+      },
+      {
+        "candidacy_id": 406,
+        "election": { "id": 6, "year": 2024, "lok_sabha_no": 18, "election_type": "GENERAL" },
+        "constituency": { "id": 10, "name_en": "Surat", "state": "Gujarat" },
+        "party": { "id": 1, "abbreviation": "BJP" },
+        "age_at_election": 64,
+        "result": {
+          "votes": 834120, "votes_pct": 87.9, "winner": true,
+          "margin": 731830, "total_valid_votes": 949180, "poll_pct": 50.1
+        },
+        "assets": {
+          "total_assets_inr": 780000000, "total_liabilities_inr": 98000000,
+          "net_assets_inr": 682000000
+        },
+        "criminal_cases_count": 0, "serious_cases_count": 0
+      }
+    ],
+    "mplads": [
+      { "fy_start": 2015, "funds_released_lakh": 500, "funds_utilised_lakh": 499.8, "utilisation_pct": 99.96, "works_sanctioned": 72 },
+      { "fy_start": 2016, "funds_released_lakh": 500, "funds_utilised_lakh": 500.0, "utilisation_pct": 100.00, "works_sanctioned": 78 },
+      { "fy_start": 2017, "funds_released_lakh": 500, "funds_utilised_lakh": 498.6, "utilisation_pct": 99.72, "works_sanctioned": 81 },
+      { "fy_start": 2018, "funds_released_lakh": 500, "funds_utilised_lakh": 497.2, "utilisation_pct": 99.44, "works_sanctioned": 74 },
+      { "fy_start": 2020, "funds_released_lakh": 250, "funds_utilised_lakh": 248.9, "utilisation_pct": 99.56, "works_sanctioned": 31 },
+      { "fy_start": 2021, "funds_released_lakh": 500, "funds_utilised_lakh": 500.0, "utilisation_pct": 100.00, "works_sanctioned": 86 },
+      { "fy_start": 2022, "funds_released_lakh": 500, "funds_utilised_lakh": 498.4, "utilisation_pct": 99.68, "works_sanctioned": 79 },
+      { "fy_start": 2023, "funds_released_lakh": 500, "funds_utilised_lakh": 499.1, "utilisation_pct": 99.82, "works_sanctioned": 83 }
+    ],
+    "court_cases": []
+  },
+
+  "GET /api/v1/constituencies/1/results": {
+    "constituency": {
+      "id": 1, "name_en": "Varanasi", "name_hi": "वाराणसी",
+      "state": "Uttar Pradesh", "reservation_type": "GEN"
+    },
+    "results_by_election": [
+      {
+        "election": { "id": 3, "year": 2009, "lok_sabha_no": 15 },
+        "total_electors": 1012450, "total_valid_votes": 439168, "poll_pct": 43.4,
+        "candidates": [
+          { "candidacy_id": 101, "politician": { "id": "a1b2c3d4-0001-0001-0001-000000000001", "name_en": "NARAYAN PRASAD SINGH" }, "party": { "abbreviation": "BJP" }, "votes": 212182, "votes_pct": 48.3, "winner": true },
+          { "candidacy_id": null, "politician": { "id": null, "name_en": "MUKHTAR ANSARI" }, "party": { "abbreviation": "BSP" }, "votes": 194348, "votes_pct": 44.3, "winner": false },
+          { "candidacy_id": null, "politician": { "id": null, "name_en": "RAJESH MISRA" }, "party": { "abbreviation": "INC" }, "votes": 19820, "votes_pct": 4.5, "winner": false }
+        ]
+      },
+      {
+        "election": { "id": 4, "year": 2014, "lok_sabha_no": 16 },
+        "total_electors": 1756120, "total_valid_votes": 753318, "poll_pct": 42.9,
+        "candidates": [
+          { "candidacy_id": 201, "politician": { "id": "a1b2c3d4-0001-0001-0001-000000000001", "name_en": "NARAYAN PRASAD SINGH" }, "party": { "abbreviation": "BJP" }, "votes": 581022, "votes_pct": 77.1, "winner": true },
+          { "candidacy_id": null, "politician": { "id": null, "name_en": "ARVIND KEJRIWAL" }, "party": { "abbreviation": "AAP" }, "votes": 209238, "votes_pct": 27.8, "winner": false },
+          { "candidacy_id": null, "politician": { "id": null, "name_en": "AJAY RAI" }, "party": { "abbreviation": "INC" }, "votes": 75614, "votes_pct": 10.0, "winner": false }
+        ]
+      },
+      {
+        "election": { "id": 5, "year": 2019, "lok_sabha_no": 17 },
+        "total_electors": 1739018, "total_valid_votes": 1060534, "poll_pct": 61.0,
+        "candidates": [
+          { "candidacy_id": 301, "politician": { "id": "a1b2c3d4-0001-0001-0001-000000000001", "name_en": "NARAYAN PRASAD SINGH" }, "party": { "abbreviation": "BJP" }, "votes": 674664, "votes_pct": 63.6, "winner": true },
+          { "candidacy_id": null, "politician": { "id": null, "name_en": "SHALINI YADAV" }, "party": { "abbreviation": "SP-BSP" }, "votes": 195159, "votes_pct": 18.4, "winner": false },
+          { "candidacy_id": null, "politician": { "id": null, "name_en": "AJAY RAI" }, "party": { "abbreviation": "INC" }, "votes": 152548, "votes_pct": 14.4, "winner": false }
+        ]
+      },
+      {
+        "election": { "id": 6, "year": 2024, "lok_sabha_no": 18 },
+        "total_electors": 1921000, "total_valid_votes": 1129210, "poll_pct": 58.8,
+        "candidates": [
+          { "candidacy_id": 401, "politician": { "id": "a1b2c3d4-0001-0001-0001-000000000001", "name_en": "NARAYAN PRASAD SINGH" }, "party": { "abbreviation": "BJP" }, "votes": 612340, "votes_pct": 54.2, "winner": true },
+          { "candidacy_id": null, "politician": { "id": null, "name_en": "AJAY RAI" }, "party": { "abbreviation": "INC" }, "votes": 460020, "votes_pct": 40.7, "winner": false },
+          { "candidacy_id": null, "politician": { "id": null, "name_en": "ATHAR JAMAL LARI" }, "party": { "abbreviation": "BSP" }, "votes": 32120, "votes_pct": 2.8, "winner": false }
+        ]
+      }
+    ]
+  },
+
+  "GET /api/v1/leaderboards/wealth?limit=10": {
+    "as_of_election_year": 2024,
+    "leaders": [
+      { "rank": 1, "politician": { "id": "a1b2c3d4-0007-0007-0007-000000000007", "name_en": "SURESH PATEL", "name_hi": "सुरेश पटेल" }, "party": { "abbreviation": "BJP" }, "constituency": { "name_en": "Surat", "state": "Gujarat" }, "net_assets_inr": 682000000, "total_assets_inr": 780000000 },
+      { "rank": 2, "politician": { "id": "a1b2c3d4-0003-0003-0003-000000000003", "name_en": "ARJUN REDDY", "name_hi": "అర్జున్ రెడ్డి" }, "party": { "abbreviation": "YSRCP" }, "constituency": { "name_en": "Vijayawada", "state": "Andhra Pradesh" }, "net_assets_inr": 264000000, "total_assets_inr": 312000000 },
+      { "rank": 3, "politician": { "id": "a1b2c3d4-0010-0010-0010-000000000010", "name_en": "ANAND GOSWAMI", "name_hi": "आनंद गोस्वामी" }, "party": { "abbreviation": "NCP" }, "constituency": { "name_en": "Pune", "state": "Maharashtra" }, "net_assets_inr": 196000000, "total_assets_inr": 248000000 },
+      { "rank": 4, "politician": { "id": "a1b2c3d4-0002-0002-0002-000000000002", "name_en": "PRIYA SHARMA", "name_hi": "प्रिया शर्मा" }, "party": { "abbreviation": "INC" }, "constituency": { "name_en": "Amethi", "state": "Uttar Pradesh" }, "net_assets_inr": 120000000, "total_assets_inr": 138000000 },
+      { "rank": 5, "politician": { "id": "a1b2c3d4-0001-0001-0001-000000000001", "name_en": "NARAYAN PRASAD SINGH", "name_hi": "नारायण प्रसाद सिंह" }, "party": { "abbreviation": "BJP" }, "constituency": { "name_en": "Varanasi", "state": "Uttar Pradesh" }, "net_assets_inr": 115000000, "total_assets_inr": 124800000 },
+      { "rank": 6, "politician": { "id": "a1b2c3d4-0009-0009-0009-000000000009", "name_en": "ROHIT BANERJEE", "name_hi": "রোহিত ব্যানার্জি" }, "party": { "abbreviation": "TMC" }, "constituency": { "name_en": "Kolkata South", "state": "West Bengal" }, "net_assets_inr": 33600000, "total_assets_inr": 42000000 },
+      { "rank": 7, "politician": { "id": "a1b2c3d4-0005-0005-0005-000000000005", "name_en": "SANJAY MEHTA", "name_hi": "संजय मेहता" }, "party": { "abbreviation": "AAP" }, "constituency": { "name_en": "New Delhi", "state": "Delhi" }, "net_assets_inr": 27600000, "total_assets_inr": 32400000 },
+      { "rank": 8, "politician": { "id": "a1b2c3d4-0006-0006-0006-000000000006", "name_en": "KAVITHA KRISHNAMURTHY", "name_hi": "கவிதா கிருஷ்ணமூர்த்தி" }, "party": { "abbreviation": "DMK" }, "constituency": { "name_en": "Chennai North", "state": "Tamil Nadu" }, "net_assets_inr": 16000000, "total_assets_inr": 18800000 },
+      { "rank": 9, "politician": { "id": "a1b2c3d4-0012-0012-0012-000000000012", "name_en": "SUNITA YADAV", "name_hi": "सुनीता यादव" }, "party": { "abbreviation": "SP" }, "constituency": { "name_en": "Lucknow", "state": "Uttar Pradesh" }, "net_assets_inr": 7800000, "total_assets_inr": 9200000 },
+      { "rank": 10, "politician": { "id": "a1b2c3d4-0008-0008-0008-000000000008", "name_en": "MEENA DEVI", "name_hi": "मीना देवी" }, "party": { "abbreviation": "BSP" }, "constituency": { "name_en": "Agra", "state": "Uttar Pradesh" }, "net_assets_inr": 5900000, "total_assets_inr": 6800000 }
+    ]
+  },
+
+  "GET /api/v1/leaderboards/criminal?limit=10": {
+    "as_of_election_year": 2024,
+    "note": "Only cases where court has taken cognisance. No FIR-only or allegation-only cases.",
+    "leaders": [
+      { "rank": 1, "politician": { "id": "a1b2c3d4-0001-0001-0001-000000000001", "name_en": "NARAYAN PRASAD SINGH" }, "party": { "abbreviation": "BJP" }, "constituency": { "name_en": "Varanasi", "state": "Uttar Pradesh" }, "total_cases": 4, "serious_cases": 1, "pending_cases": 4 },
+      { "rank": 2, "politician": { "id": "a1b2c3d4-0003-0003-0003-000000000003", "name_en": "ARJUN REDDY" }, "party": { "abbreviation": "YSRCP" }, "constituency": { "name_en": "Vijayawada", "state": "Andhra Pradesh" }, "total_cases": 1, "serious_cases": 1, "pending_cases": 1 },
+      { "rank": 3, "politician": { "id": "a1b2c3d4-0010-0010-0010-000000000010", "name_en": "ANAND GOSWAMI" }, "party": { "abbreviation": "NCP" }, "constituency": { "name_en": "Pune", "state": "Maharashtra" }, "total_cases": 1, "serious_cases": 0, "pending_cases": 1 },
+      { "rank": 4, "politician": { "id": "a1b2c3d4-0011-0011-0011-000000000011", "name_en": "VIKRAM CHAUHAN" }, "party": { "abbreviation": "BJP" }, "constituency": { "name_en": "Lucknow", "state": "Uttar Pradesh" }, "total_cases": 1, "serious_cases": 0, "pending_cases": 0 }
+    ]
+  },
+
+  "GET /api/v1/leaderboards/margins?year=2024&limit=10": {
+    "election_year": 2024,
+    "leaders": [
+      { "rank": 1, "constituency": { "id": 10, "name_en": "Surat", "state": "Gujarat" }, "winner": { "id": "a1b2c3d4-0007-0007-0007-000000000007", "name_en": "SURESH PATEL" }, "party": { "abbreviation": "BJP" }, "margin": 731830, "winner_votes": 834120, "total_valid_votes": 949180, "votes_pct": 87.9 },
+      { "rank": 2, "constituency": { "id": 2, "name_en": "Amethi", "state": "Uttar Pradesh" }, "winner": { "id": "a1b2c3d4-0002-0002-0002-000000000002", "name_en": "PRIYA SHARMA" }, "party": { "abbreviation": "INC" }, "margin": 361280, "winner_votes": 586230, "total_valid_votes": 996910, "votes_pct": 58.8 },
+      { "rank": 3, "constituency": { "id": 4, "name_en": "New Delhi", "state": "Delhi" }, "winner": { "id": "a1b2c3d4-0005-0005-0005-000000000005", "name_en": "SANJAY MEHTA" }, "party": { "abbreviation": "AAP" }, "margin": 293450, "winner_votes": 521340, "total_valid_votes": 836590, "votes_pct": 62.3 },
+      { "rank": 4, "constituency": { "id": 7, "name_en": "Chennai North", "state": "Tamil Nadu" }, "winner": { "id": "a1b2c3d4-0006-0006-0006-000000000006", "name_en": "KAVITHA KRISHNAMURTHY" }, "party": { "abbreviation": "DMK" }, "margin": 194320, "winner_votes": 381240, "total_valid_votes": 616800, "votes_pct": 61.8 },
+      { "rank": 5, "constituency": { "id": 6, "name_en": "Kolkata South", "state": "West Bengal" }, "winner": { "id": "a1b2c3d4-0009-0009-0009-000000000009", "name_en": "ROHIT BANERJEE" }, "party": { "abbreviation": "TMC" }, "margin": 186240, "winner_votes": 412130, "total_valid_votes": 651900, "votes_pct": 63.2 },
+      { "rank": 6, "constituency": { "id": 1, "name_en": "Varanasi", "state": "Uttar Pradesh" }, "winner": { "id": "a1b2c3d4-0001-0001-0001-000000000001", "name_en": "NARAYAN PRASAD SINGH" }, "party": { "abbreviation": "BJP" }, "margin": 152320, "winner_votes": 612340, "total_valid_votes": 1129210, "votes_pct": 54.2 },
+      { "rank": 7, "constituency": { "id": 9, "name_en": "Pune", "state": "Maharashtra" }, "winner": { "id": "a1b2c3d4-0010-0010-0010-000000000010", "name_en": "ANAND GOSWAMI" }, "party": { "abbreviation": "NCP" }, "margin": 73420, "winner_votes": 281230, "total_valid_votes": 522900, "votes_pct": 53.8 },
+      { "rank": 8, "constituency": { "id": 3, "name_en": "Lucknow", "state": "Uttar Pradesh" }, "winner": { "name_en": "CURRENT MP" }, "party": { "abbreviation": "BJP" }, "margin": 23020, "winner_votes": 321440, "total_valid_votes": 642060, "votes_pct": 50.1 },
+      { "rank": 9, "constituency": { "id": 8, "name_en": "Vijayawada", "state": "Andhra Pradesh" }, "winner": { "name_en": "RIVAL CANDIDATE" }, "party": { "abbreviation": "TDP" }, "margin": 14200, "winner_votes": 512430, "total_valid_votes": 891230, "votes_pct": 57.5 }
+    ]
+  },
+
+  "GET /api/v1/parties/1/finance": {
+    "party": { "id": 1, "abbreviation": "BJP", "full_name_en": "Bharatiya Janata Party" },
+    "finance_by_year": [
+      { "fy_start": 2019, "fy_end": 2020, "total_income_inr": 3469000000, "voluntary_contributions": 1820000000, "electoral_bonds_inr": 1420000000, "govt_grants_inr": 0, "total_expenditure_inr": 3210000000, "election_expenditure_inr": 1840000000 },
+      { "fy_start": 2020, "fy_end": 2021, "total_income_inr": 1823000000, "voluntary_contributions": 980000000, "electoral_bonds_inr": 640000000, "govt_grants_inr": 0, "total_expenditure_inr": 1650000000, "election_expenditure_inr": 320000000 },
+      { "fy_start": 2021, "fy_end": 2022, "total_income_inr": 2781000000, "voluntary_contributions": 1480000000, "electoral_bonds_inr": 980000000, "govt_grants_inr": 0, "total_expenditure_inr": 2340000000, "election_expenditure_inr": 890000000 },
+      { "fy_start": 2022, "fy_end": 2023, "total_income_inr": 4120000000, "voluntary_contributions": 2180000000, "electoral_bonds_inr": 1620000000, "govt_grants_inr": 0, "total_expenditure_inr": 3890000000, "election_expenditure_inr": 2340000000 },
+      { "fy_start": 2023, "fy_end": 2024, "total_income_inr": 6210000000, "voluntary_contributions": 3240000000, "electoral_bonds_inr": 2410000000, "govt_grants_inr": 0, "total_expenditure_inr": 5980000000, "election_expenditure_inr": 4120000000 }
+    ]
+  },
+
+  "GET /api/v1/parties/1/bonds": {
+    "party": { "id": 1, "abbreviation": "BJP", "full_name_en": "Bharatiya Janata Party" },
+    "total_received_inr": 2430000000,
+    "bonds": [
+      { "id": 1, "bond_number": "EB00001", "purchase_date": "2019-01-15", "denomination_inr": 10000000, "purchaser_name": "Adani Enterprises Ltd", "encashment_date": "2019-01-22" },
+      { "id": 2, "bond_number": "EB00002", "purchase_date": "2019-01-15", "denomination_inr": 100000000, "purchaser_name": "Reliance Industries Ltd", "encashment_date": "2019-01-21" },
+      { "id": 3, "bond_number": "EB00003", "purchase_date": "2019-03-10", "denomination_inr": 50000000, "purchaser_name": "Torrent Power Ltd", "encashment_date": "2019-03-18" },
+      { "id": 5, "bond_number": "EB00005", "purchase_date": "2020-01-12", "denomination_inr": 10000000, "purchaser_name": "Megha Engineering & Infrastructures", "encashment_date": "2020-01-18" },
+      { "id": 6, "bond_number": "EB00006", "purchase_date": "2021-06-20", "denomination_inr": 100000000, "purchaser_name": "Sun Pharma Advanced Research Co", "encashment_date": "2021-06-25" },
+      { "id": 8, "bond_number": "EB00008", "purchase_date": "2022-02-14", "denomination_inr": 50000000, "purchaser_name": "Vedanta Ltd", "encashment_date": "2022-02-20" },
+      { "id": 10, "bond_number": "EB00010", "purchase_date": "2023-01-05", "denomination_inr": 100000000, "purchaser_name": "Megha Engineering & Infrastructures", "encashment_date": "2023-01-10" },
+      { "id": 12, "bond_number": "EB00012", "purchase_date": "2023-04-18", "denomination_inr": 10000000, "purchaser_name": "Jindal Steel & Power Ltd", "encashment_date": "2023-04-22" },
+      { "id": 13, "bond_number": "EB00013", "purchase_date": "2023-07-14", "denomination_inr": 100000000, "purchaser_name": "Adani Ports and SEZ Ltd", "encashment_date": "2023-07-18" },
+      { "id": 15, "bond_number": "EB00015", "purchase_date": "2024-01-09", "denomination_inr": 10000000, "purchaser_name": "Kalyan Jewellers India Ltd", "encashment_date": "2024-01-14" }
+    ]
+  },
+
+  "GET /api/v1/elections/2024/margins": {
+    "election": { "id": 6, "year": 2024, "lok_sabha_no": 18 },
+    "summary": {
+      "total_constituencies": 543,
+      "avg_margin": 148234,
+      "median_margin": 89400,
+      "closest_margin": 813,
+      "largest_margin": 731830
+    },
+    "sample_margins": [
+      { "constituency": { "id": 10, "name_en": "Surat", "state": "Gujarat" }, "winner_name": "SURESH PATEL", "party": "BJP", "margin": 731830 },
+      { "constituency": { "id": 2, "name_en": "Amethi", "state": "Uttar Pradesh" }, "winner_name": "PRIYA SHARMA", "party": "INC", "margin": 361280 },
+      { "constituency": { "id": 4, "name_en": "New Delhi", "state": "Delhi" }, "winner_name": "SANJAY MEHTA", "party": "AAP", "margin": 293450 }
+    ]
+  },
+
+  "POST /api/v1/disputes": {
+    "request_body_example": {
+      "entity_type": "politician",
+      "entity_id": "a1b2c3d4-0001-0001-0001-000000000001",
+      "field_disputed": "total_assets_inr",
+      "current_value": "124800000",
+      "proposed_value": "98200000",
+      "justification": "The declared assets do not match the ECI Form 26 filing.",
+      "evidence_url": "https://affidavit.eci.gov.in/example.pdf",
+      "contact_email": "citizen@example.com"
+    },
+    "response": {
+      "id": "d1000001-0000-0000-0000-000000000001",
+      "status": "OPEN",
+      "submitted_at": "2024-06-29T12:34:56Z",
+      "message": "Your dispute has been submitted. We will review within 7 days and notify you at citizen@example.com."
+    }
+  },
+
+  "GET /api/v1/disputes/d1000001-0000-0000-0000-000000000001": {
+    "id": "d1000001-0000-0000-0000-000000000001",
+    "entity_type": "politician",
+    "entity_id": "a1b2c3d4-0001-0001-0001-000000000001",
+    "field_disputed": "total_assets_inr",
+    "current_value": "124800000",
+    "proposed_value": "98200000",
+    "justification": "The declared assets in the 2024 affidavit do not match the Form 26 filed with ECI.",
+    "evidence_url": "https://affidavit.eci.gov.in/Affidavit/2024/varanasi_narayan_singh_form26.pdf",
+    "contact_email": "citizen@example.com",
+    "submitted_at": "2024-06-01T09:21:00Z",
+    "status": "UNDER_REVIEW",
+    "resolved_at": null,
+    "resolution_note": null
+  }
+}
