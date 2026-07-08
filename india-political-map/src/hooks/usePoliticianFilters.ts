@@ -2,13 +2,15 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { Politician } from "@/src/components/types/politician";
+import { searchPoliticians } from "../components/search/searchPoliticians";
 
 const ITEMS_PER_PAGE = 6;
 
 export default function usePoliticianFilters(
-  politicians: Politician[]
+  politicians: Politician[],
+    initialSearch: string = ""
 ) {
-  const [search, setSearch] = useState("");
+const [search, setSearch] = useState(initialSearch);
   const [state, setState] = useState("All");
   const [party, setParty] = useState("All");
   const [criminal, setCriminal] = useState("All");
@@ -20,10 +22,11 @@ export default function usePoliticianFilters(
 
     // Search
     if (search) {
-      data = data.filter((p) =>
-        p.name_en.toLowerCase().includes(search.toLowerCase())
-      );
-    }
+  data = searchPoliticians(
+    data,
+    search
+  );
+}
 
     // State Filter
     if (state !== "All") {
