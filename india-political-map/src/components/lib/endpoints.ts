@@ -4,6 +4,9 @@ export const ENDPOINTS = {
   politicians:
     mockData["GET /api/v1/politicians/search?page=1&limit=20"],
 
+  constituencies:
+    mockData["GET /api/v1/constituencies"],
+
   wealth:
     mockData["GET /api/v1/leaderboards/wealth?limit=10"],
 
@@ -13,7 +16,9 @@ export const ENDPOINTS = {
   margin:
     mockData["GET /api/v1/leaderboards/margins?year=2024&limit=10"],
 
-  health: 
+  health:
     mockData["GET /api/v1/health"],
-  
+
+    
 };
+

@@ -1,0 +1,512 @@
+{
+  "GET /api/v1/politicians/a1b2c3d4-0001-0001-0001-000000000001/financial-disclosure": {
+    "available": true,
+    "disclosure":{
+    "candidate_overview": {
+      "name": "A. J. Patel",
+      "constituency": "MAHESANA",
+      "state": "GUJARAT",
+      "political_party": "INC",
+      "election_year": "2019",
+      "highest_education": "B.E. (Mechanical) From Gujarat University, L.D. Engineering College, Ahmedabad, Year-1970",
+      "criminal_cases_pending": 0,
+      "past_convictions": 0
+    },
+    "income_tax_returns": {
+      "self": {
+        "pan": "Y",
+        "history": [
+          { "financial_year": "2017-2018", "total_income": 1145887 },
+          { "financial_year": "2016-2017", "total_income": 889281 },
+          { "financial_year": "2015-2016", "total_income": 1468615 },
+          { "financial_year": "2014-2015", "total_income": 1770601 },
+          { "financial_year": "2013-2014", "total_income": 994313 }
+        ]
+      },
+      "spouse": {
+        "pan": "Y",
+        "history": [
+          { "financial_year": "2017-2018", "total_income": 394754 },
+          { "financial_year": "2016-2017", "total_income": 931914 },
+          { "financial_year": "2015-2016", "total_income": 537539 },
+          { "financial_year": "2014-2015", "total_income": 1230384 },
+          { "financial_year": "2013-2014", "total_income": 582485 }
+        ]
+      },
+      "huf": {
+        "pan": "Y",
+        "history": [
+          { "financial_year": "2017-2018", "total_income": 318522 },
+          { "financial_year": "2016-2017", "total_income": 625202 },
+          { "financial_year": "2015-2016", "total_income": 225975 },
+          { "financial_year": "2014-2015", "total_income": 339028 },
+          { "financial_year": "2013-2014", "total_income": 153972 }
+        ]
+      }
+    },
+    "assets": {
+      "movable_assets": {
+        "cash_in_hand": {
+          "values": { "self": 37000.00, "spouse": 20000.00, "huf": 60000.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 117000.00 },
+          "details": {
+            "self": [{"description": "Cash", "amount": 37000.00}],
+            "spouse": [{"description": "Cash", "amount": 20000.00}],
+            "huf": [{"description": "Cash", "amount": 60000.00}],
+            "dependent1": [], "dependent2": [], "dependent3": []
+          }
+        },
+        "bank_deposits": {
+          "values": { "self": 7215782.56, "spouse": 1517401.44, "huf": 48828.97, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 8782012.97 },
+          "details": {
+            "self": [
+              {"description": "Saving A/c no., Dqate-25/3/19", "amount": 3074252.56},
+              {"description": "FD The Mehsana Urban Co-Operative Bank Ltd, Mehsana", "amount": 2890009.00},
+              {"description": "State Bank Of India Mehsana", "amount": 1224191.00},
+              {"description": "Gujrat Ambuja Co-Operative Bank Ltd, Ahmedabad", "amount": 27330.00}
+            ],
+            "spouse": [
+              {"description": "Saving A/c, Dt-25/03/19", "amount": 241697.44},
+              {"description": "FD The Mehsana Urban Co-Operative Bank Ltd, Mehsana", "amount": 500000.00},
+              {"description": "State Bank of India Mehsana", "amount": 775704.00}
+            ],
+            "huf": [
+              {"description": "Saving A/c. Dt- 25/03/19", "amount": 48828.97}
+            ],
+            "dependent1": [], "dependent2": [], "dependent3": []
+          }
+        },
+        "investments_bonds_shares": {
+          "values": { "self": 14664084.90, "spouse": 11713270.10, "huf": 2934540.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 29311895.00 },
+          "details": {
+            "self": [
+              {"description": "Bank Shares", "amount": 127000.00},
+              {"description": "Bank share", "amount": 133250.00},
+              {"description": "Private Co. M.Amit Pomeg Tek Pvt Ltd, Mehsana", "amount": 13985000.00},
+              {"description": "Private Co. M.Image Mine Products Pvt Ltd Mehsana", "amount": 415000.00},
+              {"description": "Listed Co. Shares, Dt-27/03/19", "amount": 3834.90}
+            ],
+            "spouse": [
+              {"description": "Private Company M.Amit Pomeg Tek Pvt.Ltd Mehsana", "amount": 10345000.00},
+              {"description": "Private Co. Mehsana, Image Mine Products Pvt.Ltd Mehsana", "amount": 720000.00},
+              {"description": "Listed Company Shares, Dt-27/0319/", "amount": 628270.10}
+            ],
+            "huf": [
+              {"description": "Bank Shares", "amount": 20000.00},
+              {"description": "Private Co. M.Pomeg Tek Pvt.Ltd Mehsana", "amount": 2934540.00}
+            ],
+            "dependent1": [], "dependent2": [], "dependent3": []
+          }
+        },
+        "savings_and_insurance": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "personal_loans_given": {
+          "values": { "self": 1996148.00, "spouse": 0.00, "huf": 515876.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 2512024.00 },
+          "details": {
+            "self": [
+              {"description": "Private Co. M. Amit Pomeg Tek Pvt, Mehsana, Dt-29/03/19", "amount": 165000.00},
+              {"description": "Private Co. M. Amit Pomeg Tek Pvt.Ltd Mehsana, Dt-29/03/19", "amount": 1831148.00}
+            ],
+            "spouse": [],
+            "huf": [
+              {"description": "Private Co. M.Pomeg Tek Pvt Ltd. Mehsana, Dt-29/03/19", "amount": 515876.00}
+            ],
+            "dependent1": [], "dependent2": [], "dependent3": []
+          }
+        },
+        "motor_vehicles": {
+          "values": { "self": 1236781.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 1236781.00 },
+          "details": {
+            "self": [
+              {"description": "Toyoto Innova 2.5G (E3), Date Of Purchase 1-/0314/", "amount": 1236781.00}
+            ],
+            "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": []
+          }
+        },
+        "jewellery": {
+          "values": { "self": 320000.00, "spouse": 1394000.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 1714000.00 },
+          "details": {
+            "self": [
+              {"description": "Gold 10 Tola", "amount": 320000.00}
+            ],
+            "spouse": [
+              {"description": "Gold 40 Tola", "amount": 1280000.00},
+              {"description": "Silver 3 Kg", "amount": 114000.00}
+            ],
+            "huf": [], "dependent1": [], "dependent2": [], "dependent3": []
+          }
+        },
+        "other_assets": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "gross_total_movable": { "self": 25795981.66, "spouse": 14298486.34, "huf": 3579244.97, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 43673712.97 }
+      },
+      "immovable_assets": {
+        "agricultural_land": {
+          "values": { "self": 387875000.00, "spouse": 139325000.00, "huf": 58500000.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 585700000.00 },
+          "details": {
+            "self": [
+              {"description": "Chaveli, Taluka.Chanashma, District- Patan, Survey no-207, 208, 716... Total Area 8.553 Acre", "amount": 7275000.00},
+              {"description": "Heduva (Rajgar) Taluka-Mehsana, Survey No.258, 250, 273... Total Area 15.75 Acre", "amount": 170000000.00},
+              {"description": "Samitra Taluka-District Mehsana, Survey No.1341, 1324, 1303... Total Area 24.3018 Acre", "amount": 210000000.00},
+              {"description": "Chaveli, Taluka - Chanashma, District- Patan, Survey no.2, 6, 4, 3... Total Area 0.5933 Acre", "amount": 600000.00}
+            ],
+            "spouse": [
+              {"description": "Chaveli, Taluka- Chanashma, District- Patan, Survey no.207. Total Area 80553 acre", "amount": 7275000.00},
+              {"description": "Heduva (Rajgar), Taluka-Mehsana, Survey No.265, 272... Total Area 3.125 Acre", "amount": 31900000.00},
+              {"description": "Sametra, Taluka- District. Mehsana, survey no.1340, 1307... Total Area 11.775 Acre", "amount": 100150000.00}
+            ],
+            "huf": [
+              {"description": "Sametra, Taluka- District- Mehsana, Survey No.616, 624, 618... Total Area 6.882 Acre", "amount": 58500000.00}
+            ],
+            "dependent1": [], "dependent2": [], "dependent3": []
+          }
+        },
+        "non_agricultural_land": {
+          "values": { "self": 52500000.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 52500000.00 },
+          "details": {
+            "self": [
+              {"description": "Heduva Rajgar, Taluka- district- Mehsana, Survey No-252. Total Area 4.075 Acre", "amount": 37500000.00},
+              {"description": "Sametra, Taluka- District- Mehsana, Survey No.1325. Total Area 5.849Acre", "amount": 15000000.00}
+            ],
+            "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": []
+          }
+        },
+        "commercial_buildings": {
+          "values": { "self": 2500000.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 2500000.00 },
+          "details": {
+            "self": [
+              {"description": "Mehsana City Survey No. 1990/63, Survey No.5928, Plot No. 14,15,16 And 18 Second floor office. Built Up Area 20000 Sqft", "amount": 2500000.00}
+            ],
+            "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": []
+          }
+        },
+        "residential_buildings": {
+          "values": { "self": 14900000.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 14900000.00 },
+          "details": {
+            "self": [
+              {"description": "Moje Chaveli Taluka chnashma, District- Patan, House No.1. Built Up Area 1200 Sq.ft", "amount": 2400000.00},
+              {"description": "Moje Ramosana Taluka- Mehsana, Block No.158 (Survey No.1242) Tulsi Bunglows-A-105. Built Up Area 4484.4 Sqft", "amount": 12500000.00}
+            ],
+            "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": []
+          }
+        },
+        "others": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "gross_total_immovable": { "self": 455275000.00, "spouse": 141825000.00, "huf": 58500000.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 655600000.00 }
+      }
+    },
+    "liabilities": {
+      "financial_liabilities": {
+        "loans_from_banks_fis": {
+          "values": { "self": 96220672.92, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 96220672.92 },
+          "details": {
+            "self": [
+              {"description": "M.Amit Pomeg Tek Pvt.Ltd, Mehsana Pvt Co.- Bank Of Baroda Mehsana Loan Draft", "amount": 90159847.22},
+              {"description": "Yash BAnk car Loan", "amount": 4064030.00},
+              {"description": "ICICI Car Loan, Date- 31/03/2019(Directors Personal Responsibility)", "amount": 1996795.70}
+            ],
+            "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": []
+          }
+        },
+        "loans_from_individuals": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "any_other_liability": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "grand_total_private_liabilities": { "self": 96220672.92, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 96220672.92 }
+      },
+      "government_dues": {
+        "government_accommodation": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "water_supply": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "electricity_supply": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "telephones": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "government_transport": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "income_tax_dues": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "gst_dues": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "property_tax_dues": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "any_other_dues": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "grand_total_govt_dues": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 }
+      },
+      "disputed_liabilities": {
+        "liabilities_in_dispute": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        }
+      }}
+    }
+  },
+
+  "GET /api/v1/politicians/a1b2c3d4-0007-0007-0007-000000000007/financial-disclosure": {
+    "available": true,
+    "disclosure": {
+    "candidate_overview": {
+      "name": "Ashok Vallabhbhai Patel",
+      "constituency": "SURAT",
+      "state": "GUJARAT",
+      "political_party": "INC",
+      "election_year": "2019",
+      "highest_education": "9th Pass, Sanatan Dharm Multipurpose Highschool, Bhavnagar",
+      "criminal_cases_pending": 0,
+      "past_convictions": 0
+    },
+    "income_tax_returns": {
+      "self": {
+        "pan": "Y",
+        "history": [
+          { "financial_year": "2018-2019", "total_income": 619791 },
+          { "financial_year": "2017-2018", "total_income": 530676 },
+          { "financial_year": "2016-2017", "total_income": 503025 },
+          { "financial_year": "2015-2016", "total_income": 502304 },
+          { "financial_year": "2014-2015", "total_income": 423598 }
+        ]
+      },
+      "spouse": {
+        "pan": "Y",
+        "history": [
+          { "financial_year": "2018-2019", "total_income": 0 },
+          { "financial_year": "2017-2018", "total_income": 0 },
+          { "financial_year": "2016-2017", "total_income": 0 },
+          { "financial_year": "2015-2016", "total_income": 0 },
+          { "financial_year": "2014-2015", "total_income": 0 }
+        ]
+      },
+      "huf": {
+        "pan": null,
+        "history": []
+      },
+      "dependent1": {
+        "pan": "Y",
+        "history": [
+          { "financial_year": "2018-2019", "total_income": 0 },
+          { "financial_year": "2017-2018", "total_income": 0 },
+          { "financial_year": "2016-2017", "total_income": 0 },
+          { "financial_year": "2015-2016", "total_income": 0 },
+          { "financial_year": "2014-2015", "total_income": 0 }
+        ]
+      }
+    },
+    "assets": {
+      "movable_assets": {
+        "cash_in_hand": {
+          "values": { "self": 2500000.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 2500000.00 },
+          "details": {
+            "self": [{"description": "Cash", "amount": 2500000.00}],
+            "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": []
+          }
+        },
+        "bank_deposits": {
+          "values": { "self": 107481.77, "spouse": 0.00, "huf": 0.00, "dependent1": 20000.00, "dependent2": 0.00, "dependent3": 0.00, "total": 127481.77 },
+          "details": {
+            "self": [
+              {"description": "The Varacha Co-op Bank Ltd.", "amount": 9604.06},
+              {"description": "Axis Bank", "amount": 97877.71}
+            ],
+            "spouse": [],
+            "huf": [],
+            "dependent1": [
+              {"description": "ICICI Bank", "amount": 20000.00}
+            ],
+            "dependent2": [], "dependent3": []
+          }
+        },
+        "investments_bonds_shares": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "savings_and_insurance": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "personal_loans_given": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "motor_vehicles": {
+          "values": { "self": 925000.00, "spouse": 60000.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 985000.00 },
+          "details": {
+            "self": [
+              {"description": "Honda Activa", "amount": 25000.00},
+              {"description": "Hyundai Creta", "amount": 900000.00}
+            ],
+            "spouse": [
+              {"description": "Honda Activa", "amount": 60000.00}
+            ],
+            "huf": [], "dependent1": [], "dependent2": [], "dependent3": []
+          }
+        },
+        "jewellery": {
+          "values": { "self": 300000.00, "spouse": 600000.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 900000.00 },
+          "details": {
+            "self": [
+              {"description": "10 Tola Gold", "amount": 300000.00}
+            ],
+            "spouse": [
+              {"description": "20 Tola Gold", "amount": 600000.00}
+            ],
+            "huf": [], "dependent1": [], "dependent2": [], "dependent3": []
+          }
+        },
+        "other_assets": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "gross_total_movable": { "self": 3832481.77, "spouse": 660000.00, "huf": 0.00, "dependent1": 20000.00, "dependent2": 0.00, "dependent3": 0.00, "total": 4512481.77 }
+      },
+      "immovable_assets": {
+        "agricultural_land": {
+          "values": { "self": 3000000.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 3000000.00 },
+          "details": {
+            "self": [
+              {
+                "description": "Mouze-Aghevad, Dist-Bhavnagar Block No.59 Out of 4, Total Area 2-02-34 Acre, Built Up Area 4500 sq.mtr",
+                "amount": 3000000.00
+              }
+            ],
+            "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": []
+          }
+        },
+        "non_agricultural_land": {
+          "values": { "self": 6000000.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 6000000.00 },
+          "details": {
+            "self": [
+              {
+                "description": "Bhawnagar, Survey No. 4, Total Area 2-02-34",
+                "amount": 6000000.00
+              }
+            ],
+            "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": []
+          }
+        },
+        "commercial_buildings": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "residential_buildings": {
+          "values": { "self": 5500000.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 5500000.00 },
+          "details": {
+            "self": [
+              {
+                "description": "Fulpada Survay No.62/1,T.P Scheme No.17, Final Plot No.85, Rudraksh Residenci Flat No.903, Total Area 403 sq.ft, Built Up Area 1260 sq.ft",
+                "amount": 3500000.00
+              },
+              {
+                "description": "Nanavarachha Block No.150,T.P. Scheme No.20, final Plot No.56,57,58 Plot No.191 Snehmilan Society, Total Area 1119 sq.ft, Built Up Area 807 sq.ft",
+                "amount": 2000000.00
+              }
+            ],
+            "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": []
+          }
+        },
+        "others": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "gross_total_immovable": { "self": 14500000.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 14500000.00 }
+      }
+    },
+  "liabilities": {
+      "financial_liabilities": {
+        "loans_from_banks_fis": {
+          "values": { "self": 3125964.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 3125964.00 },
+          "details": {
+            "self": [
+              {"description": "Dena Bank Hsg. Loan", "amount": 2279964.00},
+              {"description": "HDFC Bank", "amount": 846000.00}
+            ],
+            "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": []
+          }
+        },
+        "loans_from_individuals": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "any_other_liability": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "grand_total_private_liabilities": { "self": 3125964.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 3125964.00 }
+      },
+      "government_dues": {
+        "government_accommodation": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "water_supply": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "electricity_supply": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "telephones": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "government_transport": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "income_tax_dues": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "gst_dues": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "property_tax_dues": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "any_other_dues": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        },
+        "grand_total_govt_dues": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 }
+      },
+      "disputed_liabilities": {
+        "liabilities_in_dispute": {
+          "values": { "self": 0.00, "spouse": 0.00, "huf": 0.00, "dependent1": 0.00, "dependent2": 0.00, "dependent3": 0.00, "total": 0.00 },
+          "details": { "self": [], "spouse": [], "huf": [], "dependent1": [], "dependent2": [], "dependent3": [] }
+        }
+      }
+    }
+}
+  }
+}

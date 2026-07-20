@@ -1,3 +1,5 @@
+import { FinancialDisclosureResponse } from "./financial-disclosure";
+
 export interface Party {
   id: number;
   abbreviation: string;
@@ -13,7 +15,7 @@ export interface Constituency {
 
 export interface Politician {
   id: string;
-
+ 
   name_en: string;
 
   name_hi: string;
@@ -162,6 +164,9 @@ export interface PoliticianProfile {
 }
 
 export interface PoliticianProfileResponse {
-  summary: Politician;
-  profile?: PoliticianProfile;
+    summary: Politician;
+
+    profile?: PoliticianProfile;
+
+    financialDisclosure: FinancialDisclosureResponse;
 }

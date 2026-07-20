@@ -202,7 +202,7 @@
     "education_level": "Post Graduate",
     "education_detail": "M.A. Political Science, BHU 1982",
     "elections": [
-      {
+      { 
         "candidacy_id": 101,
         "election": { "id": 3, "year": 2009, "lok_sabha_no": 15, "election_type": "GENERAL" },
         "constituency": { "id": 1, "name_en": "Varanasi", "state": "Uttar Pradesh" },
@@ -461,8 +461,10 @@
     ]
   },
 
-  "GET /api/v1/parties/1/finance": {
-    "party": { "id": 1, "abbreviation": "BJP", "full_name_en": "Bharatiya Janata Party" },
+  "GET /api/v1/parties/bjp/finance": {
+    "party": { "id": 1,  "slug":"bjp",
+      "name":"Bharatiya Janata Party" },
+      
     "finance_by_year": [
       { "fy_start": 2019, "fy_end": 2020, "total_income_inr": 3469000000, "voluntary_contributions": 1820000000, "electoral_bonds_inr": 1420000000, "govt_grants_inr": 0, "total_expenditure_inr": 3210000000, "election_expenditure_inr": 1840000000 },
       { "fy_start": 2020, "fy_end": 2021, "total_income_inr": 1823000000, "voluntary_contributions": 980000000, "electoral_bonds_inr": 640000000, "govt_grants_inr": 0, "total_expenditure_inr": 1650000000, "election_expenditure_inr": 320000000 },
@@ -472,8 +474,9 @@
     ]
   },
 
-  "GET /api/v1/parties/1/bonds": {
-    "party": { "id": 1, "abbreviation": "BJP", "full_name_en": "Bharatiya Janata Party" },
+  "GET /api/v1/parties/bjp/bonds": {
+    "party": { "id": 1, "slug":"bjp",
+      "name":"Bharatiya Janata Party" },
     "total_received_inr": 2430000000,
     "bonds": [
       { "id": 1, "bond_number": "EB00001", "purchase_date": "2019-01-15", "denomination_inr": 10000000, "purchaser_name": "Adani Enterprises Ltd", "encashment_date": "2019-01-22" },
@@ -489,20 +492,1770 @@
     ]
   },
 
-  "GET /api/v1/elections/2024/margins": {
-    "election": { "id": 6, "year": 2024, "lok_sabha_no": 18 },
-    "summary": {
-      "total_constituencies": 543,
-      "avg_margin": 148234,
-      "median_margin": 89400,
-      "closest_margin": 813,
-      "largest_margin": 731830
+  "GET /api/v1/parties/state":{
+  "results": [
+    {
+      "id": 101,
+      "slug": "aitc",
+      "party": "All India Trinamool Congress",
+      "abbreviation": "AITC",
+      "leader": "Mamata Banerjee",
+      "lok_sabha": 29,
+      "rajya_sabha": 13
     },
-    "sample_margins": [
-      { "constituency": { "id": 10, "name_en": "Surat", "state": "Gujarat" }, "winner_name": "SURESH PATEL", "party": "BJP", "margin": 731830 },
-      { "constituency": { "id": 2, "name_en": "Amethi", "state": "Uttar Pradesh" }, "winner_name": "PRIYA SHARMA", "party": "INC", "margin": 361280 },
-      { "constituency": { "id": 4, "name_en": "New Delhi", "state": "Delhi" }, "winner_name": "SANJAY MEHTA", "party": "AAP", "margin": 293450 }
+    {
+      "id": 102,
+      "slug": "dmk",
+      "party": "Dravida Munnetra Kazhagam",
+      "abbreviation": "DMK",
+      "leader": "M. K. Stalin",
+      "lok_sabha": 22,
+      "rajya_sabha": 10
+    },
+    {
+      "id": 103,
+      "slug": "bjd",
+      "party": "Biju Janata Dal",
+      "abbreviation": "BJD",
+      "leader": "Naveen Patnaik",
+      "lok_sabha": 0,
+      "rajya_sabha": 7
+    },
+    {
+      "id": 104,
+      "slug": "ysrcp",
+      "party": "YSR Congress Party",
+      "abbreviation": "YSRCP",
+      "leader": "Y. S. Jagan Mohan Reddy",
+      "lok_sabha": 4,
+      "rajya_sabha": 11
+    }
+  ]
+},
+"GET /api/v1/parties/unrecognised":{
+  "results": [
+    {
+      "id": 201,
+      "slug": "abhm",
+      "party": "Akhil Bharat Hindu Mahasabha",
+      "abbreviation": "ABHM",
+      "leader": "Chakrapani",
+      "lok_sabha": 0,
+      "rajya_sabha": 0
+    },
+    {
+      "id": 202,
+      "slug": "aihcp",
+      "party": "All India Hindustan Congress Party",
+      "abbreviation": "AIHCP",
+      "leader": "Buddh Prakash Sharma",
+      "lok_sabha": 0,
+      "rajya_sabha": 0
+    },
+    {
+      "id": 203,
+      "slug": "amep",
+      "party": "All India Mahila Empowerment Party",
+      "abbreviation": "AMEP",
+      "leader": "Nowhera Shaik",
+      "lok_sabha": 0,
+      "rajya_sabha": 0
+    }
+  ]
+},
+"GET /api/v1/parties/historical":{
+  "results": [
+    {
+      "id": 301,
+      "slug": "krishak-sramik-party",
+      "party": "Krishak Sramik Party",
+      "abbreviation": "KSP",
+      "leader": "A. K. Fazlul Haq",
+      "lok_sabha": "-",
+      "rajya_sabha": "-"
+    },
+    {
+      "id": 302,
+      "slug": "scheduled-castes-federation",
+      "party": "Scheduled Castes Federation",
+      "abbreviation": "SCF",
+      "leader": "Dr. B. R. Ambedkar",
+      "lok_sabha": "-",
+      "rajya_sabha": "-"
+    },
+    {
+      "id": 303,
+      "slug": "travancore-tamil-nadu-congress",
+      "party": "Travancore Tamil Nadu Congress",
+      "abbreviation": "TTNC",
+      "leader": "A. Nesamony",
+      "lok_sabha": "-",
+      "rajya_sabha": "-"
+    }
+  ]
+},
+  
+  "GET /api/v1/parties":{
+  "summary": {
+    "national_parties": 6,
+    "state_parties": 58,
+    "unrecognised_parties": 2800,
+    "historical_parties": 120
+  },
+
+  "categories": [
+    {
+      "slug": "national",
+      "title": "National Parties",
+      "count": 6
+    },
+    {
+      "slug": "state",
+      "title": "State Parties",
+      "count": 58
+    },
+    {
+      "slug": "unrecognised",
+      "title": "Unrecognised Parties",
+      "count": 2800
+    },
+    {
+      "slug": "historical",
+      "title": "Historical Parties",
+      "count": 120
+    }
+  ]
+},
+"GET /api/v1/parties/national":{
+  "results":[
+    {
+      "slug":"bjp",
+      "party":"Bharatiya Janata Party",
+      "abbreviation":"BJP",
+      "leader":"J. P. Nadda",
+      "lok_sabha":240,
+      "rajya_sabha":98
+    },
+    {
+      "slug":"inc",
+      "party":"Indian National Congress",
+      "abbreviation":"INC",
+      "leader":"Mallikarjun Kharge",
+      "lok_sabha":99,
+      "rajya_sabha":27
+    }
+  ]
+},
+"GET /api/v1/parties/bjp":{
+  "overview":{
+      "slug":"bjp",
+      "party":"Bharatiya Janata Party",
+      "abbreviation":"BJP",
+      "leader":"J. P. Nadda",
+      "founded":"1980",
+      "political_position":"Right-wing",
+      "ideology":[
+         "Hindutva",
+         "Conservatism",
+         "Nationalism"
+      ],
+      "recognition":"National Party"
+  },
+
+  "government":{
+      "chief_ministers":"13 / 31",
+      "coalition_governments":"18 / 31"
+  },
+
+  "current_strength":{
+      "lok_sabha":240,
+      "rajya_sabha":98,
+      "assemblies":1321,
+      "councils":67
+  }
+},
+"GET /api/v1/parties/bjp/elections":{
+  "party":"BJP",
+
+  "results":[
+
+      {
+         "year":1984,
+         "leader":"Atal Bihari Vajpayee",
+         "won":2,
+         "vote_share":"7.74%",
+         "outcome":"Opposition"
+      },
+
+      {
+         "year":1989,
+         "leader":"L. K. Advani",
+         "won":85,
+         "vote_share":"11.36%",
+         "outcome":"Outside Support"
+      }
+  ]
+},
+"GET /api/v1/parties/bjp/presence":{
+  "upper_house":[
+      {
+         "state":"Bihar",
+         "seats":"26 / 75",
+         "status":"Government"
+      }
+  ],
+
+  "lower_house":[
+      {
+         "state":"Bihar",
+         "seats":"102 / 243",
+         "status":"Government"
+      }
+  ]
+},
+
+
+
+
+
+
+
+
+  "GET /api/v1/elections/2024/margins": {
+  "election": {
+    "year": 2024
+  },
+
+  "summary": {
+    "average_margin": 148234,
+    "closest_margin": 813,
+    "largest_margin": 731830
+  },
+
+  "closest_results": [
+    {
+      "constituency": "Attingal",
+      "state": "Kerala",
+      "winner": "Adoor Prakash",
+      "party": "INC",
+      "margin": 813
+    },
+
+    {
+      "constituency": "Kanker",
+      "state": "Chhattisgarh",
+      "winner": "Bhojraj Nag",
+      "party": "BJP",
+      "margin": 1884
+    }
+  ],
+
+  "largest_results": [
+    {
+      "constituency": "Surat",
+      "state": "Gujarat",
+      "winner": "Mukesh Dalal",
+      "party": "BJP",
+      "margin": 731830
+    },
+
+    {
+      "constituency": "Indore",
+      "state": "Madhya Pradesh",
+      "winner": "Shankar Lalwani",
+      "party": "BJP",
+      "margin": 1175092
+    }
+  ]
+},
+
+  "GET /api/v1/elections":{
+  "summary": {
+    "total_general_elections": 18,
+    "first_election_year": 1951,
+    "latest_election_year": 2024,
+    "next_expected_year": 2029
+  },
+  "results": [
+    {
+      "id": 18,
+      "year": 2024,
+      "lok_sabha": 18,
+      "winner_alliance": "NDA",
+      "winner_seats": 293,
+      "majority": true,
+      "status": "Completed"
+    },
+    {
+      "id": 17,
+      "year": 2019,
+      "lok_sabha": 17,
+      "winner_alliance": "NDA",
+      "winner_seats": 353,
+      "majority": true,
+      "status": "Completed"
+    },
+    {
+      "id": 16,
+      "year": 2014,
+      "lok_sabha": 16,
+      "winner_alliance": "NDA",
+      "winner_seats": 336,
+      "majority": true,
+      "status": "Completed"
+    },
+    {
+      "id": 15,
+      "year": 2009,
+      "lok_sabha": 15,
+      "winner_alliance": "UPA",
+      "winner_seats": 262,
+      "majority": false,
+      "status": "Completed"
+    },
+    {
+      "id": 14,
+      "year": 2004,
+      "lok_sabha": 14,
+      "winner_alliance": "UPA",
+      "winner_seats": 218,
+      "majority": false,
+      "status": "Completed"
+    },
+    {
+      "id": 13,
+      "year": 1999,
+      "lok_sabha": 13,
+      "winner_alliance": "NDA",
+      "winner_seats": 304,
+      "majority": true,
+      "status": "Completed"
+    },
+    {
+      "id": 12,
+      "year": 1998,
+      "lok_sabha": 12,
+      "winner_alliance": "NDA",
+      "winner_seats": 276,
+      "majority": true,
+      "status": "Completed"
+    },
+    {
+      "id": 11,
+      "year": 1996,
+      "lok_sabha": 11,
+      "winner_alliance": "United Front",
+      "winner_seats": 192,
+      "majority": false,
+      "status": "Completed"
+    },
+    {
+      "id": 10,
+      "year": 1991,
+      "lok_sabha": 10,
+      "winner_alliance": "INC",
+      "winner_seats": 244,
+      "majority": false,
+      "status": "Completed"
+    },
+    {
+      "id": 9,
+      "year": 1989,
+      "lok_sabha": 9,
+      "winner_alliance": "National Front",
+      "winner_seats": 143,
+      "majority": false,
+      "status": "Completed"
+    },
+    {
+      "id": 8,
+      "year": 1984,
+      "lok_sabha": 8,
+      "winner_alliance": "INC",
+      "winner_seats": 414,
+      "majority": true,
+      "status": "Completed"
+    },
+    {
+      "id": 7,
+      "year": 1980,
+      "lok_sabha": 7,
+      "winner_alliance": "INC(I)",
+      "winner_seats": 353,
+      "majority": true,
+      "status": "Completed"
+    },
+    {
+      "id": 6,
+      "year": 1977,
+      "lok_sabha": 6,
+      "winner_alliance": "Janata Party",
+      "winner_seats": 295,
+      "majority": true,
+      "status": "Completed"
+    },
+    {
+      "id": 5,
+      "year": 1971,
+      "lok_sabha": 5,
+      "winner_alliance": "INC",
+      "winner_seats": 352,
+      "majority": true,
+      "status": "Completed"
+    },
+    {
+      "id": 4,
+      "year": 1967,
+      "lok_sabha": 4,
+      "winner_alliance": "INC",
+      "winner_seats": 283,
+      "majority": true,
+      "status": "Completed"
+    },
+    {
+      "id": 3,
+      "year": 1962,
+      "lok_sabha": 3,
+      "winner_alliance": "INC",
+      "winner_seats": 361,
+      "majority": true,
+      "status": "Completed"
+    },
+    {
+      "id": 2,
+      "year": 1957,
+      "lok_sabha": 2,
+      "winner_alliance": "INC",
+      "winner_seats": 371,
+      "majority": true,
+      "status": "Completed"
+    },
+    {
+      "id": 1,
+      "year": 1951,
+      "lok_sabha": 1,
+      "winner_alliance": "INC",
+      "winner_seats": 364,
+      "majority": true,
+      "status": "Completed"
+    }
+  ]
+  },
+
+  "GET /api/v1/elections/2024":{
+  "overview": {
+    "id": 18,
+    "year": 2024,
+    "type": "General Election",
+    "lok_sabha": "18th Lok Sabha",
+    "phases": 7,
+    "polling_start": "2024-04-19",
+    "polling_end": "2024-06-01",
+    "counting_date": "2024-06-04",
+    "government_formed": "2024-06-09",
+    "total_constituencies": 543,
+    "majority_mark": 272
+  },
+
+  "national_summary": {
+    "registered_voters": 977965560,
+    "votes_polled": 646420869,
+    "turnout_percentage": 66.10,
+    "valid_votes": 642300000,
+    "invalid_votes": 4120869
+  },
+
+  "result_summary": {
+    "winning_alliance": "NDA",
+    "government": "National Democratic Alliance",
+    "total_seats_won": 293,
+    "majority_achieved": true,
+    "largest_party": "Bharatiya Janata Party",
+    "largest_party_seats": 240
+  },
+
+  "kpis": {
+    "alliances": 3,
+    "recognized_parties": 45,
+    "registered_parties": 743,
+    "independent_candidates": 3912,
+    "women_elected": 74,
+    "youngest_mp_age": 25,
+    "oldest_mp_age": 83
+  },
+
+  "quick_links": [
+    {
+      "title": "Alliance Results",
+      "endpoint": "/api/v1/elections/2024/alliances"
+    },
+    {
+      "title": "State-wise Results",
+      "endpoint": "/api/v1/elections/2024/states"
+    },
+    {
+      "title": "Victory Margins",
+      "endpoint": "/api/v1/elections/2024/margins"
+    },
+    {
+      "title": "Voter Turnout",
+      "endpoint": "/api/v1/elections/2024/turnout"
+    }
+  ]
+  },
+
+  "GET /api/v1/elections/2024/alliances": {
+  "election": {
+    "year": 2024,
+    "type": "General Election (18th Lok Sabha)"
+  },
+
+  "summary": {
+    "total_alliances": 3,
+    "total_seats": 543,
+    "majority_mark": 272,
+    "winning_alliance": "NDA"
+  },
+
+  "alliances": [
+    {
+      "slug": "nda",
+      "name": "National Democratic Alliance",
+      "abbreviation": "NDA",
+      "total_votes": 282668733,
+      "vote_percentage": 43.80,
+      "seats": 293,
+      "seat_change": -60,
+      "major_party": "BJP"
+    },
+    {
+      "slug": "india",
+      "name": "Indian National Developmental Inclusive Alliance",
+      "abbreviation": "INDIA",
+      "total_votes": 267711232,
+      "vote_percentage": 41.48,
+      "seats": 234,
+      "seat_change": 143,
+      "major_party": "INC"
+    },
+    {
+      "slug": "others",
+      "name": "Others",
+      "abbreviation": "OTH",
+      "total_votes": 95362081,
+      "vote_percentage": 14.72,
+      "seats": 16,
+      "seat_change": null,
+      "major_party": null
+    }
+  ]
+},
+  "GET /api/v1/elections/2024/alliances/nda": {
+  "alliance": {
+    "slug": "nda",
+    "name": "National Democratic Alliance",
+    "abbreviation": "NDA"
+  },
+
+  "summary": {
+  "total_contested": 541,
+  "total_won": 293,
+  "total_votes": 282668733,
+  "vote_percentage": 43.8,
+  "major_party": "BJP"
+},
+
+  "parties": [
+    {
+      "party": "Bharatiya Janata Party",
+      "contested": 441,
+      "won": 240
+    },
+    {
+      "party": "Telugu Desam Party",
+      "contested": 17,
+      "won": 16
+    },
+    {
+      "party": "Janata Dal (United)",
+      "contested": 16,
+      "won": 12
+    }
+  ],
+
+  "state_breakdown": [
+    {
+      "state": "Uttar Pradesh",
+      "contested": 80,
+      "won": 36
+    },
+    {
+      "state": "Bihar",
+      "contested": 40,
+      "won": 30
+    },
+    {
+      "state": "Gujarat",
+      "contested": 26,
+      "won": 25
+    }
+  ]
+},
+"GET /api/v1/elections/2024/alliances/india": {
+  "alliance": {
+    "slug": "india",
+    "name": "Indian National Developmental Inclusive Alliance",
+    "abbreviation": "INDIA"
+  },
+
+  "summary": {
+    "total_contested": 541,
+    "total_won": 234,
+    "total_votes": 267711232,
+    "vote_percentage": 41.48,
+    "major_party": "INC"
+  },
+
+  "parties": [
+    {
+      "party": "Indian National Congress",
+      "contested": 328,
+      "won": 99
+    },
+    {
+      "party": "Samajwadi Party",
+      "contested": 62,
+      "won": 37
+    },
+    {
+      "party": "All India Trinamool Congress",
+      "contested": 48,
+      "won": 29
+    },
+    {
+      "party": "Dravida Munnetra Kazhagam",
+      "contested": 22,
+      "won": 22
+    },
+    {
+      "party": "Shiv Sena (Uddhav Balasaheb Thackeray)",
+      "contested": 21,
+      "won": 9
+    },
+    {
+      "party": "Nationalist Congress Party (Sharadchandra Pawar)",
+      "contested": 10,
+      "won": 8
+    },
+    {
+      "party": "Rashtriya Janata Dal",
+      "contested": 24,
+      "won": 4
+    },
+    {
+      "party": "Communist Party of India (Marxist)",
+      "contested": 52,
+      "won": 4
+    }
+  ],
+
+  "state_breakdown": [
+    {
+      "state": "Uttar Pradesh",
+      "contested": 80,
+      "won": 43
+    },
+    {
+      "state": "Tamil Nadu",
+      "contested": 39,
+      "won": 39
+    },
+    {
+      "state": "Maharashtra",
+      "contested": 48,
+      "won": 30
+    },
+    {
+      "state": "West Bengal",
+      "contested": 42,
+      "won": 30
+    },
+    {
+      "state": "Kerala",
+      "contested": 20,
+      "won": 19
+    },
+    {
+      "state": "Rajasthan",
+      "contested": 25,
+      "won": 11
+    },
+    {
+      "state": "Punjab",
+      "contested": 13,
+      "won": 10
+    },
+    {
+      "state": "Bihar",
+      "contested": 40,
+      "won": 9
+    }
+  ]
+},
+
+"GET /api/v1/elections/2024/alliances/others": {
+  "alliance": {
+    "slug": "others",
+    "name": "Others (Unaffiliated & Independents)",
+    "abbreviation": "OTH"
+  },
+
+  "summary": {
+    "total_contested": 543,
+    "total_won": 16,
+    "total_votes": 95362081,
+    "vote_percentage": 14.72,
+    "major_party": null
+  },
+
+  "parties": [
+    {
+      "party": "Independents",
+      "contested": 2812,
+      "won": 7
+    },
+    {
+      "party": "YSR Congress Party",
+      "contested": 25,
+      "won": 4
+    },
+    {
+      "party": "Aazad Samaj Party (Kanshi Ram)",
+      "contested": 12,
+      "won": 1
+    },
+    {
+      "party": "All India Majlis-e-Ittehadul Muslimeen",
+      "contested": 15,
+      "won": 1
+    },
+    {
+      "party": "Shiromani Akali Dal",
+      "contested": 13,
+      "won": 1
+    },
+    {
+      "party": "Voice of the People Party",
+      "contested": 1,
+      "won": 1
+    },
+    {
+      "party": "Zoram People's Movement",
+      "contested": 1,
+      "won": 1
+    }
+  ],
+
+  "state_breakdown": [
+    {
+      "state": "Andhra Pradesh",
+      "contested": 25,
+      "won": 4
+    },
+    {
+      "state": "Punjab",
+      "contested": 13,
+      "won": 3
+    },
+    {
+      "state": "Jammu & Kashmir",
+      "contested": 5,
+      "won": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "contested": 80,
+      "won": 1
+    },
+    {
+      "state": "Maharashtra",
+      "contested": 48,
+      "won": 1
+    },
+    {
+      "state": "Bihar",
+      "contested": 40,
+      "won": 1
+    },
+    {
+      "state": "Telangana",
+      "contested": 17,
+      "won": 1
+    },
+    {
+      "state": "Meghalaya",
+      "contested": 2,
+      "won": 1
+    },
+    {
+      "state": "Mizoram",
+      "contested": 1,
+      "won": 1
+    },
+    {
+      "state": "Dadra & Nagar Haveli and Daman & Diu",
+      "contested": 2,
+      "won": 1
+    },
+    {
+      "state": "Ladakh",
+      "contested": 1,
+      "won": 1
+    }
+  ]
+},
+"GET /api/v1/elections/2024/state-results": {
+  "election": {
+    "year": 2024,
+    "type": "General Election (18th Lok Sabha)"
+  },
+
+  "results": [
+    {
+      "state": "Andhra Pradesh",
+      "total_seats": 25,
+
+      "alliance_results": [
+        {
+          "alliance": "NDA",
+          "seats": 21
+        },
+        {
+          "alliance": "Others",
+          "seats": 4
+        }
+      ],
+
+      "top_parties": [
+        {
+          "party": "TDP",
+          "seats": 16
+        },
+        {
+          "party": "BJP",
+          "seats": 3
+        },
+        {
+          "party": "JSP",
+          "seats": 2
+        }
+      ]
+    },
+
+    {
+      "state": "Bihar",
+      "total_seats": 40,
+
+      "alliance_results": [
+        {
+          "alliance": "NDA",
+          "seats": 30
+        },
+        {
+          "alliance": "INDIA",
+          "seats": 9
+        },
+        {
+          "alliance": "Others",
+          "seats": 1
+        }
+      ],
+
+      "top_parties": [
+        {
+          "party": "BJP",
+          "seats": 12
+        },
+        {
+          "party": "JD(U)",
+          "seats": 12
+        },
+        {
+          "party": "RJD",
+          "seats": 4
+        }
+      ]
+    },
+
+    {
+      "state": "Uttar Pradesh",
+      "total_seats": 80,
+
+      "alliance_results": [
+        {
+          "alliance": "INDIA",
+          "seats": 43
+        },
+        {
+          "alliance": "NDA",
+          "seats": 36
+        },
+        {
+          "alliance": "Others",
+          "seats": 1
+        }
+      ],
+
+      "top_parties": [
+        {
+          "party": "SP",
+          "seats": 37
+        },
+        {
+          "party": "BJP",
+          "seats": 33
+        },
+        {
+          "party": "INC",
+          "seats": 6
+        }
+      ]
+    }
+  ]
+},
+"GET /api/v1/elections/2024/turnout":{
+  "election": {
+    "year": 2024
+  },
+
+  "national": {
+    "electors": 977965560,
+    "votes_cast": 646420869,
+    "turnout_percentage": 66.10
+  },
+
+  "states": [
+    {
+      "state": "Andhra Pradesh",
+      "electors": 41401887,
+      "votes_cast": 33858957,
+      "turnout_percentage": 81.78
+    },
+
+    {
+      "state": "Bihar",
+      "electors": 76410912,
+      "votes_cast": 43288756,
+      "turnout_percentage": 56.65
+    },
+
+    {
+      "state": "Kerala",
+      "electors": 27149063,
+      "votes_cast": 20169839,
+      "turnout_percentage": 74.29
+    },
+
+    {
+      "state": "Tamil Nadu",
+      "electors": 62405225,
+      "votes_cast": 43061749,
+      "turnout_percentage": 69.00
+    }
+  ]
+},
+
+  
+  "GET /api/v1/constituencies": {
+    "total": 36,
+    "page": 1,
+    "limit": 20,
+    "results": [
+    {
+      "id": 1,
+      "name": "Andhra Pradesh",
+      "slug": "andhra-pradesh",
+      "seats_general": 20,
+      "seats_sc": 4,
+      "seats_st": 1,
+      "total_constituencies": 25,
+      "total_percentage": "4.60%"
+    },
+    {
+      "id": 2,
+      "name": "Arunachal Pradesh",
+      "slug": "arunachal-pradesh",
+      "seats_general": 2,
+      "seats_sc": 0,
+      "seats_st": 0,
+      "total_constituencies": 2,
+      "total_percentage": "0.37%"
+    },
+    {
+      "id": 3,
+      "name": "Assam",
+      "slug": "assam",
+      "seats_general": 11,
+      "seats_sc": 1,
+      "seats_st": 2,
+      "total_constituencies": 14,
+      "total_percentage": "2.58%"
+    },
+    {
+      "id": 4,
+      "name": "Bihar",
+      "slug": "bihar",
+      "seats_general": 34,
+      "seats_sc": 6,
+      "seats_st": 0,
+      "total_constituencies": 40,
+      "total_percentage": "7.37%"
+    },
+    {
+      "id": 5,
+      "name": "Chhattisgarh",
+      "slug": "chhattisgarh",
+      "seats_general": 6,
+      "seats_sc": 1,
+      "seats_st": 4,
+      "total_constituencies": 11,
+      "total_percentage": "2.03%"
+    },
+    {
+      "id": 6,
+      "name": "Goa",
+      "slug": "goa",
+      "seats_general": 2,
+      "seats_sc": 0,
+      "seats_st": 0,
+      "total_constituencies": 2,
+      "total_percentage": "0.37%"
+    },
+    {
+      "id": 7,
+      "name": "Gujarat",
+      "slug": "gujarat",
+      "seats_general": 20,
+      "seats_sc": 2,
+      "seats_st": 4,
+      "total_constituencies": 26,
+      "total_percentage": "4.79%"
+    },
+    {
+      "id": 8,
+      "name": "Haryana",
+      "slug": "haryana",
+      "seats_general": 8,
+      "seats_sc": 2,
+      "seats_st": 0,
+      "total_constituencies": 10,
+      "total_percentage": "1.84%"
+    },
+    {
+      "id": 9,
+      "name": "Himachal Pradesh",
+      "slug": "himachal-pradesh",
+      "seats_general": 3,
+      "seats_sc": 1,
+      "seats_st": 0,
+      "total_constituencies": 4,
+      "total_percentage": "0.74%"
+    },
+    {
+      "id": 10,
+      "name": "Jharkhand",
+      "slug": "jharkhand",
+      "seats_general": 8,
+      "seats_sc": 1,
+      "seats_st": 5,
+      "total_constituencies": 14,
+      "total_percentage": "2.58%"
+    },
+    {
+      "id": 11,
+      "name": "Karnataka",
+      "slug": "karnataka",
+      "seats_general": 21,
+      "seats_sc": 5,
+      "seats_st": 2,
+      "total_constituencies": 28,
+      "total_percentage": "5.16%"
+    },
+    {
+      "id": 12,
+      "name": "Kerala",
+      "slug": "kerala",
+      "seats_general": 18,
+      "seats_sc": 2,
+      "seats_st": 0,
+      "total_constituencies": 20,
+      "total_percentage": "3.68%"
+    },
+    {
+      "id": 13,
+      "name": "Madhya Pradesh",
+      "slug": "madhya-pradesh",
+      "seats_general": 19,
+      "seats_sc": 4,
+      "seats_st": 6,
+      "total_constituencies": 29,
+      "total_percentage": "5.34%"
+    },
+    {
+      "id": 14,
+      "name": "Maharashtra",
+      "slug": "maharashtra",
+      "seats_general": 39,
+      "seats_sc": 5,
+      "seats_st": 4,
+      "total_constituencies": 48,
+      "total_percentage": "8.84%"
+    },
+    {
+      "id": 15,
+      "name": "Manipur",
+      "slug": "manipur",
+      "seats_general": 1,
+      "seats_sc": 0,
+      "seats_st": 1,
+      "total_constituencies": 2,
+      "total_percentage": "0.37%"
+    },
+    {
+      "id": 16,
+      "name": "Meghalaya",
+      "slug": "meghalaya",
+      "seats_general": 0,
+      "seats_sc": 0,
+      "seats_st": 2,
+      "total_constituencies": 2,
+      "total_percentage": "0.37%"
+    },
+    {
+      "id": 17,
+      "name": "Mizoram",
+      "slug": "mizoram",
+      "seats_general": 0,
+      "seats_sc": 0,
+      "seats_st": 1,
+      "total_constituencies": 1,
+      "total_percentage": "0.18%"
+    },
+    {
+      "id": 18,
+      "name": "Nagaland",
+      "slug": "nagaland",
+      "seats_general": 1,
+      "seats_sc": 0,
+      "seats_st": 0,
+      "total_constituencies": 1,
+      "total_percentage": "0.18%"
+    },
+    {
+      "id": 19,
+      "name": "Odisha",
+      "slug": "odisha",
+      "seats_general": 13,
+      "seats_sc": 3,
+      "seats_st": 5,
+      "total_constituencies": 21,
+      "total_percentage": "3.87%"
+    },
+    {
+      "id": 20,
+      "name": "Punjab",
+      "slug": "punjab",
+      "seats_general": 9,
+      "seats_sc": 4,
+      "seats_st": 0,
+      "total_constituencies": 13,
+      "total_percentage": "2.39%"
+    },
+    {
+      "id": 21,
+      "name": "Rajasthan",
+      "slug": "rajasthan",
+      "seats_general": 18,
+      "seats_sc": 4,
+      "seats_st": 3,
+      "total_constituencies": 25,
+      "total_percentage": "4.60%"
+    },
+    {
+      "id": 22,
+      "name": "Sikkim",
+      "slug": "sikkim",
+      "seats_general": 1,
+      "seats_sc": 0,
+      "seats_st": 0,
+      "total_constituencies": 1,
+      "total_percentage": "0.18%"
+    },
+    {
+      "id": 23,
+      "name": "Tamil Nadu",
+      "slug": "tamil-nadu",
+      "seats_general": 32,
+      "seats_sc": 7,
+      "seats_st": 0,
+      "total_constituencies": 39,
+      "total_percentage": "7.18%"
+    },
+    {
+      "id": 24,
+      "name": "Telangana",
+      "slug": "telangana",
+      "seats_general": 12,
+      "seats_sc": 3,
+      "seats_st": 2,
+      "total_constituencies": 17,
+      "total_percentage": "3.13%"
+    },
+    {
+      "id": 25,
+      "name": "Tripura",
+      "slug": "tripura",
+      "seats_general": 1,
+      "seats_sc": 0,
+      "seats_st": 1,
+      "total_constituencies": 2,
+      "total_percentage": "0.37%"
+    },
+    {
+      "id": 26,
+      "name": "Uttar Pradesh",
+      "slug": "uttar-pradesh",
+      "seats_general": 63,
+      "seats_sc": 17,
+      "seats_st": 0,
+      "total_constituencies": 80,
+      "total_percentage": "14.73%"
+    },
+    {
+      "id": 27,
+      "name": "Uttarakhand",
+      "slug": "uttarakhand",
+      "seats_general": 4,
+      "seats_sc": 1,
+      "seats_st": 0,
+      "total_constituencies": 5,
+      "total_percentage": "0.92%"
+    },
+    {
+      "id": 28,
+      "name": "West Bengal",
+      "slug": "west-bengal",
+      "seats_general": 30,
+      "seats_sc": 10,
+      "seats_st": 2,
+      "total_constituencies": 42,
+      "total_percentage": "7.74%"
+    },
+    {
+      "id": 29,
+      "name": "Andaman and Nicobar Islands",
+      "slug": "andaman-and-nicobar-islands",
+      "seats_general": 1,
+      "seats_sc": 0,
+      "seats_st": 0,
+      "total_constituencies": 1,
+      "total_percentage": "0.18%"
+    },
+    {
+      "id": 30,
+      "name": "Chandigarh",
+      "slug": "chandigarh",
+      "seats_general": 1,
+      "seats_sc": 0,
+      "seats_st": 0,
+      "total_constituencies": 1,
+      "total_percentage": "0.18%"
+    },
+    {
+      "id": 31,
+      "name": "Dadra and Nagar Haveli and Daman and Diu",
+      "slug": "dadra-and-nagar-haveli-and-daman-and-diu",
+      "seats_general": 1,
+      "seats_sc": 0,
+      "seats_st": 1,
+      "total_constituencies": 2,
+      "total_percentage": "0.37%"
+    },
+    {
+      "id": 32,
+      "name": "Jammu and Kashmir",
+      "slug": "jammu-and-kashmir",
+      "seats_general": 5,
+      "seats_sc": 0,
+      "seats_st": 0,
+      "total_constituencies": 5,
+      "total_percentage": "0.92%"
+    },
+    {
+      "id": 33,
+      "name": "Ladakh",
+      "slug": "ladakh",
+      "seats_general": 1,
+      "seats_sc": 0,
+      "seats_st": 0,
+      "total_constituencies": 1,
+      "total_percentage": "0.18%"
+    },
+    {
+      "id": 34,
+      "name": "Lakshadweep",
+      "slug": "lakshadweep",
+      "seats_general": 0,
+      "seats_sc": 0,
+      "seats_st": 1,
+      "total_constituencies": 1,
+      "total_percentage": "0.18%"
+    },
+    {
+      "id": 35,
+      "name": "Delhi",
+      "slug": "delhi",
+      "seats_general": 6,
+      "seats_sc": 1,
+      "seats_st": 0,
+      "total_constituencies": 7,
+      "total_percentage": "1.29%"
+    },
+    {
+      "id": 36,
+      "name": "Puducherry",
+      "slug": "puducherry",
+      "seats_general": 1,
+      "seats_sc": 0,
+      "seats_st": 0,
+      "total_constituencies": 1,
+      "total_percentage": "0.18%"
+    }
     ]
+  },
+
+  "GET /api/v1/constituencies/bihar": {
+  "state": "Bihar",
+  "total": 40,
+  "results": [
+    {
+      "id": 1,
+      "slug": "valmiki-nagar",
+      "name": "Valmiki Nagar",
+      "reservation_type": "GEN",
+      "electors": 1829052
+    },
+    {
+      "id": 2,
+      "slug": "paschim-champaran",
+      "name": "Paschim Champaran",
+      "reservation_type": "GEN",
+      "electors": 1759234
+    },
+    {
+      "id": 3,
+      "slug": "purvi-champaran",
+      "name": "Purvi Champaran",
+      "reservation_type": "GEN",
+      "electors": 1793440
+    },
+    {
+      "id": 4,
+      "slug": "sheohar",
+      "name": "Sheohar",
+      "reservation_type": "GEN",
+      "electors": 1834437
+    },
+    {
+      "id": 5,
+      "slug": "sitamarhi",
+      "name": "Sitamarhi",
+      "reservation_type": "GEN",
+      "electors": 1950028
+    },
+    {
+      "id": 6,
+      "slug": "madhubani",
+      "name": "Madhubani",
+      "reservation_type": "GEN",
+      "electors": 1936759
+    },
+    {
+      "id": 7,
+      "slug": "jhanjharpur",
+      "name": "Jhanjharpur",
+      "reservation_type": "GEN",
+      "electors": 2005278
+    },
+    {
+      "id": 8,
+      "slug": "supaul",
+      "name": "Supaul",
+      "reservation_type": "GEN",
+      "electors": 1928887
+    },
+    {
+      "id": 9,
+      "slug": "araria",
+      "name": "Araria",
+      "reservation_type": "GEN",
+      "electors": 2019757
+    },
+    {
+      "id": 10,
+      "slug": "kishanganj",
+      "name": "Kishanganj",
+      "reservation_type": "GEN",
+      "electors": 1830197
+    },
+    {
+      "id": 11,
+      "slug": "katihar",
+      "name": "Katihar",
+      "reservation_type": "GEN",
+      "electors": 1834512
+    },
+    {
+      "id": 12,
+      "slug": "purnia",
+      "name": "Purnia",
+      "reservation_type": "GEN",
+      "electors": 1895036
+    },
+    {
+      "id": 13,
+      "slug": "madhepura",
+      "name": "Madhepura",
+      "reservation_type": "GEN",
+      "electors": 2073608
+    },
+    {
+      "id": 14,
+      "slug": "darbhanga",
+      "name": "Darbhanga",
+      "reservation_type": "GEN",
+      "electors": 1782853
+    },
+    {
+      "id": 15,
+      "slug": "muzaffarpur",
+      "name": "Muzaffarpur",
+      "reservation_type": "GEN",
+      "electors": 1869072
+    },
+    {
+      "id": 16,
+      "slug": "vaishali",
+      "name": "Vaishali",
+      "reservation_type": "GEN",
+      "electors": 1871877
+    },
+    {
+      "id": 17,
+      "slug": "gopalganj",
+      "name": "Gopalganj",
+      "reservation_type": "SC",
+      "electors": 2027054
+    },
+    {
+      "id": 18,
+      "slug": "siwan",
+      "name": "Siwan",
+      "reservation_type": "GEN",
+      "electors": 1901956
+    },
+    {
+      "id": 19,
+      "slug": "maharajganj",
+      "name": "Maharajganj",
+      "reservation_type": "GEN",
+      "electors": 1942449
+    },
+    {
+      "id": 20,
+      "slug": "saran",
+      "name": "Saran",
+      "reservation_type": "GEN",
+      "electors": 1800790
+    },
+    {
+      "id": 21,
+      "slug": "hajipur",
+      "name": "Hajipur",
+      "reservation_type": "SC",
+      "electors": 1972915
+    },
+    {
+      "id": 22,
+      "slug": "ujiarpur",
+      "name": "Ujiarpur",
+      "reservation_type": "GEN",
+      "electors": 1748377
+    },
+    {
+      "id": 23,
+      "slug": "samastipur",
+      "name": "Samastipur",
+      "reservation_type": "SC",
+      "electors": 1820016
+    },
+    {
+      "id": 24,
+      "slug": "begusarai",
+      "name": "Begusarai",
+      "reservation_type": "GEN",
+      "electors": 2200435
+    },
+    {
+      "id": 25,
+      "slug": "khagaria",
+      "name": "Khagaria",
+      "reservation_type": "GEN",
+      "electors": 1843767
+    },
+    {
+      "id": 26,
+      "slug": "bhagalpur",
+      "name": "Bhagalpur",
+      "reservation_type": "GEN",
+      "electors": 1988207
+    },
+    {
+      "id": 27,
+      "slug": "banka",
+      "name": "Banka",
+      "reservation_type": "GEN",
+      "electors": 1859967
+    },
+    {
+      "id": 28,
+      "slug": "munger",
+      "name": "Munger",
+      "reservation_type": "GEN",
+      "electors": 2051829
+    },
+    {
+      "id": 29,
+      "slug": "nalanda",
+      "name": "Nalanda",
+      "reservation_type": "GEN",
+      "electors": 2293994
+    },
+    {
+      "id": 30,
+      "slug": "patna-sahib",
+      "name": "Patna Sahib",
+      "reservation_type": "GEN",
+      "electors": 2295527
+    },
+    {
+      "id": 31,
+      "slug": "pataliputra",
+      "name": "Pataliputra",
+      "reservation_type": "GEN",
+      "electors": 2080613
+    },
+    {
+      "id": 32,
+      "slug": "arrah",
+      "name": "Arrah",
+      "reservation_type": "GEN",
+      "electors": 2183625
+    },
+    {
+      "id": 33,
+      "slug": "buxar",
+      "name": "Buxar",
+      "reservation_type": "GEN",
+      "electors": 1934352
+    },
+    {
+      "id": 34,
+      "slug": "sasaram",
+      "name": "Sasaram",
+      "reservation_type": "SC",
+      "electors": 1914914
+    },
+    {
+      "id": 35,
+      "slug": "karakat",
+      "name": "Karakat",
+      "reservation_type": "GEN",
+      "electors": 1888005
+    },
+    {
+      "id": 36,
+      "slug": "jahanabad",
+      "name": "Jahanabad",
+      "reservation_type": "GEN",
+      "electors": 1678716
+    },
+    {
+      "id": 37,
+      "slug": "aurangabad",
+      "name": "Aurangabad",
+      "reservation_type": "GEN",
+      "electors": 1875809
+    },
+    {
+      "id": 38,
+      "slug": "gaya",
+      "name": "Gaya",
+      "reservation_type": "SC",
+      "electors": 1821330
+    },
+    {
+      "id": 39,
+      "slug": "nawada",
+      "name": "Nawada",
+      "reservation_type": "GEN",
+      "electors": 2010286
+    },
+    {
+      "id": 40,
+      "slug": "jamui",
+      "name": "Jamui",
+      "reservation_type": "SC",
+      "electors": 1910619
+    }
+  ]
+  },
+
+  "GET /api/v1/constituencies/1":{
+  "overview": {
+    "id": 1,
+    "slug": "valmiki-nagar",
+    "name_en": "Valmiki Nagar",
+    "type": "Lok Sabha Constituency",
+    "country": "India",
+    "region": "East India",
+    "state": "Bihar",
+    "district": "West Champaran",
+    "established": 2008,
+    "reservation_type": "GEN",
+
+  "electors": 1842651,
+  "assembly_segments": 6,
+  "latest_turnout": 63.82,
+  "latest_margin": 72915
+  },
+  "assembly_constituencies": [
+    {
+      "name": "Valmiki Nagar"
+    },
+    {
+      "name": "Ramnagar"
+    },
+    {
+      "name": "Narkatiaganj"
+    },
+    {
+      "name": "Bagaha"
+    },
+    {
+      "name": "Lauriya"
+    },
+    {
+      "name": "Sikta"
+    }
+  ],
+  "current_mp": {
+    "id": "mp-001",
+    "name": "Sunil Kumar Kushwaha",
+    "party": {
+      "id": 10,
+      "abbreviation": "JD(U)",
+      "full_name": "Janata Dal (United)"
+    },
+    "alliance": "NDA",
+    "elected_year": 2024
+  },
+  "latest_election": {
+    "year": 2024,
+    "winner": {
+      "name": "Sunil Kumar Kushwaha",
+      "party": "JD(U)"
+    },
+    "runner_up": {
+      "name": "Deepak Yadav",
+      "party": "RJD"
+    },
+    "margin": 98675,
+    "turnout": 1103474,
+    "turnout_percentage": 60.33
+  },
+  "elections": [
+    {
+      "year": 2024,
+      "type": "General Election",
+      "winner": "Sunil Kumar Kushwaha",
+      "party": "JD(U)",
+      "runner_up": "Deepak Yadav",
+      "votes": 523422,
+      "margin": 98675,
+      "turnout_percentage": 60.33
+    },
+    {
+      "year": 2020,
+      "type": "Bye-Election",
+      "winner": "Sunil Kumar Kushwaha",
+      "party": "JD(U)",
+      "runner_up": "Pravesh Kumar Mishra",
+      "votes": 403360,
+      "margin": 22539,
+      "turnout_percentage": 51.30
+    },
+    {
+      "year": 2019,
+      "type": "General Election",
+      "winner": "Baidyanath Prasad Mahto",
+      "party": "JD(U)",
+      "runner_up": "Shashikant Mishra",
+      "votes": 602660,
+      "margin": 354616,
+      "turnout_percentage": 61.98
+    },
+    {
+      "year": 2014,
+      "type": "General Election",
+      "winner": "Satish Chandra Dubey",
+      "party": "BJP",
+      "runner_up": "Purnmasi Ram",
+      "votes": 364013,
+      "margin": 117795,
+      "turnout_percentage": 61.80
+    }
+  ],
+  "previous_mps": [
+    {
+      "name": "Sunil Kumar Kushwaha",
+      "party": "JD(U)",
+      "term_start": 2020,
+      "term_end": 2024
+    },
+    {
+      "name": "Baidyanath Prasad Mahto",
+      "party": "JD(U)",
+      "term_start": 2019,
+      "term_end": 2020
+    },
+    {
+      "name": "Satish Chandra Dubey",
+      "party": "BJP",
+      "term_start": 2014,
+      "term_end": 2019
+    },
+    {
+      "name": "Baidyanath Prasad Mahto",
+      "party": "JD(U)",
+      "term_start": 2009,
+      "term_end": 2014
+    }
+  ],
+  "insights": [
+    "Valmiki Nagar came into existence in 2008 following the delimitation of parliamentary constituencies based on the Delimitation Commission of India.",
+    "A bye-election was held in 2020 following the death of sitting MP Baidyanath Prasad Mahto, which was won by his son, Sunil Kumar Kushwaha."
+  ]
   },
 
   "POST /api/v1/disputes": {

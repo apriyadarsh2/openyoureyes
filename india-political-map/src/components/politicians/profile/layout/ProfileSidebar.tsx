@@ -1,133 +1,97 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useParams, usePathname } from "next/navigation";
+
 import {
   User,
-  BookOpen,
   Wallet,
+  BookOpen,
   Scale,
   Landmark,
   Clock3,
   BarChart3,
 } from "lucide-react";
 
-const sections = [
+const navigation = [
   {
-    id: "overview",
     label: "Overview",
+    href: "",
     icon: User,
   },
   {
-    id: "about",
-    label: "About",
-    icon: User,
-  },
-  {
-    id: "elections",
-    label: "Election History",
-    icon: BookOpen,
-  },
-  {
-    id: "assets",
-    label: "Assets",
+    label: "Financial Disclosures",
+    href: "financial",
     icon: Wallet,
   },
   {
-    id: "cases",
+    label: "Assets",
+    href: "assets",
+    icon: Wallet,
+  },
+  {
+    label: "Election History",
+    href: "elections",
+    icon: BookOpen,
+  },
+  {
     label: "Criminal Cases",
+    href: "criminal",
     icon: Scale,
   },
   {
-    id: "mplads",
     label: "MPLADS",
+    href: "mplads",
     icon: Landmark,
   },
   {
-    id: "timeline",
     label: "Timeline",
+    href: "timeline",
     icon: Clock3,
   },
   {
-    id: "analytics",
     label: "Analytics",
+    href: "analytics",
     icon: BarChart3,
   },
 ];
 
 export default function ProfileSidebar() {
-  const [active, setActive] = useState("overview");
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            setActive(entry.target.id);
-          }
-        });
-      },
-      {
-        rootMargin: "-40% 0px -50% 0px",
-      }
-    );
-
-    sections.forEach(section => {
-      const element = document.getElementById(section.id);
-
-      if (element) {
-        observer.observe(element);
-      }
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  const scrollTo = (id: string) => {
-    document
-      .getElementById(id)
-      ?.scrollIntoView({
-        behavior: "smooth",
-      });
-  };
+  const pathname = usePathname();
+  const { id } = useParams();
 
   return (
     <nav className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-
       <h3 className="mb-6 text-lg font-bold">
         Navigation
       </h3>
 
       <div className="space-y-2">
+        {navigation.map(item => {
+          const Icon = item.icon;
 
-        {sections.map(section => {
-          const Icon = section.icon;
+          const href = item.href
+            ? `/politicians/${id}/${item.href}`
+            : `/politicians/${id}`;
 
-          const isActive =
-            active === section.id;
+          const active = pathname === href;
 
           return (
-            <button
-              key={section.id}
-              onClick={() =>
-                scrollTo(section.id)
-              }
-              className={`flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left transition-all duration-200 ${
-                isActive
+            <Link
+              key={href}
+              href={href}
+              className={`flex items-center gap-3 rounded-xl px-4 py-3 transition-all duration-200 ${
+                active
                   ? "bg-blue-600 text-white shadow-md"
                   : "hover:bg-slate-100"
               }`}
             >
               <Icon size={18} />
-
-              <span>
-                {section.label}
-              </span>
-            </button>
+              <span>{item.label}</span>
+            </Link>
           );
         })}
-
       </div>
-
     </nav>
   );
 }

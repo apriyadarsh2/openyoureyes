@@ -6,9 +6,9 @@ import PoliticianGrid from "./PoliticianGrid";
 import PoliticianList from "./PoliticianList";
 import PoliticianSearch from "./PoliticianSearch";
 import PoliticianFilters from "./PoliticianFilters";
-import SortDropdown from "./SortDropdown";
-import Pagination from "./Pagination";
-import ViewToggle from "./ViewToggle";
+import SortDropdown from "../ui/SortDropdown";
+import Pagination from "../ui/Pagination";
+import ViewToggle from "../ui/ViewToggle";
 
 import {
   getPoliticians,
@@ -34,6 +34,20 @@ export default function PoliticianBrowser({
 
   const states = getStates();
   const parties = getParties();
+  const sortOptions = [
+  {
+    value: "name",
+    label: "Sort by Name",
+  },
+  {
+    value: "assets",
+    label: "Highest Assets",
+  },
+  {
+    value: "cases",
+    label: "Most Criminal Cases",
+  },
+];
 
   const {
     paginatedPoliticians,
@@ -59,7 +73,7 @@ export default function PoliticianBrowser({
     setSort,
 
     resetFilters,
-  } = usePoliticianFilters(
+  } = usePoliticianFilters( 
     politicians,
     initialSearch
   );
@@ -88,9 +102,10 @@ export default function PoliticianBrowser({
 
       <div className="mb-8 flex justify-end">
         <SortDropdown
-          value={sort}
-          onChange={setSort}
-        />
+  value={sort}
+  onChange={setSort}
+  options={sortOptions}
+/>
       </div>
 
       <div className="mb-6 flex items-center justify-between">

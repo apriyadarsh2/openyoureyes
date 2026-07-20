@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 
 import { getPoliticians } from "@/src/components/lib/repositories/politicians";
 import { searchPoliticians } from "../components/search/searchPoliticians";
-
+ 
 export default function usePoliticianSearch() {
   const politicians = getPoliticians();
 
