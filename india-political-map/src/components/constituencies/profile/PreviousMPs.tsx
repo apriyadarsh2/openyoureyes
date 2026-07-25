@@ -1,3 +1,11 @@
+"use client";
+
+import {
+  Calendar,
+  Landmark,
+  User,
+} from "lucide-react";
+
 import { PreviousMP } from "../../types/constituency";
 
 interface Props {
@@ -7,64 +15,172 @@ interface Props {
 export default function PreviousMPs({
   mps = [],
 }: Props) {
+
   if (mps.length === 0) {
     return null;
   }
 
   return (
-    <div className="rounded-2xl border bg-white p-6 shadow-sm">
-      <h2 className="mb-6 text-xl font-bold">
-        Previous Members of Parliament
-      </h2>
+    <section className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
 
-      <div className="overflow-x-auto">
-        <table className="min-w-full border-collapse">
-          <thead>
-            <tr className="border-b bg-slate-50">
-              <th className="px-4 py-3 text-left">
-                MP
-              </th>
+      <div className="mb-8 flex items-center gap-3">
 
-              <th className="px-4 py-3 text-left">
-                Party
-              </th>
+        <div className="rounded-xl bg-purple-100 p-3">
 
-              <th className="px-4 py-3 text-left">
-                From
-              </th>
+          <Landmark
+            size={22}
+            className="text-purple-700"
+          />
 
-              <th className="px-4 py-3 text-left">
-                To
-              </th>
-            </tr>
-          </thead>
+        </div>
 
-          <tbody>
-            {mps.map((mp, index) => (
-              <tr
-                key={index}
-                className="border-b last:border-none"
-              >
-                <td className="px-4 py-4 font-medium">
-                  {mp.name}
-                </td>
+        <div>
 
-                <td className="px-4 py-4">
-                  {mp.party}
-                </td>
+          <h2 className="text-2xl font-bold">
+            Previous Members of Parliament
+          </h2>
 
-                <td className="px-4 py-4">
-                  {mp.term_start}
-                </td>
+          <p className="text-sm text-slate-500">
+            Historical representation of this constituency
+          </p>
 
-                <td className="px-4 py-4">
-                  {mp.term_end}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        </div>
+
       </div>
-    </div>
+
+      <div className="relative border-l-2 border-slate-200 pl-8">
+
+        {mps.map((mp) => (
+
+          <div
+            key={`${mp.name}-${mp.term_start}`}
+            className="relative mb-8 last:mb-0"
+          >
+
+            <div
+              className="
+                absolute
+                -left-[42px]
+                top-4
+
+                h-6
+                w-6
+
+                rounded-full
+
+                border-4
+                border-white
+
+                bg-purple-600
+              "
+            />
+
+            <div
+              className="
+                rounded-2xl
+                border
+                border-slate-200
+                bg-gradient-to-br
+                from-white
+                to-slate-50
+                p-6
+
+                transition
+
+                hover:border-purple-300
+                hover:shadow-lg
+              "
+            >
+
+              <div
+                className="
+                  flex
+                  flex-col
+                  gap-5
+
+                  lg:flex-row
+                  lg:items-center
+                  lg:justify-between
+                "
+              >
+
+                {/* Left */}
+
+                <div className="flex items-center gap-5">
+
+                  <div
+                    className="
+                      flex
+                      h-16
+                      w-16
+                      items-center
+                      justify-center
+
+                      rounded-full
+                      bg-purple-100
+                    "
+                  >
+
+                    <User
+                      className="text-purple-700"
+                    />
+
+                  </div>
+
+                  <div>
+
+                    <h3 className="text-xl font-bold">
+                      {mp.name}
+                    </h3>
+
+                    <p className="mt-1 text-slate-600">
+                      {mp.party}
+                    </p>
+
+                  </div>
+
+                </div>
+
+                {/* Right */}
+
+                <div
+                  className="
+                    flex
+                    items-center
+                    gap-3
+
+                    rounded-xl
+                    bg-slate-100
+                    px-4
+                    py-3
+                  "
+                >
+
+                  <Calendar
+                    size={18}
+                    className="text-blue-600"
+                  />
+
+                  <span className="font-semibold">
+
+                    {mp.term_start}
+                    {" - "}
+                    {mp.term_end}
+
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        ))}
+
+      </div>
+
+    </section>
   );
 }

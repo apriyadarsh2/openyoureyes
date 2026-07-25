@@ -12,27 +12,24 @@ import {
 import Breadcrumbs from "@/src/components/ui/Breadcrumbs";
 import HeroBanner from "@/src/components/ui/HeroBanner";
 import HeroStat from "@/src/components/ui/HeroStat";
+import SearchToolbar from "@/src/components/ui/filters/SearchToolbar";
 
 import { getStates } from "../lib/repositories/constituencies";
 
 import EmptySearchState from "../ui/EmptySearchState";
-import SearchToolbar from "./search/SearchToolbar";
 import StateGrid from "./StateGrid";
-import { SortOption } from "./search/SortDropdown";
 
 export default function StateBrowser() {
-
   const states = getStates();
 
   const [search, setSearch] =
     useState("");
 
   const [sort, setSort] =
-    useState<SortOption>("az");
+    useState("az");
 
   const filteredStates =
     useMemo(() => {
-
       const query =
         search.trim().toLowerCase();
 
@@ -46,7 +43,6 @@ export default function StateBrowser() {
             );
 
       switch (sort) {
-
         case "az":
           result.sort((a, b) =>
             a.name.localeCompare(b.name)
@@ -77,15 +73,10 @@ export default function StateBrowser() {
       }
 
       return result;
-
     }, [states, search, sort]);
 
   return (
-
     <div className="space-y-8">
-
-      {/* Breadcrumb */}
-
       <Breadcrumbs
         items={[
           {
@@ -98,9 +89,6 @@ export default function StateBrowser() {
         ]}
       />
 
-      {/* Hero */}
-
-      {/* Hero */}
       <HeroBanner
         badge="Constituency Intelligence"
         title="Lok Sabha"
@@ -108,9 +96,7 @@ export default function StateBrowser() {
         icon={<MapPinned size={18} />}
         subtitle="Explore every State and Union Territory, browse constituency distribution, parliamentary representation, election history and political insights."
       >
-        {/* NEW: Single Unified Card Container */}
         <div className="flex flex-col divide-y divide-slate-100 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-          
           <HeroStat
             value={states.length}
             label="States & Union Territories"
@@ -128,39 +114,48 @@ export default function StateBrowser() {
             label="Latest General Election"
             icon={<Calendar size={22} />}
           />
-          
         </div>
       </HeroBanner>
-
-      {/* Search */}
 
       <SearchToolbar
         search={search}
         onSearchChange={setSearch}
+        placeholder="Search state or union territory..."
+        ariaLabel="Search States"
         sort={sort}
         onSortChange={setSort}
         total={states.length}
         filtered={filteredStates.length}
+        resultLabel="States & Union Territories"
+        sortOptions={[
+          {
+            value: "az",
+            label: "Alphabetical (A-Z)",
+          },
+          {
+            value: "za",
+            label: "Alphabetical (Z-A)",
+          },
+          {
+            value: "most",
+            label: "Most Constituencies",
+          },
+          {
+            value: "least",
+            label: "Least Constituencies",
+          },
+        ]}
       />
 
-      {/* Results */}
-
       {filteredStates.length > 0 ? (
-
         <StateGrid
           states={filteredStates}
         />
-
       ) : (
-
         <EmptySearchState
           search={search}
         />
-
       )}
-
     </div>
-
   );
-
 }

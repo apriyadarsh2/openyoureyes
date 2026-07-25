@@ -1,3 +1,5 @@
+"use client";
+
 import { ElectionSummary } from "../types/election";
 
 import ElectionCard from "./ElectionCard";
@@ -10,13 +12,23 @@ export default function ElectionGrid({
   elections,
 }: Props) {
   return (
-    <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+    <section
+      className="
+        grid
+        grid-cols-1
+        gap-8
+
+        md:grid-cols-2
+
+        2xl:grid-cols-3
+      "
+    >
       {elections.map((election) => (
         <ElectionCard
           key={election.id}
           election={election}
         />
       ))}
-    </div>
+    </section>
   );
 }

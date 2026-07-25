@@ -57,6 +57,7 @@ export interface PreviousMP {
 export interface ElectionCandidate {
   name: string;
   party: string;
+  votes: number;
 }
 
 export interface LatestElection {

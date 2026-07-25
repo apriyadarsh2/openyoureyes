@@ -7,6 +7,7 @@ import ElectionCardKPIs from "./ElectionCardKPIs";
 import ElectionResultCard from "./ElectionResultCard";
 import ElectionNavigation from "./ElectionNavigation";
 import Breadcrumbs from "../ui/Breadcrumbs";
+import ElectionTimeline from "./ElectionTimeline";
 
 interface Props {
   year: number;
@@ -40,15 +41,16 @@ export default function ElectionDashboard({
         overview={dashboard.overview}
       />
 
-      <ElectionCardKPIs
-        national={dashboard.national_summary}
-        result={dashboard.result_summary}
-        kpis={dashboard.kpis}
-      />
-
       <ElectionResultCard
         result={dashboard.result_summary}
       />
+      <ElectionTimeline
+      overview={dashboard.overview} />
+
+        <ElectionCardKPIs
+  national={dashboard.national_summary}
+  kpis={dashboard.kpis}
+/>
 
       <ElectionNavigation
         year={dashboard.overview.year}
