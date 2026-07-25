@@ -86,7 +86,7 @@ export const masterData = {
     total: 543,
   },
 
-  Political_parties: {
+  politicalParties: {
     total: 10,
   },
 
