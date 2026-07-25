@@ -22,7 +22,7 @@ export function getHomepageStats() {
 
    return {
     totalPoliticians: masterData.politicians.total,
-    totalParties: masterData.Political_parties.total,
+    totalParties: masterData.politicalParties.total,
     totalConstituencies: masterData.constituencies.total,
     latestElection: masterData.elections.latestYear,
 

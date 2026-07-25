@@ -13,7 +13,7 @@ interface Props {
 
 export default function PartyProfile({
   slug,
-}: Props) {
+}: Props) { 
 
   const party =
     getPartyProfile(slug);

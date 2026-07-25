@@ -13,15 +13,12 @@ export interface PartyCategory {
 export interface PartyHomeResponse {
   summary: {
     national_parties: number;
-
     state_parties: number;
-
     unrecognised_parties: number;
-
     historical_parties: number;
   };
 
-  categories: PartyCategory[];
+  results: PartySummary[];
 }
 
 /* =========================================
@@ -37,12 +34,19 @@ export interface PartySummary {
 
   abbreviation: string;
 
+  type: string;
+
   leader: string;
 
-  
-  lok_sabha: number | null;
+  lok_sabha: number;
 
-  rajya_sabha: number | null;
+  rajya_sabha: number;
+
+  assembly_seats: number;
+
+  contested: number;
+
+  active: boolean;
 }
 
 export interface PartyListResponse {

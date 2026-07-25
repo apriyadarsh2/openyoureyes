@@ -492,6 +492,130 @@
     ]
   },
 
+  "GET /api/v1/parties/state":{
+  "results": [
+    {
+      "id": 101,
+      "slug": "aitc",
+      "party": "All India Trinamool Congress",
+      "abbreviation": "AITC",
+      "leader": "Mamata Banerjee",
+      "lok_sabha": 29,
+      "rajya_sabha": 13
+    },
+    {
+      "id": 102,
+      "slug": "dmk",
+      "party": "Dravida Munnetra Kazhagam",
+      "abbreviation": "DMK",
+      "leader": "M. K. Stalin",
+      "lok_sabha": 22,
+      "rajya_sabha": 10
+    },
+    {
+      "id": 103,
+      "slug": "bjd",
+      "party": "Biju Janata Dal",
+      "abbreviation": "BJD",
+      "leader": "Naveen Patnaik",
+      "lok_sabha": 0,
+      "rajya_sabha": 7
+    },
+    {
+      "id": 104,
+      "slug": "ysrcp",
+      "party": "YSR Congress Party",
+      "abbreviation": "YSRCP",
+      "leader": "Y. S. Jagan Mohan Reddy",
+      "lok_sabha": 4,
+      "rajya_sabha": 11
+    }
+  ]
+},
+"GET /api/v1/parties/unrecognised":{
+  "results": [
+    {
+      "id": 201,
+      "slug": "abhm",
+      "party": "Akhil Bharat Hindu Mahasabha",
+      "abbreviation": "ABHM",
+      "leader": "Chakrapani",
+      "lok_sabha": 0,
+      "rajya_sabha": 0
+    },
+    {
+      "id": 202,
+      "slug": "aihcp",
+      "party": "All India Hindustan Congress Party",
+      "abbreviation": "AIHCP",
+      "leader": "Buddh Prakash Sharma",
+      "lok_sabha": 0,
+      "rajya_sabha": 0
+    },
+    {
+      "id": 203,
+      "slug": "amep",
+      "party": "All India Mahila Empowerment Party",
+      "abbreviation": "AMEP",
+      "leader": "Nowhera Shaik",
+      "lok_sabha": 0,
+      "rajya_sabha": 0
+    }
+  ]
+},
+"GET /api/v1/parties/historical":{
+  "results": [
+    {
+      "id": 301,
+      "slug": "krishak-sramik-party",
+      "party": "Krishak Sramik Party",
+      "abbreviation": "KSP",
+      "leader": "A. K. Fazlul Haq",
+      "lok_sabha": "-",
+      "rajya_sabha": "-"
+    },
+    {
+      "id": 302,
+      "slug": "scheduled-castes-federation",
+      "party": "Scheduled Castes Federation",
+      "abbreviation": "SCF",
+      "leader": "Dr. B. R. Ambedkar",
+      "lok_sabha": "-",
+      "rajya_sabha": "-"
+    },
+    {
+      "id": 303,
+      "slug": "travancore-tamil-nadu-congress",
+      "party": "Travancore Tamil Nadu Congress",
+      "abbreviation": "TTNC",
+      "leader": "A. Nesamony",
+      "lok_sabha": "-",
+      "rajya_sabha": "-"
+    }
+  ]
+},
+  
+
+"GET /api/v1/parties/national":{
+  "results":[
+    {
+      "slug":"bjp",
+      "party":"Bharatiya Janata Party",
+      "abbreviation":"BJP",
+      "leader":"J. P. Nadda",
+      "lok_sabha":240,
+      "rajya_sabha":98
+    },
+    {
+      "slug":"inc",
+      "party":"Indian National Congress",
+      "abbreviation":"INC",
+      "leader":"Mallikarjun Kharge",
+      "lok_sabha":99,
+      "rajya_sabha":27
+    }
+  ]
+},
   "GET /api/v1/parties":{
   "summary": {
     "national_parties": 6,
