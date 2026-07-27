@@ -25,27 +25,23 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 } */
 
-
 @import "tailwindcss";
 
 :root {
-  --background: #F8FAFC;
-  --foreground: #0F172A;
+  --background: #1d243c;      /* Softer slate-charcoal canvas */
+  --foreground: #F4F4F5;      /* Crisp off-white primary text */
 
-  --primary: #2563EB;
-  --primary-dark: #1D4ED8;
+  --card: #282D3D;            /* Lighter, comfortable panel surface */
+  --border: #3E445B;          /* Soft border stroke */
 
-  --secondary: #3B82F6;
+  --primary: #4F46E5;         /* Deep indigo accent */
+  --primary-dark: #4338CA;
 
-  --success: #16A34A;
-  --danger: #DC2626;
+  --success: #22C55E;
+  --danger: #EF4444;
   --warning: #F59E0B;
 
-  --border: #E2E8F0;
-
-  --card: #FFFFFF;
-
-  --muted: #64748B;
+  --muted: #94A3B8;           /* Balanced secondary text */
 }
 
 html {
@@ -56,5 +52,10 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans);
-} 
+}
 
+.bg-white {
+  background-color: #1d243c !important;
+  border-color: #2d3654 !important;
+  color: #F2F1EC !important;
+}

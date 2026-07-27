@@ -1,10 +1,12 @@
 "use client";
 
-import { getPartyProfile } from "../lib/repositories/parties";
+import { getPartyProfile } from "../../lib/repositories/parties";
 
 import PartyHeader from "./PartyHeader";
 import PartyOverview from "./PartyOverview";
-import PartyStats from "./PartyStats";
+
+import PartyPerformanceChart from "./PartyPerformanceChart";
+import PartyElectionTable from "./PartyElectionTable";
 import PartyNavigation from "./PartyNavigation";
 
 interface Props {
@@ -13,10 +15,9 @@ interface Props {
 
 export default function PartyProfile({
   slug,
-}: Props) { 
+}: Props) {
 
-  const party =
-    getPartyProfile(slug);
+  const party = getPartyProfile(slug);
 
   if (!party) {
     return (
@@ -37,8 +38,12 @@ export default function PartyProfile({
         party={party}
       />
 
-      <PartyStats
-        party={party}
+      <PartyPerformanceChart
+        data={party.electoral_performance}
+      />
+
+      <PartyElectionTable
+        data={party.electoral_performance}
       />
 
       <PartyNavigation

@@ -7,13 +7,9 @@ import {
   Scale,
 } from "lucide-react";
 
-import Container from "@/src/components/common/Container";
 import KPICard from "./KPICard";
-
-
-
 import { getHomepageStats } from "../lib/homepage";
-import { formatCrore, formatCurrency } from "../lib/format";
+import { formatCrore } from "../lib/format";
 
 const stats = getHomepageStats();
 
@@ -23,82 +19,60 @@ export default function KPIGrid() {
       title: "Politicians",
       value: stats.totalPoliticians,
       subtitle: "Across the dataset",
-      icon: <Users size={24} />,
+      icon: <Users size={20} />,
       color: "bg-blue-600",
     },
     {
       title: "Political Parties",
       value: stats.totalParties,
       subtitle: "Unique parties",
-      icon: <Landmark size={24} />,
+      icon: <Landmark size={20} />,
       color: "bg-indigo-600",
     },
     {
       title: "Constituencies",
       value: stats.totalConstituencies,
       subtitle: "Lok Sabha Seats",
-      icon: <MapPinned size={24} />,
+      icon: <MapPinned size={20} />,
       color: "bg-emerald-600",
     },
     {
       title: "Latest Election",
       value: stats.latestElection,
       subtitle: "Most recent data",
-      icon: <Vote size={24} />,
+      icon: <Vote size={20} />,
       color: "bg-orange-500",
     },
     {
       title: "Highest Assets",
       value: formatCrore(stats.wealthLeader.net_assets_inr),
       subtitle: stats.wealthLeader.politician.name_en,
-      icon: <IndianRupee size={24} />,
+      icon: <IndianRupee size={20} />,
       color: "bg-green-600",
     },
     {
       title: "Criminal Cases",
       value: stats.criminalLeader.total_cases,
       subtitle: stats.criminalLeader.politician.name_en,
-      icon: <Scale size={24} />,
+      icon: <Scale size={20} />,
       color: "bg-red-600",
     },
   ];
+
   return (
-    <section className="py-20 bg-slate-50">
+    <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-200 h-full flex flex-col justify-between">
+      <div className="mb-4">
+        <h2 className="text-xl font-bold text-gray-800">Political Snapshot</h2>
+        <p className="text-xs text-gray-500 mt-1">
+          Key statistics from the latest dataset.
+        </p>
+      </div>
 
-
-
-      <Container>
-
-        <div className="mb-10">
-
-          <h2 className="text-3xl font-bold">
-            Political Snapshot
-          </h2>
-
-          <p className="mt-2 text-slate-500">
-            Key statistics from the latest available political data.
-          </p>
-
-        </div>
-
-        <div
-          className="
-            grid
-            gap-6
-            sm:grid-cols-2
-            lg:grid-cols-3
-          "
-        >
-          {kpis.map((kpi) => (
-            <KPICard
-              key={kpi.title}
-              {...kpi}
-            />
-          ))}
-        </div>
-
-      </Container>
-
-    </section>
+      <div className="grid grid-cols-1 gap-3 overflow-y-auto max-h-[calc(100vh-280px)] pr-1">
+        {kpis.map((kpi) => (
+          <KPICard key={kpi.title} {...kpi} />
+        ))}
+      </div>
+    </div>
   );
 }

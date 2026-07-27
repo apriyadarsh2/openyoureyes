@@ -4,7 +4,6 @@ import {
   PartyHomeResponse,
   PartyListResponse,
   PartyProfile,
-  PartyElectionHistory,
   PartyPresence,
   PartyFinance,
   PartyBonds,
@@ -90,25 +89,6 @@ export function getPartyProfile(
 }
 
 /* =========================================
-   Election History
-========================================= */
-
-export function getPartyElectionHistory(
-  slug: string
-): PartyElectionHistory | null {
-
-  const key =
-    `GET /api/v1/parties/${slug}/elections`;
-
-  return (
-    mockResponses[
-      key as keyof typeof mockResponses
-    ] as unknown as PartyElectionHistory
-  );
-
-}
-
-/* =========================================
    State Presence
 ========================================= */
 
@@ -163,4 +143,4 @@ export function getPartyBonds(
     ] as unknown as PartyBonds
   );
 
-}
+} 

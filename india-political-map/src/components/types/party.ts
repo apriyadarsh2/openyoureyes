@@ -7,7 +7,7 @@ export interface PartyCategory {
 
   title: string;
 
-  count: number;
+  count: number; 
 }
 
 export interface PartyHomeResponse {
@@ -58,39 +58,37 @@ export interface PartyListResponse {
 ========================================= */
 
 export interface PartyOverview {
-  id: number;
-
   slug: string;
 
   party: string;
 
   abbreviation: string;
 
-  political_position?: string;
-
-  recognition?: string;
-
-  ideology?: string[];
+  leader: string;
 
   founded: string;
 
-  leader: string;
+  political_position: string;
+
+  ideology: string[];
+
+  recognition: string;
 }
 
 export interface PartyGovernment {
   chief_ministers: string;
 
-  ruling_coalition: string;
+  coalition_governments: string;
 }
 
 export interface PartyStrength {
-  lok_sabha: string | number;
+  lok_sabha: number;
 
-  rajya_sabha: string | number;
+  rajya_sabha: number;
 
-  state_assemblies: string | number;
+  assemblies: number;
 
-  state_councils: string | number;
+  councils: number;
 }
 
 export interface PartyProfile {
@@ -99,6 +97,8 @@ export interface PartyProfile {
   government: PartyGovernment;
 
   current_strength: PartyStrength;
+
+  electoral_performance: PartyElectionResult[];
 }
 
 /* =========================================
@@ -110,26 +110,22 @@ export interface PartyElectionResult {
 
   legislature: string;
 
-  party_leader: string;
+  leader: string;
 
-  seats_contested: string;
+  contested: number;
 
-  seats_won: string;
+  won: number;
 
-  change_in_seats: string;
+  total_seats: number;
 
-  percentage_of_votes: string;
+  vote_share: number;
 
-  vote_swing: string;
+  strike_rate: number;
 
   outcome: string;
 }
 
-export interface PartyElectionHistory {
-  party: string;
 
-  results: PartyElectionResult[];
-}
 
 /* =========================================
    State Presence

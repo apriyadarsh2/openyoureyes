@@ -419,6 +419,8 @@
     ]
   },
 
+
+
   "GET /api/v1/leaderboards/wealth?limit=10": {
     "as_of_election_year": 2024,
     "leaders": [
@@ -461,6 +463,99 @@
     ]
   },
 
+"GET /api/v1/snapshot?year=2024": {
+    "as_of_election_year": 2024,
+    "snapshot": {
+      "wealth": {
+        "title": "Highest Assets",
+        "name_en": "SURESH PATEL",
+        "party": "BJP",
+        "detail": "₹68.2 Crore"
+      },
+      "criminal": {
+        "title": "Criminal Cases",
+        "name_en": "NARAYAN PRASAD SINGH",
+        "party": "BJP",
+        "detail": "4 Serious Cases"
+      },
+      "education": {
+        "title": "Highest Education",
+        "name_en": "ANAND GOSWAMI",
+        "party": "NCP",
+        "detail": "Ph.D. Economics"
+      },
+      "ruling_party": {
+        "title": "Ruling Party",
+        "name_en": "NARENDRA MODI",
+        "party": "BJP",
+        "detail": "240 Seats (NDA)"
+      }
+    }
+  },
+
+  "GET /api/v1/snapshot?year=2019": {
+    "as_of_election_year": 2019,
+    "snapshot": {
+      "wealth": {
+        "title": "Highest Assets",
+        "name_en": "ARJUN REDDY",
+        "party": "YSRCP",
+        "detail": "₹26.4 Crore"
+      },
+      "criminal": {
+        "title": "Criminal Cases",
+        "name_en": "VIKRAM CHAUHAN",
+        "party": "BJP",
+        "detail": "3 Serious Cases"
+      },
+      "education": {
+        "title": "Highest Education",
+        "name_en": "PRIYA SHARMA",
+        "party": "INC",
+        "detail": "Masters in Law"
+      },
+      "ruling_party": {
+        "title": "Ruling Party",
+        "name_en": "NARENDRA MODI",
+        "party": "BJP",
+        "detail": "303 Seats"
+      }
+    }
+  },
+
+  "GET /api/v1/snapshot?year=2026": {
+    "as_of_election_year": 2026,
+    "snapshot": {
+      "wealth": {
+        "title": "Highest Assets",
+        "name_en": "SURESH PATEL",
+        "party": "BJP",
+        "detail": "₹85.0 Crore"
+      },
+      "criminal": {
+        "title": "Criminal Cases",
+        "name_en": "DATA AWAITED",
+        "party": "TBD",
+        "detail": "Pending"
+      },
+      "education": {
+        "title": "Highest Education",
+        "name_en": "SANJAY MEHTA",
+        "party": "AAP",
+        "detail": "M.Tech Computer Science"
+      },
+      "ruling_party": {
+        "title": "Upcoming Elections",
+        "name_en": "TBD",
+        "party": "TBD",
+        "detail": "Projections Only"
+      }
+    }
+  },
+
+
+
+
   "GET /api/v1/parties/bjp/finance": {
     "party": { "id": 1,  "slug":"bjp",
       "name":"Bharatiya Janata Party" },
@@ -473,7 +568,6 @@
       { "fy_start": 2023, "fy_end": 2024, "total_income_inr": 6210000000, "voluntary_contributions": 3240000000, "electoral_bonds_inr": 2410000000, "govt_grants_inr": 0, "total_expenditure_inr": 5980000000, "election_expenditure_inr": 4120000000 }
     ]
   },
-
   "GET /api/v1/parties/bjp/bonds": {
     "party": { "id": 1, "slug":"bjp",
       "name":"Bharatiya Janata Party" },
@@ -491,7 +585,6 @@
       { "id": 15, "bond_number": "EB00015", "purchase_date": "2024-01-09", "denomination_inr": 10000000, "purchaser_name": "Kalyan Jewellers India Ltd", "encashment_date": "2024-01-14" }
     ]
   },
-
   "GET /api/v1/parties/state":{
   "results": [
     {
@@ -594,8 +687,6 @@
     }
   ]
 },
-  
-
 "GET /api/v1/parties/national":{
   "results":[
     {
@@ -666,33 +757,158 @@
     }
   ] 
 },
-"GET /api/v1/parties/bjp":{
-  "overview":{
-      "slug":"bjp",
-      "party":"Bharatiya Janata Party",
-      "abbreviation":"BJP",
-      "leader":"J. P. Nadda",
-      "founded":"1980",
-      "political_position":"Right-wing",
-      "ideology":[
-         "Hindutva",
-         "Conservatism",
-         "Nationalism"
-      ],
-      "recognition":"National Party"
+"GET /api/v1/parties/bjp" : {
+  "overview": {
+    "slug": "bjp",
+    "party": "Bharatiya Janata Party",
+    "abbreviation": "BJP",
+    "leader": "J. P. Nadda",
+    "founded": "1980",
+    "political_position": "Right-wing",
+    "ideology": [
+      "Hindutva",
+      "Conservatism",
+      "Nationalism"
+    ],
+    "recognition": "National Party"
   },
 
-  "government":{
-      "chief_ministers":"13 / 31",
-      "coalition_governments":"18 / 31"
+  "government": {
+    "chief_ministers": "13 / 31",
+    "coalition_governments": "18 / 31"
   },
 
-  "current_strength":{
-      "lok_sabha":240,
-      "rajya_sabha":98,
-      "assemblies":1321,
-      "councils":67
+  "current_strength": {
+    "lok_sabha": 240,
+    "rajya_sabha": 98,
+    "assemblies": 1321,
+    "councils": 67
+  },
+
+  "electoral_performance":
+   [
+  {
+    "year": 1984,
+    "legislature": "8th Lok Sabha",
+    "leader": "Atal Bihari Vajpayee",
+    "contested": 229,
+    "won": 2,
+    "total_seats": 541,
+    "vote_share": 7.40,
+    "strike_rate": 0.9,
+    "outcome": "Opposition"
+  },
+  {
+    "year": 1989,
+    "legislature": "9th Lok Sabha",
+    "leader": "Lal Krishna Advani",
+    "contested": 225,
+    "won": 85,
+    "total_seats": 545,
+    "vote_share": 11.36,
+    "strike_rate": 37.8,
+    "outcome": "Outside Support"
+  },
+  {
+    "year": 1991,
+    "legislature": "10th Lok Sabha",
+    "leader": "Lal Krishna Advani",
+    "contested": 477,
+    "won": 120,
+    "total_seats": 545,
+    "vote_share": 20.07,
+    "strike_rate": 25.2,
+    "outcome": "Opposition"
+  },
+  {
+    "year": 1996,
+    "legislature": "11th Lok Sabha",
+    "leader": "Atal Bihari Vajpayee",
+    "contested": 471,
+    "won": 161,
+    "total_seats": 545,
+    "vote_share": 20.29,
+    "strike_rate": 34.2,
+    "outcome": "Government"
+  },
+  {
+    "year": 1998,
+    "legislature": "12th Lok Sabha",
+    "leader": "Atal Bihari Vajpayee",
+    "contested": 388,
+    "won": 182,
+    "total_seats": 545,
+    "vote_share": 25.59,
+    "strike_rate": 46.9,
+    "outcome": "Government"
+  },
+  {
+    "year": 1999,
+    "legislature": "13th Lok Sabha",
+    "leader": "Atal Bihari Vajpayee",
+    "contested": 339,
+    "won": 182,
+    "total_seats": 545,
+    "vote_share": 23.75,
+    "strike_rate": 53.7,
+    "outcome": "Government"
+  },
+  {
+    "year": 2004,
+    "legislature": "14th Lok Sabha",
+    "leader": "Lal Krishna Advani",
+    "contested": 364,
+    "won": 138,
+    "total_seats": 543,
+    "vote_share": 22.16,
+    "strike_rate": 37.9,
+    "outcome": "Opposition"
+  },
+  {
+    "year": 2009,
+    "legislature": "15th Lok Sabha",
+    "leader": "Lal Krishna Advani",
+    "contested": 433,
+    "won": 116,
+    "total_seats": 543,
+    "vote_share": 18.80,
+    "strike_rate": 26.8,
+    "outcome": "Opposition"
+  },
+  {
+    "year": 2014,
+    "legislature": "16th Lok Sabha",
+    "leader": "Narendra Modi",
+    "contested": 428,
+    "won": 282,
+    "total_seats": 543,
+    "vote_share": 31.34,
+    "strike_rate": 65.9,
+    "outcome": "Government"
+  },
+  {
+    "year": 2019,
+    "legislature": "17th Lok Sabha",
+    "leader": "Narendra Modi",
+    "contested": 436,
+    "won": 303,
+    "total_seats": 543,
+    "vote_share": 37.82,
+    "strike_rate": 69.5,
+    "outcome": "Government"
+  },
+  {
+    "year": 2024,
+    "legislature": "18th Lok Sabha",
+    "leader": "Narendra Modi",
+    "contested": 441,
+    "won": 240,
+    "total_seats": 543,
+    "vote_share": 37.02,
+    "strike_rate": 54.4,
+    "outcome": "Government"
   }
+]
 },
 "GET /api/v1/parties/bjp/elections":{
   "party":"BJP",
@@ -1486,6 +1702,9 @@
 },
 
   
+
+
+
   "GET /api/v1/constituencies": {
     "total": 36,
     "page": 1,
@@ -2282,6 +2501,9 @@
     "A bye-election was held in 2020 following the death of sitting MP Baidyanath Prasad Mahto, which was won by his son, Sunil Kumar Kushwaha."
   ]
   },
+
+
+
 
 
   "POST /api/v1/disputes": {

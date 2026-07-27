@@ -66,3 +66,22 @@ export interface MarginLeader {
 
   votes_pct: number;
 }
+
+export interface SnapshotItem {
+  title: string;
+  name_en: string;
+  party: string;
+  detail: string;
+}
+
+export interface SnapshotData {
+  wealth: SnapshotItem;
+  criminal: SnapshotItem;
+  education: SnapshotItem;
+  ruling_party: SnapshotItem;
+}
+
+export interface SnapshotResponse {
+  as_of_election_year: number;
+  snapshot: SnapshotData;
+}

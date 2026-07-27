@@ -1,4 +1,4 @@
-import PartyProfile from "@/src/components/parties/PartyProfile";
+import PartyProfile from "@/src/components/parties/profile/PartyProfile";
 
 interface Props {
   params: Promise<{
