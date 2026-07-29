@@ -1,3 +1,5 @@
+
+
 "use client";
 
 import {
@@ -13,7 +15,7 @@ interface Props {
     states: Record<string, { party: string; cm: string }>;
   };
   selectedState: string | null;
-  onStateSelect: (state: string | null) => void;
+  onStateSelect: (state: string | null, pos?: { x: number; y: number }) => void;
 }
 
 export default function IndiaMap({ yearData, selectedState, onStateSelect }: Props) {
@@ -32,19 +34,16 @@ export default function IndiaMap({ yearData, selectedState, onStateSelect }: Pro
   };
 
   return (
-    // LOGIC: bg color aur shadow hata diya. Width badha di taaki map bada dikhe par screen ke bahar na jaye.
     <div className="relative w-full max-w-[700px] mx-auto flex items-center justify-center">
       <ComposableMap
         projection="geoMercator"
-        // LOGIC: Canvas ko square (800x800) kar diya taaki Gujarat aur North-East cut na ho.
         width={800}  
         height={800} 
         projectionConfig={{
-          scale: 1100, // LOGIC: 800x800 ke dabbe ke hisaab se perfect scale.
-          center: [82.5, 20.5], // LOGIC: Exact India ka center point.
+          center: [82.5, 20.5], 
         }}
         style={{
-          width: "100%", // Box ke hisaab se auto-adjust hoga
+          width: "100%", 
           height: "auto",
           outline: "none",
         }}
@@ -57,7 +56,6 @@ export default function IndiaMap({ yearData, selectedState, onStateSelect }: Pro
               const party = info?.party || "UNKNOWN";
               const isSelected = selectedState === stateName;
               
-              // LOGIC: Agar party data nahi hai ya state selected nahi hai, toh default color.
               const fill =
                 party === "UNKNOWN"
                   ? "#E0E0E0"
@@ -84,9 +82,17 @@ export default function IndiaMap({ yearData, selectedState, onStateSelect }: Pro
                   }}
                   data-tooltip-id="state-tooltip"
                   data-tooltip-content={getTooltipContent(stateName)}
-                  onClick={() =>
-                    onStateSelect(selectedState === stateName ? null : stateName)
-                  }
+                  onClick={(e: any) => {
+                    const rect = e.currentTarget.closest('svg')?.getBoundingClientRect();
+                    const x = e.clientX - (rect?.left || 0);
+                    const y = e.clientY - (rect?.top || 0);
+
+                    if (selectedState === stateName) {
+                      onStateSelect(null);
+                    } else {
+                      onStateSelect(stateName, { x, y });
+                    }
+                  }}
                 />
               );
             })

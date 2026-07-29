@@ -1,133 +1,3 @@
-// "use client";
-
-// import { useEffect, useRef } from "react";
-// import { Search } from "lucide-react";
-
-// interface Props {
-//   query: string;
-//   onChange: (value: string) => void;
-//   onSubmit: () => void;
-//   onClose: () => void;
-// }
-
-// export default function NavbarSearch({
-//   query,
-//   onChange,
-//   onSubmit,
-//   onClose,
-// }: Props) {
-//   const wrapperRef = useRef<HTMLDivElement>(null);
-//   const inputRef = useRef<HTMLInputElement>(null);
-
-//   // Close when clicking outside
-//   useEffect(() => {
-//     function handleClickOutside(e: MouseEvent) {
-//       if (
-//         wrapperRef.current &&
-//         !wrapperRef.current.contains(e.target as Node)
-//       ) {
-//         onClose();
-//       }
-//     }
-
-//     document.addEventListener("mousedown", handleClickOutside);
-
-//     return () => {
-//       document.removeEventListener("mousedown", handleClickOutside);
-//     };
-//   }, [onClose]);
-
-//   // Close on Escape
-//   useEffect(() => {
-//     function handleEscape(e: KeyboardEvent) {
-//       if (e.key === "Escape") {
-//         onClose();
-//         inputRef.current?.blur();
-//       }
-//     }
-
-//     window.addEventListener("keydown", handleEscape);
-
-//     return () => {
-//       window.removeEventListener("keydown", handleEscape);
-//     };
-//   }, [onClose]);
-
-//   function handleSubmit() {
-//     if (!query.trim()) return;
-
-//     onSubmit();
-
-//     inputRef.current?.blur();
-
-//     onClose();
-//   }
-
-//   return (
-//     <div
-//       ref={wrapperRef}
-//       className="relative w-full max-w-xl"
-//     >
-//       <input
-//         ref={inputRef}
-//         value={query}
-//         onChange={(e) => onChange(e.target.value)}
-//         onKeyDown={(e) => {
-//           if (e.key === "Enter") {
-//             handleSubmit();
-//           }
-//         }}
-//         placeholder="Search politicians, parties, constituencies..."
-//         className="
-//           h-11
-//           w-full
-//           rounded-full
-//           border
-//           border-slate-200
-//           bg-slate-50
-//           pl-11
-//           pr-12
-//           text-sm
-//           outline-none
-//           transition-all
-//           duration-200
-//           focus:border-blue-500
-//           focus:bg-white
-//           focus:ring-4
-//           focus:ring-blue-100
-//         "
-//       />
-
-//       <Search
-//         size={18}
-//         className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
-//       />
-
-//       <button
-//         onClick={handleSubmit}
-//         className="
-//           absolute
-//           right-1
-//           top-1
-//           flex
-//           h-9
-//           w-9
-//           items-center
-//           justify-center
-//           rounded-full
-//           bg-blue-600
-//           text-white
-//           transition
-//           hover:bg-blue-700
-//         "
-//       >
-//         <Search size={16} />
-//       </button>
-//     </div>
-//   );
-// }
-
-
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -204,7 +74,8 @@ export default function NavbarSearch() {
       );
     };
   }, []);
-    return (
+
+  return (
     <div
       ref={wrapperRef}
       className="relative w-full max-w-xl"
@@ -224,24 +95,26 @@ export default function NavbarSearch() {
           w-full
           rounded-full
           border
-          border-slate-200
-          bg-slate-50
+          border-white/10
+          bg-[#101827]
           pl-11
           pr-12
           text-sm
+          text-white
+          placeholder-gray-500
           outline-none
           transition-all
           duration-200
           focus:border-blue-500
-          focus:bg-white
+          focus:bg-[#101827]
           focus:ring-4
-          focus:ring-blue-100
+          focus:ring-blue-500/20
         "
       />
 
       <Search
         size={18}
-        className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
+        className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"
       />
 
       <button
@@ -259,7 +132,7 @@ export default function NavbarSearch() {
           bg-blue-600
           text-white
           transition
-          hover:bg-blue-700
+          hover:bg-blue-500
         "
       >
         <Search size={16} />
