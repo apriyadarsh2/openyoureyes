@@ -40,6 +40,7 @@ export default function IndiaMap({ yearData, selectedState, onStateSelect }: Pro
         width={800}  
         height={800} 
         projectionConfig={{
+          scale: 1100, 
           center: [82.5, 20.5], 
         }}
         style={{
