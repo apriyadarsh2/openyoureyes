@@ -1,24 +1,21 @@
-
-
 import { Scale, GraduationCap, IndianRupee, Landmark } from "lucide-react";
 import { SnapshotData } from "../types/leaderboard";
 
 interface Props {
   year: number;
   data: SnapshotData | undefined;
-  mapData?: any; // Map data prop to calculate year's total/avg crime rate
+  mapData?: any;
 }
 
 export default function SnapshotPanel({ year, data, mapData }: Props) {
   if (!data) {
     return (
-      <div className="mt-12 p-4 rounded-xl flex items-center justify-center h-48 bg-[#1F2937] border border-white/10">
+      <div className="p-4 rounded-xl flex items-center justify-center h-48 bg-[#1F2937] border border-white/10">
         <p className="text-gray-400 text-sm font-medium">No snapshot data available for {year}</p>
       </div>
     );
   }
 
-  // LOGIC: Us year ka National Average Crime Rate calculate karna
   let totalCrimeRate = 0;
   let stateCount = 0;
 
@@ -33,7 +30,6 @@ export default function SnapshotPanel({ year, data, mapData }: Props) {
 
   const avgCrimeRate = stateCount > 0 ? (totalCrimeRate / stateCount) : 0;
 
-  // Categories mapped - Increased icon size to 24
   const items = [
     { 
       title: "National Crime Rate", 
@@ -61,8 +57,9 @@ export default function SnapshotPanel({ year, data, mapData }: Props) {
   ];
 
   return (
-    <div className="flex flex-col mt-12 px-2">
-      <div className="mb-5 pl-2">
+    <div className="flex flex-col px-2 w-full">
+      
+      <div className="mb-4 pl-2">
         <h2 className="text-2xl font-black text-white">Political Overview {year}</h2>
         <p className="text-[11px] font-bold text-gray-400 uppercase tracking-widest mt-1">
           Key National Highlights
@@ -73,10 +70,8 @@ export default function SnapshotPanel({ year, data, mapData }: Props) {
         {items.map((item, idx) => (
           <div 
             key={idx} 
-            // Changed from border-l-4 to border-l-[3px] for a more elegant line
             className={`flex items-center gap-4 bg-[#1F2937] p-3.5 rounded-xl border border-white/10 border-l-[3px] ${item.accentBorder} transition-all duration-300 shadow-sm`}
           >
-            {/* Set fixed 52x52px box and centered the icon */}
             <div className="w-[52px] h-[52px] flex items-center justify-center bg-[#101827] rounded-lg border border-white/10 flex-shrink-0">
               {item.icon}
             </div>
