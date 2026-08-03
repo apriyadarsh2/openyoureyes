@@ -1,22 +1,17 @@
-
-
 @import "tailwindcss";
+@config "../tailwind.config.ts"; /* 👈 Changed from ../../ to ../ */
 
 :root {
-  --background: #101827;      /* Softer slate-charcoal canvas */
-  --foreground: #F4F4F5;      /* Crisp off-white primary text */
-
-  --card: #282D3D;            /* Lighter, comfortable panel surface */
-  --border: #3E445B;          /* Soft border stroke */
-
-  --primary: #4F46E5;         /* Deep indigo accent */
+  --background: #101827;      
+  --foreground: #F4F4F5;      
+  --card: #282D3D;            
+  --border: #3E445B;          
+  --primary: #4F46E5;         
   --primary-dark: #4338CA;
-
   --success: #22C55E;
   --danger: #EF4444;
   --warning: #F59E0B;
-
-  --muted: #94A3B8;           /* Balanced secondary text */
+  --muted: #94A3B8;           
 }
 
 html {

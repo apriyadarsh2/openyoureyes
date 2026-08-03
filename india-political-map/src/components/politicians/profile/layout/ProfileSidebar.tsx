@@ -61,8 +61,8 @@ export default function ProfileSidebar() {
   const { id } = useParams();
 
   return (
-    <nav className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-      <h3 className="mb-6 text-lg font-bold">
+    <nav className="rounded-2xl border border-politic-border bg-politic-card p-5 shadow-lg">
+      <h3 className="mb-6 text-lg font-bold text-politic-text">
         Navigation
       </h3>
 
@@ -80,10 +80,10 @@ export default function ProfileSidebar() {
             <Link
               key={href}
               href={href}
-              className={`flex items-center gap-3 rounded-xl px-4 py-3 transition-all duration-200 ${
+              className={`flex items-center gap-3 rounded-xl px-4 py-3 transition-all duration-200 font-medium ${
                 active
-                  ? "bg-blue-600 text-white shadow-md"
-                  : "hover:bg-slate-100"
+                  ? "bg-politic-base text-politic-accent border border-politic-border shadow-md"
+                  : "text-politic-muted hover:bg-white/5 hover:text-politic-text"
               }`}
             >
               <Icon size={18} />

@@ -13,8 +13,8 @@ export default function InfoPanel({ data }: Props) {
   return (
     <div className="space-y-3">
       {/* National Govt Hero Card */}
-      <div className="bg-[#1F2937] rounded-2xl border border-white/10 p-4 shadow-sm">
-        <div className="text-[11px] font-bold text-gray-400 mb-1 uppercase tracking-widest">
+      <div className="bg-politic-card rounded-2xl border border-white/10 p-4 shadow-sm">
+        <div className="text-[11px] font-bold text-politic-muted mb-1 uppercase tracking-widest">
           National Govt
         </div>
         <div className="text-xl font-black text-white">{nat.pm}</div>
@@ -26,20 +26,20 @@ export default function InfoPanel({ data }: Props) {
           >
             {nat.party}
           </span>
-          <span className="text-xs font-semibold text-gray-400">{nat.loksabha}</span>
+          <span className="text-xs font-semibold text-politic-muted">{nat.loksabha}</span>
         </div>
 
         {nat.gdpGrowth !== undefined && (
           <div className="mt-3 grid grid-cols-2 gap-2">
-            <div className="bg-[#101827] p-2 rounded-lg border border-white/10">
-              <div className="text-[10px] font-bold text-gray-400 uppercase">GDP Growth</div>
+            <div className="bg-politic-card-dark p-2 rounded-lg border border-white/10">
+              <div className="text-[10px] font-bold text-politic-muted uppercase">GDP Growth</div>
               <div className={`text-sm font-black ${nat.gdpGrowth >= 0 ? "text-green-400" : "text-red-400"}`}>
                 {nat.gdpGrowth > 0 ? "+" : ""}{nat.gdpGrowth}%
               </div>
             </div>
             {nat.population && (
-              <div className="bg-[#101827] p-2 rounded-lg border border-white/10">
-                <div className="text-[10px] font-bold text-gray-400 uppercase">Population</div>
+              <div className="bg-politic-card-dark p-2 rounded-lg border border-white/10">
+                <div className="text-[10px] font-bold text-politic-muted uppercase">Population</div>
                 <div className="text-sm font-black text-white">~{nat.population}M</div>
               </div>
             )}

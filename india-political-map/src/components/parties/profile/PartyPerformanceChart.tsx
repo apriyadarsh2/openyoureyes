@@ -145,7 +145,7 @@ export default function PartyPerformanceChart({
             <Line
               yAxisId="right"
               type="monotone"
-              dataKey="vote_share"
+              dataKey="votes_pct"
               name="Vote share"
               stroke={lineChartColor}
               strokeWidth={2.5}

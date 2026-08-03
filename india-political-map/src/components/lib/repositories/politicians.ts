@@ -12,7 +12,7 @@ import {
 const response =
   ENDPOINTS.politicians as PoliticianSearchResponse;
 
-export function getPoliticians(): Politician[] {
+export function getPoliticians(): Politician[] { 
   return response.results;
 }
 

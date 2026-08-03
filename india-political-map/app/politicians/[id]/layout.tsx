@@ -46,5 +46,5 @@ export default async function PoliticianLayout({
       </ProfileLayout>
 
     </PoliticianProvider>
-  );
+  ); 
 }

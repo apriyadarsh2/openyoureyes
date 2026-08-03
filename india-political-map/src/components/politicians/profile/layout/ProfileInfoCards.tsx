@@ -20,59 +20,40 @@ export default function ProfileInfoCards({
   profile,
 }: Props) {
   const age = profile?.dob
-    ? new Date().getFullYear() -
-      new Date(profile.dob).getFullYear()
+    ? new Date().getFullYear() - new Date(profile.dob).getFullYear()
     : summary.age ?? "—";
 
-  const profession =
-    summary.profession ?? "Not Available";
-
-  const education =
-    profile?.education_level ??
-    summary.education ??
-    "Not Available";
-
-  const gender =
-    profile?.sex === "M"
-      ? "Male"
-      : profile?.sex === "F"
-      ? "Female"
-      : "—";
+  const profession = summary.profession ?? "Not Available";
+  const education = profile?.education_level ?? summary.education ?? "Not Available";
+  const gender = profile?.sex === "M" ? "Male" : profile?.sex === "F" ? "Female" : "—";
 
   return (
-    <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-
+    <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
       <InfoCard
-        icon={<CalendarDays size={22} />}
+        icon={<CalendarDays className="h-4 w-4 sm:h-5 sm:w-5" />}
         title="Date of Birth"
         value={
           profile?.dob
-            ? new Date(
-                profile.dob
-              ).toLocaleDateString("en-IN")
+            ? new Date(profile.dob).toLocaleDateString("en-IN")
             : "—"
         }
         subtitle={`Age ${age}`}
       />
-
       <InfoCard
-        icon={<User size={22} />}
+        icon={<User className="h-4 w-4 sm:h-5 sm:w-5" />}
         title="Gender"
         value={gender}
       />
-
       <InfoCard
-        icon={<GraduationCap size={22} />}
+        icon={<GraduationCap className="h-4 w-4 sm:h-5 sm:w-5" />}
         title="Education"
         value={education}
       />
-
       <InfoCard
-        icon={<Briefcase size={22} />}
+        icon={<Briefcase className="h-4 w-4 sm:h-5 sm:w-5" />}
         title="Profession"
         value={profession}
       />
-
     </div>
   );
 }
@@ -84,33 +65,28 @@ interface CardProps {
   subtitle?: string;
 }
 
-function InfoCard({
-  icon,
-  title,
-  value,
-  subtitle,
-}: CardProps) {
+function InfoCard({ icon, title, value, subtitle }: CardProps) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-
-      <div className="mb-5 inline-flex rounded-xl bg-blue-50 p-3 text-blue-600">
+    <div className="group flex flex-col justify-between rounded-2xl border border-politic-border bg-politic-card p-3 sm:p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-politic-accent/50 hover:shadow-lg">
+      
+      <div className="mb-2.5 sm:mb-4 inline-flex self-start rounded-xl border border-politic-border bg-politic-inner p-2 sm:p-2.5 text-politic-accent transition-transform duration-300 group-hover:scale-110">
         {icon}
       </div>
-
-      <p className="text-sm text-slate-500">
-        {title}
-      </p>
-
-      <h3 className="mt-2 text-lg font-semibold">
-        {value}
-      </h3>
-
-      {subtitle && (
-        <p className="mt-1 text-sm text-slate-500">
-          {subtitle}
+      
+      <div>
+        <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-politic-muted lg:text-xs">
+          {title}
         </p>
-      )}
-
+        <h3 className="mt-1 line-clamp-2 text-sm sm:text-base font-bold leading-tight text-politic-text lg:text-lg">
+          {value}
+        </h3>
+        {subtitle && (
+          <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs font-medium text-politic-muted">
+            {subtitle}
+          </p>
+        )}
+      </div>
+      
     </div>
   );
 }

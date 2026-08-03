@@ -118,7 +118,7 @@ export interface PartyElectionResult {
 
   total_seats: number;
 
-  vote_share: number;
+  votes_pct: number;
 
   strike_rate: number;
 

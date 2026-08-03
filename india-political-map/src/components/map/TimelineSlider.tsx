@@ -1,6 +1,4 @@
 
-
-
 "use client";
 import { useEffect, useRef, useState } from "react";
 
@@ -47,6 +45,7 @@ export default function TimelineSlider({ year, setYear }: Props) {
     <div className="w-full flex flex-col gap-1.5">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
+          {/* Play/Pause Button - Using internal dynamic color */}
           <button
             onClick={() => setPlaying(!playing)}
             className="w-6 h-6 rounded-full text-white flex items-center justify-center text-[10px] font-bold shadow-sm transition-transform hover:scale-105"
@@ -56,7 +55,8 @@ export default function TimelineSlider({ year, setYear }: Props) {
           </button>
           
           <div className="flex items-baseline gap-2">
-            <span className="text-xl font-black text-white tracking-tight leading-none">{year}</span>
+            <span className="text-xl font-black text-politic-text tracking-tight leading-none">{year}</span>
+            {/* Era Badge - Using internal dynamic color */}
             <span
               className="text-[9px] font-bold px-1.5 py-0.5 rounded text-white uppercase tracking-wider leading-none shadow-sm"
               style={{ background: currentEra.color }}
@@ -67,15 +67,17 @@ export default function TimelineSlider({ year, setYear }: Props) {
         </div>
 
         <div className="flex gap-1.5">
+          {/* Prev Button - Updated to global classes */}
           <button
             onClick={() => setYear(Math.max(1947, year - 1))}
-            className="w-5 h-5 bg-[#101827] border border-white/10 rounded flex items-center justify-center text-[10px] text-gray-300 hover:text-white hover:bg-white/10 transition-colors"
+            className="w-5 h-5 bg-politic-base border border-politic-border rounded flex items-center justify-center text-[10px] text-politic-muted hover:text-politic-text hover:bg-white/10 transition-colors"
           >
             ◀
           </button>
+          {/* Next Button - Updated to global classes */}
           <button
-            onClick={() => setYear(Math.min(2026, year + 1))}
-            className="w-5 h-5 bg-[#101827] border border-white/10 rounded flex items-center justify-center text-[10px] text-gray-300 hover:text-white hover:bg-white/10 transition-colors"
+            onClick={() => setYear(Math.max(2026, year + 1))}
+            className="w-5 h-5 bg-politic-base border border-politic-border rounded flex items-center justify-center text-[10px] text-politic-muted hover:text-politic-text hover:bg-white/10 transition-colors"
           >
             ▶
           </button>
@@ -83,13 +85,14 @@ export default function TimelineSlider({ year, setYear }: Props) {
       </div>
 
       <div className="relative pt-0.5">
+        {/* Slider Input - Gradient untouched, base color updated */}
         <input
           type="range"
           min="1947"
           max="2026"
           value={year}
           onChange={(e) => setYear(Number(e.target.value))}
-          className="w-full h-1.5 rounded-full cursor-pointer appearance-none bg-[#101827]"
+          className="w-full h-1.5 rounded-full cursor-pointer appearance-none bg-politic-base"
           style={{ background: `linear-gradient(to right, ${currentEra.color} ${pct}%, #101827 ${pct}%)` }}
         />
       </div>

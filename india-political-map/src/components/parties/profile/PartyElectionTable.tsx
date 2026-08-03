@@ -137,7 +137,7 @@
 //                 </td>
 
 //                 <td className="px-6 py-5 text-center">
-//                   {row.vote_share.toFixed(2)}%
+//                   {row.votes_pct.toFixed(2)}%
 //                 </td>
 
 //                 <td className="px-6 py-5 text-center">
@@ -298,7 +298,7 @@ export default function PartyElectionTable({
                 </td>
 
                 <td className="px-4 py-3 text-center text-slate-700">
-                  {row.vote_share.toFixed(2)}%
+                  {row.votes_pct.toFixed(2)}%
                 </td>
 
                 <td className="px-4 py-3 text-center text-slate-700">

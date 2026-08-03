@@ -193,115 +193,298 @@
     ]
   },
 
-  "GET /api/v1/politicians/a1b2c3d4-0001-0001-0001-000000000001": {
-    "id": "a1b2c3d4-0001-0001-0001-000000000001",
-    "name_en": "NARAYAN PRASAD SINGH",
-    "name_hi": "नारायण प्रसाद सिंह",
-    "dob": "1958-03-12",
-    "sex": "M",
-    "education_level": "Post Graduate",
-    "education_detail": "M.A. Political Science, BHU 1982",
-    "elections": [
-      { 
-        "candidacy_id": 101,
-        "election": { "id": 3, "year": 2009, "lok_sabha_no": 15, "election_type": "GENERAL" },
-        "constituency": { "id": 1, "name_en": "Varanasi", "state": "Uttar Pradesh" },
-        "party": { "id": 1, "abbreviation": "BJP" },
-        "age_at_election": 51,
-        "result": {
-          "votes": 212182, "votes_pct": 48.3, "winner": true,
-          "margin": 17834, "total_valid_votes": 439168, "poll_pct": 43.4
-        },
-        "assets": {
-          "total_assets_inr": 24500000, "total_liabilities_inr": 1200000,
-          "net_assets_inr": 23300000, "movable_assets_inr": 8200000,
-          "immovable_assets_inr": 16300000, "cash_inr": 480000
-        },
-        "criminal_cases_count": 0, "serious_cases_count": 0
-      },
-      {
-        "candidacy_id": 201,
-        "election": { "id": 4, "year": 2014, "lok_sabha_no": 16, "election_type": "GENERAL" },
-        "constituency": { "id": 1, "name_en": "Varanasi", "state": "Uttar Pradesh" },
-        "party": { "id": 1, "abbreviation": "BJP" },
-        "age_at_election": 56,
-        "result": {
-          "votes": 581022, "votes_pct": 77.1, "winner": true,
-          "margin": 371784, "total_valid_votes": 753318, "poll_pct": 42.9
-        },
-        "assets": {
-          "total_assets_inr": 48200000, "total_liabilities_inr": 3100000,
-          "net_assets_inr": 45100000, "movable_assets_inr": 14200000,
-          "immovable_assets_inr": 34000000, "cash_inr": 920000
-        },
-        "criminal_cases_count": 2, "serious_cases_count": 1
-      },
-      {
-        "candidacy_id": 301,
-        "election": { "id": 5, "year": 2019, "lok_sabha_no": 17, "election_type": "GENERAL" },
-        "constituency": { "id": 1, "name_en": "Varanasi", "state": "Uttar Pradesh" },
-        "party": { "id": 1, "abbreviation": "BJP" },
-        "age_at_election": 61,
-        "result": {
-          "votes": 674664, "votes_pct": 63.6, "winner": true,
-          "margin": 479505, "total_valid_votes": 1060534, "poll_pct": 61.0
-        },
-        "assets": {
-          "total_assets_inr": 78400000, "total_liabilities_inr": 6200000,
-          "net_assets_inr": 72200000, "movable_assets_inr": 24100000,
-          "immovable_assets_inr": 54300000, "cash_inr": 1800000
-        },
-        "criminal_cases_count": 3, "serious_cases_count": 1
-      },
-      {
-        "candidacy_id": 401,
-        "election": { "id": 6, "year": 2024, "lok_sabha_no": 18, "election_type": "GENERAL" },
-        "constituency": { "id": 1, "name_en": "Varanasi", "state": "Uttar Pradesh" },
-        "party": { "id": 1, "abbreviation": "BJP" },
-        "age_at_election": 66,
-        "result": {
-          "votes": 612340, "votes_pct": 54.2, "winner": true,
-          "margin": 152320, "total_valid_votes": 1129210, "poll_pct": 58.8
-        },
-        "assets": {
-          "total_assets_inr": 124800000, "total_liabilities_inr": 9800000,
-          "net_assets_inr": 115000000, "movable_assets_inr": 38200000,
-          "immovable_assets_inr": 86600000, "cash_inr": 2800000
-        },
-        "criminal_cases_count": 4, "serious_cases_count": 1
-      }
+  "GET /api/v1/politicians/a1b2c3d4-0001-0001-0001-000000000001":{
+  "id": "a1b2c3d4-0001-0001-0001-000000000001",
+  "name_en": "NARAYAN PRASAD SINGH",
+  "name_hi": "नारायण प्रसाद सिंह",
+  "photo_url": null,
+  "dob": "1958-03-12",
+  "sex": "M",
+  "education_level": "Post Graduate",
+  "education_detail": "M.A. Political Science, BHU 1982",
+  "profession": "Agriculturist",
+  "current_term": {
+    "party": {
+      "id": 1,
+      "abbreviation": "BJP",
+      "name_en": "Bharatiya Janata Party",
+      "color": "#FF9933"
+    },
+    "house": "Lok Sabha",
+    "term_no": 18,
+    "constituency": {
+      "id": 1,
+      "name_en": "Varanasi",
+      "state": "Uttar Pradesh"
+    },
+    "start_year": 2024,
+    "status": "INCUMBENT"
+  },
+  "career_summary": {
+    "total_contests": 5,
+    "total_wins": 4,
+    "parties_count": 2,
+    "constituencies_count": 2,
+    "span": "2004–2024",
+    "badges": [
+      "Party Switcher",
+      "Constituency Hopper"
     ],
-    "mplads": [
-      { "fy_start": 2015, "funds_released_lakh": 500, "funds_utilised_lakh": 492.3, "utilisation_pct": 98.46, "works_sanctioned": 48 },
-      { "fy_start": 2016, "funds_released_lakh": 500, "funds_utilised_lakh": 487.8, "utilisation_pct": 97.56, "works_sanctioned": 52 },
-      { "fy_start": 2017, "funds_released_lakh": 500, "funds_utilised_lakh": 498.2, "utilisation_pct": 99.64, "works_sanctioned": 61 },
-      { "fy_start": 2018, "funds_released_lakh": 500, "funds_utilised_lakh": 412.4, "utilisation_pct": 82.48, "works_sanctioned": 38 },
-      { "fy_start": 2020, "funds_released_lakh": 250, "funds_utilised_lakh": 241.8, "utilisation_pct": 96.72, "works_sanctioned": 22 },
-      { "fy_start": 2021, "funds_released_lakh": 500, "funds_utilised_lakh": 489.6, "utilisation_pct": 97.92, "works_sanctioned": 55 },
-      { "fy_start": 2022, "funds_released_lakh": 500, "funds_utilised_lakh": 501.2, "utilisation_pct": 100.24, "works_sanctioned": 58 },
-      { "fy_start": 2023, "funds_released_lakh": 500, "funds_utilised_lakh": 478.9, "utilisation_pct": 95.78, "works_sanctioned": 49 }
-    ],
-    "court_cases": [
+    "breakdown": [
       {
-        "case_id_source": "JD/UP/2012/CR/00428", "court": "Sessions Court Varanasi",
-        "state": "Uttar Pradesh", "year_filed": 2012,
-        "ipc_sections": ["302", "34"], "case_type": "Criminal", "status": "PENDING",
-        "oer_attribution": "Data: justice_data project (ODbL)"
+        "category": "Lok Sabha",
+        "contests": 4,
+        "won": 4
       },
       {
-        "case_id_source": "JD/UP/2010/CR/01102", "court": "CJM Varanasi",
-        "state": "Uttar Pradesh", "year_filed": 2010,
-        "ipc_sections": ["420", "120B"], "case_type": "Criminal", "status": "PENDING",
-        "oer_attribution": "Data: justice_data project (ODbL)"
-      },
-      {
-        "case_id_source": "JD/UP/2018/CR/00234", "court": "Sessions Court Varanasi",
-        "state": "Uttar Pradesh", "year_filed": 2018,
-        "ipc_sections": ["147", "148"], "case_type": "Criminal", "status": "PENDING",
-        "oer_attribution": "Data: justice_data project (ODbL)"
+        "category": "State Assembly",
+        "contests": 1,
+        "won": 0
       }
     ]
   },
+  "elections": [
+    {
+      "candidacy_id": 1,
+      "election": {
+        "id": 1,
+        "year": 2004,
+        "category": "AE",
+        "house": "State Assembly",
+        "election_type": "GENERAL"
+      },
+      "party": {
+        "id": 5,
+        "abbreviation": "INC",
+        "name_en": "Indian National Congress",
+        "color": "#19A7FF"
+      },
+      "constituency": {
+        "id": 10,
+        "name_en": "Gorakhpur Urban",
+        "state": "Uttar Pradesh"
+      },
+      "age_at_election": 46,
+      "result": {
+        "winner": false,
+        "rank": 4,
+        "position_display": "#4",
+        "votes": 12450,
+        "votes_pct": 8.5,
+        "margin": 45000,
+        "total_valid_votes": 146470,
+        "turnout": 52.1
+      },
+      "assets": {
+        "total_assets_inr": 9000000,
+        "total_liabilities_inr": 400000,
+        "net_assets_inr": 8600000
+      },
+      "criminal_cases_count": 0,
+      "serious_cases_count": 0
+    },
+    {
+      "candidacy_id": 101,
+      "election": {
+        "id": 3,
+        "year": 2009,
+        "category": "GE",
+        "house": "Lok Sabha",
+        "election_type": "GENERAL"
+      },
+      "party": {
+        "id": 1,
+        "abbreviation": "BJP",
+        "name_en": "Bharatiya Janata Party",
+        "color": "#FF9933"
+      },
+      "constituency": {
+        "id": 1,
+        "name_en": "Varanasi",
+        "state": "Uttar Pradesh"
+      },
+      "age_at_election": 51,
+      "result": {
+        "winner": true,
+        "rank": 1,
+        "position_display": "Won",
+        "votes": 212182,
+        "votes_pct": 48.3,
+        "margin": 17834,
+        "total_valid_votes": 439168,
+        "turnout": 43.4
+      },
+      "assets": {
+        "total_assets_inr": 24500000,
+        "total_liabilities_inr": 1200000,
+        "net_assets_inr": 23300000
+      },
+      "criminal_cases_count": 0,
+      "serious_cases_count": 0
+    },
+    {
+      "candidacy_id": 201,
+      "election": {
+        "id": 4,
+        "year": 2014,
+        "category": "GE",
+        "house": "Lok Sabha",
+        "election_type": "GENERAL"
+      },
+      "party": {
+        "id": 1,
+        "abbreviation": "BJP",
+        "name_en": "Bharatiya Janata Party",
+        "color": "#FF9933"
+      },
+      "constituency": {
+        "id": 1,
+        "name_en": "Varanasi",
+        "state": "Uttar Pradesh"
+      },
+      "age_at_election": 56,
+      "result": {
+        "winner": true,
+        "rank": 1,
+        "position_display": "Won",
+        "votes": 581022,
+        "votes_pct": 77.1,
+        "margin": 371784,
+        "total_valid_votes": 753318,
+        "turnout": 42.9
+      },
+      "assets": {
+        "total_assets_inr": 48200000,
+        "total_liabilities_inr": 3100000,
+        "net_assets_inr": 45100000
+      },
+      "criminal_cases_count": 2,
+      "serious_cases_count": 1
+    },
+    {
+      "candidacy_id": 301,
+      "election": {
+        "id": 5,
+        "year": 2019,
+        "category": "GE",
+        "house": "Lok Sabha",
+        "election_type": "GENERAL"
+      },
+      "party": {
+        "id": 1,
+        "abbreviation": "BJP",
+        "name_en": "Bharatiya Janata Party",
+        "color": "#FF9933"
+      },
+      "constituency": {
+        "id": 1,
+        "name_en": "Varanasi",
+        "state": "Uttar Pradesh"
+      },
+      "age_at_election": 61,
+      "result": {
+        "winner": true,
+        "rank": 1,
+        "position_display": "Won",
+        "votes": 674664,
+        "votes_pct": 63.6,
+        "margin": 479505,
+        "total_valid_votes": 1060534,
+        "turnout": 61.0
+      },
+      "assets": {
+        "total_assets_inr": 78400000,
+        "total_liabilities_inr": 6200000,
+        "net_assets_inr": 72200000
+      },
+      "criminal_cases_count": 3,
+      "serious_cases_count": 1
+    },
+    {
+      "candidacy_id": 401,
+      "election": {
+        "id": 6,
+        "year": 2024,
+        "category": "GE",
+        "house": "Lok Sabha",
+        "election_type": "GENERAL"
+      },
+      "party": {
+        "id": 1,
+        "abbreviation": "BJP",
+        "name_en": "Bharatiya Janata Party",
+        "color": "#FF9933"
+      },
+      "constituency": {
+        "id": 1,
+        "name_en": "Varanasi",
+        "state": "Uttar Pradesh"
+      },
+      "age_at_election": 66,
+      "result": {
+        "winner": true,
+        "rank": 1,
+        "position_display": "Won",
+        "votes": 612340,
+        "votes_pct": 54.2,
+        "margin": 152320,
+        "total_valid_votes": 1129210,
+        "turnout": 58.8
+      },
+      "assets": {
+        "total_assets_inr": 124800000,
+        "total_liabilities_inr": 9800000,
+        "net_assets_inr": 115000000
+      },
+      "criminal_cases_count": 4,
+      "serious_cases_count": 1
+    }
+  ],
+  "mplads": [
+    { "fy_start": 2015, "funds_released_lakh": 500, "funds_utilised_lakh": 492.3, "utilisation_pct": 98.46, "works_sanctioned": 48 },
+    { "fy_start": 2016, "funds_released_lakh": 500, "funds_utilised_lakh": 487.8, "utilisation_pct": 97.56, "works_sanctioned": 52 },
+    { "fy_start": 2017, "funds_released_lakh": 500, "funds_utilised_lakh": 498.2, "utilisation_pct": 99.64, "works_sanctioned": 61 },
+    { "fy_start": 2018, "funds_released_lakh": 500, "funds_utilised_lakh": 412.4, "utilisation_pct": 82.48, "works_sanctioned": 38 },
+    { "fy_start": 2020, "funds_released_lakh": 250, "funds_utilised_lakh": 241.8, "utilisation_pct": 96.72, "works_sanctioned": 22 },
+    { "fy_start": 2021, "funds_released_lakh": 500, "funds_utilised_lakh": 489.6, "utilisation_pct": 97.92, "works_sanctioned": 55 },
+    { "fy_start": 2022, "funds_released_lakh": 500, "funds_utilised_lakh": 501.2, "utilisation_pct": 100.24, "works_sanctioned": 58 },
+    { "fy_start": 2023, "funds_released_lakh": 500, "funds_utilised_lakh": 478.9, "utilisation_pct": 95.78, "works_sanctioned": 49 }
+  ],
+  "court_cases": [
+    {
+      "case_id_source": "JD/UP/2012/CR/00428",
+      "court": "Sessions Court Varanasi",
+      "state": "Uttar Pradesh",
+      "year_filed": 2012,
+      "ipc_sections": ["302", "34"],
+      "case_type": "Criminal",
+      "status": "PENDING",
+      "oer_attribution": "Data: justice_data project (ODbL)"
+    },
+    {
+      "case_id_source": "JD/UP/2010/CR/01102",
+      "court": "CJM Varanasi",
+      "state": "Uttar Pradesh",
+      "year_filed": 2010,
+      "ipc_sections": ["420", "120B"],
+      "case_type": "Criminal",
+      "status": "PENDING",
+      "oer_attribution": "Data: justice_data project (ODbL)"
+    },
+    {
+      "case_id_source": "JD/UP/2018/CR/00234",
+      "court": "Sessions Court Varanasi",
+      "state": "Uttar Pradesh",
+      "year_filed": 2018,
+      "ipc_sections": ["147", "148"],
+      "case_type": "Criminal",
+      "status": "PENDING",
+      "oer_attribution": "Data: justice_data project (ODbL)"
+    }
+  ]
+},
+ 
+ 
 
   "GET /api/v1/politicians/a1b2c3d4-0007-0007-0007-000000000007": {
     "id": "a1b2c3d4-0007-0007-0007-000000000007",
@@ -794,7 +977,7 @@
     "contested": 229,
     "won": 2,
     "total_seats": 541,
-    "vote_share": 7.40,
+    "votes_pct": 7.40,
     "strike_rate": 0.9,
     "outcome": "Opposition"
   },
@@ -805,7 +988,7 @@
     "contested": 225,
     "won": 85,
     "total_seats": 545,
-    "vote_share": 11.36,
+    "votes_pct": 11.36,
     "strike_rate": 37.8,
     "outcome": "Outside Support"
   },
@@ -816,7 +999,7 @@
     "contested": 477,
     "won": 120,
     "total_seats": 545,
-    "vote_share": 20.07,
+    "votes_pct": 20.07,
     "strike_rate": 25.2,
     "outcome": "Opposition"
   },
@@ -827,7 +1010,7 @@
     "contested": 471,
     "won": 161,
     "total_seats": 545,
-    "vote_share": 20.29,
+    "votes_pct": 20.29,
     "strike_rate": 34.2,
     "outcome": "Government"
   },
@@ -838,7 +1021,7 @@
     "contested": 388,
     "won": 182,
     "total_seats": 545,
-    "vote_share": 25.59,
+    "votes_pct": 25.59,
     "strike_rate": 46.9,
     "outcome": "Government"
   },
@@ -849,7 +1032,7 @@
     "contested": 339,
     "won": 182,
     "total_seats": 545,
-    "vote_share": 23.75,
+    "votes_pct": 23.75,
     "strike_rate": 53.7,
     "outcome": "Government"
   },
@@ -860,7 +1043,7 @@
     "contested": 364,
     "won": 138,
     "total_seats": 543,
-    "vote_share": 22.16,
+    "votes_pct": 22.16,
     "strike_rate": 37.9,
     "outcome": "Opposition"
   },
@@ -871,7 +1054,7 @@
     "contested": 433,
     "won": 116,
     "total_seats": 543,
-    "vote_share": 18.80,
+    "votes_pct": 18.80,
     "strike_rate": 26.8,
     "outcome": "Opposition"
   },
@@ -882,7 +1065,7 @@
     "contested": 428,
     "won": 282,
     "total_seats": 543,
-    "vote_share": 31.34,
+    "votes_pct": 31.34,
     "strike_rate": 65.9,
     "outcome": "Government"
   },
@@ -893,7 +1076,7 @@
     "contested": 436,
     "won": 303,
     "total_seats": 543,
-    "vote_share": 37.82,
+    "votes_pct": 37.82,
     "strike_rate": 69.5,
     "outcome": "Government"
   },
@@ -904,7 +1087,7 @@
     "contested": 441,
     "won": 240,
     "total_seats": 543,
-    "vote_share": 37.02,
+    "votes_pct": 37.02,
     "strike_rate": 54.4,
     "outcome": "Government"
   }
@@ -919,7 +1102,7 @@
          "year":1984,
          "leader":"Atal Bihari Vajpayee",
          "won":2,
-         "vote_share":"7.74%",
+         "votes_pct":"7.74%",
          "outcome":"Opposition"
       },
 
@@ -927,7 +1110,7 @@
          "year":1989,
          "leader":"L. K. Advani",
          "won":85,
-         "vote_share":"11.36%",
+         "votes_pct":"11.36%",
          "outcome":"Outside Support"
       }
   ]

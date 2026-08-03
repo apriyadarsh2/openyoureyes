@@ -12,42 +12,31 @@ export default function ProfileLayout({
   children,
 }: Props) {
   return (
-    <main className="min-h-screen bg-slate-100">
-
-      {/* Sticky Header */}
-
-      <div className="sticky top-0 z-50">
+    <main className="min-h-screen bg-politic-base text-politic-text">
+      
+      {/* Top Header */}
+      <div className="relative z-20 w-full shadow-sm">
         {hero}
       </div>
 
-      <div className="mx-auto flex max-w-7xl gap-8 px-6 py-8">
+      {/* Main Content Area */}
+      <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-6 lg:flex-row lg:gap-8 lg:px-6 lg:py-8">
 
         {/* Sidebar */}
-
-        <aside className="hidden w-72 shrink-0 xl:block">
-
-          <div className="sticky top-32">
-
+        <aside className="hidden w-64 shrink-0 lg:block xl:w-72">
+          <div className="sticky top-24">
             {sidebar}
-
           </div>
-
         </aside>
 
-        {/* Main */}
-
-        <div className="flex-1">
-
-          <div className="space-y-10">
-
+        {/* Main Section */}
+        <div className="min-w-0 flex-1">
+          <div className="space-y-6 lg:space-y-10">
             {children}
-
           </div>
-
         </div>
 
       </div>
-
     </main>
   );
 }

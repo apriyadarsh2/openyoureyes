@@ -1,15 +1,14 @@
+"use client";
+
 import {
+  Trophy,
   Wallet,
   Scale,
-  Trophy,
-  Vote,
-  MapPin,
+  CalendarDays,
+  GraduationCap,
+  MapPinned,
   Landmark,
 } from "lucide-react";
-import ProfileInfoCards from "./ProfileInfoCards";
-import CareerSummary from "../career/CareerSummary";
-
-import KPICard from "../kpi/KPICard";
 
 import {
   Politician,
@@ -25,24 +24,33 @@ export default function ProfileHero({
   summary,
   profile,
 }: Props) {
-  const elections = profile?.elections ?? [];
 
-  const wins = elections.filter(
-    election => election.result.winner
-  ).length;
+  const elections =
+    profile?.elections ?? [];
+
+  const wins =
+    elections.filter(
+      e => e.result.winner
+    ).length;
+
+  const age = profile?.dob
+    ? new Date().getFullYear() -
+      new Date(profile.dob).getFullYear()
+    : "-";
 
   return (
-    <div className="space-y-8">
 
-      {/* Hero Header */}
+    <section className="overflow-hidden rounded-3xl border border-politic-border bg-politic-card shadow-sm">
 
-      <div className="rounded-3xl bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 p-8 text-white shadow-xl">
+      {/* TOP */}
+
+      <div className="bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 px-8 py-10 text-white">
 
         <div className="flex flex-col gap-8 lg:flex-row lg:items-center">
 
           {/* Avatar */}
 
-          <div className="flex h-32 w-32 items-center justify-center rounded-full border-4 border-white/30 bg-white/20 text-5xl font-bold backdrop-blur">
+          <div className="flex h-28 w-28 shrink-0 items-center justify-center rounded-full border-4 border-white/30 bg-white/20 text-4xl font-bold">
 
             {summary.name_en
               .split(" ")
@@ -52,42 +60,48 @@ export default function ProfileHero({
 
           </div>
 
-          {/* Info */}
+          {/* Identity */}
 
           <div className="flex-1">
 
-            <h1 className="text-4xl font-bold">
-              {summary.name_en}
-            </h1>
+            <div className="flex flex-wrap items-center gap-3">
 
-            {profile?.name_hi && (
-              <p className="mt-2 text-lg text-blue-100">
-                {profile.name_hi}
-              </p>
-            )}
+              <h1 className="text-4xl font-bold">
 
-            <div className="mt-5 flex flex-wrap items-center gap-3">
+                {summary.name_en}
 
-              <span className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-blue-700">
+              </h1>
+
+              <span className="rounded-full bg-white px-4 py-1 text-sm font-semibold text-blue-700">
+
                 {summary.latest_party.abbreviation}
-              </span>
-
-              <span className="flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm">
-
-                <MapPin size={16} />
-
-                {summary.latest_constituency.name_en},{" "}
-                {summary.latest_constituency.state}
 
               </span>
 
-              <span className="flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm">
+            </div>
 
-                <Landmark size={16} />
+            <p className="mt-2 text-xl text-blue-100">
 
-                {summary.latest_election_year}
+              {profile?.name_hi}
 
-              </span>
+            </p>
+
+            <div className="mt-6 flex flex-wrap gap-4">
+
+              <Chip
+                icon={<MapPinned size={16} />}
+                text={`${summary.latest_constituency.name_en}, ${summary.latest_constituency.state}`}
+              />
+
+              <Chip
+                icon={<Landmark size={16} />}
+                text={`Lok Sabha ${summary.latest_election_year}`}
+              />
+
+              <Chip
+                icon={<CalendarDays size={16} />}
+                text="Current Term"
+              />
 
             </div>
 
@@ -97,44 +111,126 @@ export default function ProfileHero({
 
       </div>
 
-      {/* KPI Cards */}
+      {/* STATS */}
 
-      {/* <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid gap-px bg-politic-border md:grid-cols-6">
 
-        <KPICard
-          icon={<Wallet size={24} />}
+        <StatCard
+          icon={<Trophy size={20} />}
+          label="Contests"
+          value={elections.length}
+        />
+
+        <StatCard
+          icon={<Trophy size={20} />}
+          label="Wins"
+          value={wins}
+        />
+
+        <StatCard
+          icon={<Wallet size={20} />}
           label="Net Assets"
           value={`₹${(
-            summary.net_assets_inr / 10000000
+            summary.net_assets_inr /
+            10000000
           ).toFixed(2)} Cr`}
         />
 
-        <KPICard
-          icon={<Scale size={24} />}
-          label="Criminal Cases"
-          value={summary.criminal_cases_count}
+        <StatCard
+          icon={<Scale size={20} />}
+          label="Cases"
+          value={
+            summary.criminal_cases_count
+          }
         />
 
-        <KPICard
-          icon={<Trophy size={24} />}
-          label="Elections Won"
-          value={wins}
-          subtitle={`Out of ${elections.length} elections`}
+        <StatCard
+          icon={
+            <GraduationCap size={20} />
+          }
+          label="Education"
+          value={
+            profile?.education_level ??
+            "-"
+          }
         />
 
-        <KPICard
-          icon={<Vote size={24} />}
-          label="Latest Election"
-          value={summary.latest_election_year}
+        <StatCard
+          icon={
+            <CalendarDays size={20} />
+          }
+          label="Age"
+          value={age}
         />
-        <ProfileInfoCards
-          summary={summary}
-          profile={profile}
-        />
-        <CareerSummary profile={profile} /> */}
 
       </div>
 
-    // </div>
+    </section>
+
   );
+
+}
+
+interface ChipProps {
+  icon: React.ReactNode;
+  text: string;
+}
+
+function Chip({
+  icon,
+  text,
+}: ChipProps) {
+
+  return (
+
+    <div className="flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm backdrop-blur">
+
+      {icon}
+
+      <span>{text}</span>
+
+    </div>
+
+  );
+
+}
+
+interface StatProps {
+  icon: React.ReactNode;
+  label: string;
+  value: React.ReactNode;
+}
+
+function StatCard({
+  icon,
+  label,
+  value,
+}: StatProps) {
+
+  return (
+
+    <div className="bg-politic-card p-6">
+
+      <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-politic-base text-politic-accent">
+
+        {icon}
+
+      </div>
+
+      <p className="text-xs uppercase tracking-wide text-politic-muted">
+
+        {label}
+
+      </p>
+
+      <h3 className="mt-2 text-2xl font-bold text-politic-text">
+
+        {value}
+
+      </h3>
+
+    </div>
+
+  );
+
 }
