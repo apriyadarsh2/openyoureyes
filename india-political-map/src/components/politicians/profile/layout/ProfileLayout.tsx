@@ -22,9 +22,9 @@ export default function ProfileLayout({
       {/* Main Content Area */}
       <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-6 lg:flex-row lg:gap-8 lg:px-6 lg:py-8">
 
-        {/* Sidebar */}
-        <aside className="hidden w-64 shrink-0 lg:block xl:w-72">
-          <div className="sticky top-24">
+        
+        <aside className="w-full shrink-0 lg:w-64 xl:w-72">
+          <div className="z-10 lg:sticky lg:top-24">
             {sidebar}
           </div>
         </aside>
