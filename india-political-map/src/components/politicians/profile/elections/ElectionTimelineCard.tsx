@@ -173,7 +173,7 @@ export default function ElectionTimelineCard({
                             </span>
 
                             <span className="font-bold text-emerald-700">
-                                {election.result.poll_pct.toFixed(1)}%
+                                {election.result.votes_pct.toFixed(1)}%
                             </span>
 
                         </div>
@@ -184,7 +184,7 @@ export default function ElectionTimelineCard({
                                 className="h-full rounded-full bg-emerald-600 transition-all duration-700"
                                 style={{
                                     width: `${Math.min(
-                                        election.result.poll_pct,
+                                        election.result.votes_pct,
                                         100
                                     )}%`,
                                 }}

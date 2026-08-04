@@ -8,9 +8,9 @@ export default function DetailList({
   items,
 }: Props) {
 
-  if (items.length === 0) {
+  if (!items || items.length === 0) {
     return (
-      <p className="text-sm text-slate-400">
+      <p className="py-2 text-center text-xs italic text-politic-muted">
         No details available.
       </p>
     );
@@ -23,15 +23,18 @@ export default function DetailList({
 
         <div
           key={index}
-          className="flex justify-between rounded-lg border bg-slate-50 p-3"
+          className="flex items-center justify-between gap-3 rounded-lg border border-politic-border bg-politic-inner px-3 py-2 transition-colors hover:border-politic-muted/30"
         >
 
-          <span className="text-sm">
-            {item.description}
+          <span 
+            className="truncate text-[10px] text-politic-muted sm:text-xs" 
+            title={item.description}
+          >
+            {item.description || "N/A"}
           </span>
 
-          <span className="font-semibold">
-            ₹ {item.amount.toLocaleString("en-IN")}
+          <span className="shrink-0 font-bold tabular-nums tracking-tight text-politic-text text-xs sm:text-sm">
+            ₹ {item.amount.toLocaleString("en-IN", { maximumFractionDigits: 2 })}
           </span>
 
         </div>

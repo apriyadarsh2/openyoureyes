@@ -31,7 +31,7 @@ export default function ElectionResultCard({
     },
     {
       title: "Poll Turnout",
-      value: `${result.poll_pct}%`,
+      value: `${result.votes_pct}%`,
     },
   ];
 
