@@ -10,7 +10,7 @@ import {
 export async function getFinancialDisclosure(
   id: string
 ): Promise<FinancialDisclosure | null> {
-  const baseUrl = process.env.;
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://72.60.103.117:8000";
 
   try {
     const res = await fetch(`${baseUrl}/api/v1/politicians/${id}`, {
