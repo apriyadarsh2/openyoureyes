@@ -7,7 +7,7 @@ import {
 
 } from "../../types/parties";
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://72.60.103.117:8000";
+const API_BASE_URL =  "http://72.60.103.117:8000";
   
 
 /* =========================================

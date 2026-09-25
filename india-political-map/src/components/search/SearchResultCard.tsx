@@ -77,6 +77,9 @@ export default function SearchResultCard({
 }: Props) {
   const Icon = getIcon(result.type);
 
+  const initial =
+    result.title?.trim()?.charAt(0)?.toUpperCase() || "?";
+
   return (
     <Link
       href={result.href}
@@ -96,7 +99,6 @@ export default function SearchResultCard({
           hover:border-indigo-500/60
           hover:shadow-xl
           hover:shadow-black/20
-
           sm:rounded-3xl
         "
       >
@@ -104,7 +106,6 @@ export default function SearchResultCard({
           <div className="flex items-start gap-4 sm:gap-5">
 
             {/* Icon / avatar */}
-
             <div
               className={`
                 flex
@@ -121,9 +122,7 @@ export default function SearchResultCard({
             >
               {result.type === "politician" ? (
                 <span className="text-lg font-bold sm:text-xl">
-                  {result.data.name_en
-                    .charAt(0)
-                    .toUpperCase()}
+                  {initial}
                 </span>
               ) : (
                 <Icon size={22} />
@@ -131,14 +130,10 @@ export default function SearchResultCard({
             </div>
 
             {/* Main */}
-
             <div className="min-w-0 flex-1">
-
               <div className="mb-1">
                 <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#94A3B8] sm:text-xs">
-                  {getTypeLabel(
-                    result.type
-                  )}
+                  {getTypeLabel(result.type)}
                 </span>
               </div>
 
@@ -160,50 +155,9 @@ export default function SearchResultCard({
                   {result.subtitle}
                 </p>
               )}
-
-              {/* Politician information */}
-
-              {result.type === "politician" && (
-                <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-[#94A3B8]">
-
-                  {result.data.latest_party && (
-                    <span className="font-medium text-[#F4F4F5]">
-                      {
-                        result.data
-                          .latest_party
-                          .abbreviation
-                      }
-                    </span>
-                  )}
-
-                  {result.data.latest_constituency && (
-                    <span className="flex items-center gap-1.5">
-                      <MapPin size={15} />
-                      {
-                        result.data
-                          .latest_constituency
-                          .name_en
-                      }
-                    </span>
-                  )}
-
-                  {result.data.latest_election_year && (
-                    <span className="flex items-center gap-1.5">
-                      <Calendar size={15} />
-                      {
-                        result.data
-                          .latest_election_year
-                      }
-                    </span>
-                  )}
-
-                </div>
-              )}
-
             </div>
 
             {/* Arrow */}
-
             <div className="shrink-0 pt-1">
               <ArrowRight
                 size={20}
@@ -218,42 +172,16 @@ export default function SearchResultCard({
             </div>
           </div>
 
-          {/* Politician statistics */}
+          {/* Search relevance */}
+          <div className="mt-5 border-t border-[#3E445B] pt-4">
+            <p className="text-xs text-[#94A3B8]">
+              Search relevance
+            </p>
 
-          {result.type === "politician" && (
-            <div className="mt-5 grid grid-cols-2 gap-3 border-t border-[#3E445B] pt-5 sm:flex sm:gap-8">
-
-              <div>
-                <p className="text-xs text-[#94A3B8]">
-                  Net Assets
-                </p>
-
-                <p className="mt-1 text-sm font-semibold text-[#F4F4F5] sm:text-base">
-                  ₹
-                  {(
-                    result.data
-                      .net_assets_inr /
-                    10000000
-                  ).toFixed(2)}{" "}
-                  Cr
-                </p>
-              </div>
-
-              <div>
-                <p className="text-xs text-[#94A3B8]">
-                  Criminal Cases
-                </p>
-
-                <p className="mt-1 text-sm font-semibold text-[#F4F4F5] sm:text-base">
-                  {
-                    result.data
-                      .criminal_cases_count
-                  }
-                </p>
-              </div>
-
-            </div>
-          )}
+            <p className="mt-1 text-sm font-semibold text-[#F4F4F5]">
+              {result.score}
+            </p>
+          </div>
         </div>
       </article>
     </Link>

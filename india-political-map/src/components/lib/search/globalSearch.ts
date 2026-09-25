@@ -4,7 +4,7 @@ import {
 } from "@/src/components/types/global_search";
 
 const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://72.60.103.117:8000";
+  "http://72.60.103.117:8000";
 
 export async function globalSearch(
   query: string

@@ -6,7 +6,7 @@ import {
 } from "../../types/election";
 
 const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://72.60.103.117:8000";
+ "http://72.60.103.117:8000";
 
 /* =========================================
    Elections List
