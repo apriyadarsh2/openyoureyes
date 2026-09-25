@@ -1,109 +1,149 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import PoliticianList from "./PoliticianList";
-import PoliticianFilters from "./PoliticianFilters";
-import SortDropdown from "../ui/SortDropdown";
 import Pagination from "../ui/Pagination";
 
 import {
   getPoliticians,
 } from "@/src/components/lib/repositories/politicians";
 
-import {
-  getStates,
-  getParties,
-} from "@/src/components/lib/repositories/master";
+import { Politician } from "../types/politician";
 
-import usePoliticianFilters from "@/src/hooks/usePoliticianFilters";
+const PAGE_SIZE = 6;
 
-interface Props {
-  initialSearch?: string;
-}
+export default function PoliticianBrowser() {
+  const [politicians, setPoliticians] =
+    useState<Politician[]>([]);
 
-export default function PoliticianBrowser({
-  initialSearch = "",
-}: Props) {
-  const politicians = getPoliticians();
+  const [isLoading, setIsLoading] =
+    useState(true);
 
-  const states = getStates();
-  const parties = getParties();
-  const sortOptions = [
-    { value: "name", label: "Sort by Name" },
-    { value: "assets", label: "Highest Assets" },
-    { value: "cases", label: "Most Criminal Cases" },
-  ];
+  const [page, setPage] =
+    useState(1);
 
-  const {
-    paginatedPoliticians,
-    filteredPoliticians,
+  useEffect(() => {
+    let isMounted = true;
+
+    async function loadData() {
+      try {
+        const data = await getPoliticians();
+
+        if (isMounted) {
+          setPoliticians(
+            Array.isArray(data)
+              ? data
+              : []
+          );
+        }
+      } catch (error) {
+        console.error(
+          "Failed to load politicians:",
+          error
+        );
+
+        if (isMounted) {
+          setPoliticians([]);
+        }
+      } finally {
+        if (isMounted) {
+          setIsLoading(false);
+        }
+      }
+    }
+
+    loadData();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  /* =========================================
+     Pagination
+  ========================================= */
+
+  const totalPages = Math.max(
+    1,
+    Math.ceil(
+      politicians.length /
+        PAGE_SIZE
+    )
+  );
+
+  const safePage = Math.min(
     page,
-    setPage,
-    totalPages,
-    state,
-    setState,
-    party,
-    setParty,
-    criminal,
-    setCriminal,
-    search,
-    setSearch,
-    sort,
-    setSort,
-    resetFilters,
-  } = usePoliticianFilters(politicians, initialSearch);
+    totalPages
+  );
+
+  const paginatedPoliticians =
+    politicians.slice(
+      (safePage - 1) * PAGE_SIZE,
+      safePage * PAGE_SIZE
+    );
+
+  /* =========================================
+     Render
+  ========================================= */
 
   return (
     <>
-      <div className="mb-4 rounded-xl border border-politic-border bg-politic-card p-4 shadow-lg">
-        <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-          <div className="flex-1">
-            <PoliticianFilters 
-              states={states}
-              parties={parties}
-              state={state}
-              setState={setState}
-              party={party}
-              setParty={setParty}
-              criminal={criminal}
-              setCriminal={setCriminal}
-              search={search}
-              setSearch={setSearch}
-            />
-          </div>
-
-          <div className="flex items-center justify-end gap-3 border-t border-politic-border pt-3 md:border-t-0 md:pt-0">
-            <SortDropdown
-              value={sort}
-              onChange={setSort}
-              options={sortOptions}
-            />
-            <button
-              onClick={resetFilters}
-              className="rounded-lg border border-politic-border bg-politic-inner px-3 py-1.5 text-sm font-medium text-politic-text transition hover:bg-white/5"
-            >
-              Reset
-            </button>
-          </div>
-        </div>
-      </div>
+      {/* Result count */}
 
       <div className="mb-4 flex items-center justify-between px-1">
         <p className="text-sm text-politic-muted">
-          <span className="font-semibold text-politic-text">{filteredPoliticians.length}</span> politicians found
+          {isLoading ? (
+            <span>
+              Loading database...
+            </span>
+          ) : (
+            <>
+              <span className="font-semibold text-politic-text">
+                {politicians.length}
+              </span>{" "}
+              politician
+              {politicians.length !==
+              1
+                ? "s"
+                : ""}{" "}
+              found
+            </>
+          )}
         </p>
       </div>
 
+      {/* List */}
+
       <div className="mb-6">
-        <PoliticianList politicians={paginatedPoliticians} />
+        {isLoading ? (
+          <div className="rounded-xl border border-dashed border-politic-border p-10 text-center text-politic-muted">
+            Fetching live records...
+          </div>
+        ) : paginatedPoliticians.length ===
+          0 ? (
+          <div className="rounded-xl border border-dashed border-politic-border p-10 text-center text-politic-muted">
+            No politicians found.
+          </div>
+        ) : (
+          <PoliticianList
+            politicians={
+              paginatedPoliticians
+            }
+          />
+        )}
       </div>
 
-      <Pagination
-        page={page}
-        totalPages={totalPages}
-        setPage={setPage}
-      />
+      {/* Pagination */}
+
+      {!isLoading &&
+        politicians.length > 0 && (
+          <Pagination
+            page={safePage}
+            totalPages={totalPages}
+            setPage={setPage}
+          />
+        )}
     </>
   );
 }

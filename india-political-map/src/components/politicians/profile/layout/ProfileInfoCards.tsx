@@ -2,7 +2,6 @@ import {
   CalendarDays,
   GraduationCap,
   User,
-  Briefcase,
 } from "lucide-react";
 
 import {
@@ -19,41 +18,36 @@ export default function ProfileInfoCards({
   summary,
   profile,
 }: Props) {
-  const age = profile?.dob
-    ? new Date().getFullYear() - new Date(profile.dob).getFullYear()
-    : summary.age ?? "—";
+  // 1. Favor the backend-calculated summary.age
+  const age = summary.age 
+    ?? (profile?.dob ? new Date().getFullYear() - new Date(profile.dob).getFullYear() : "—");
 
-  const profession = summary.profession ?? "Not Available";
-  const education = profile?.education_level ?? summary.education ?? "Not Available";
-  const gender = profile?.sex === "M" ? "Male" : profile?.sex === "F" ? "Female" : "—";
+  const education = summary.education ?? profile?.education_level ?? "Not Available";
+  
+  const rawGender = summary.gender ?? profile?.gender ?? profile?.gender ?? "—";
+  const gender = rawGender === "M" ? "Male" : rawGender === "F" ? "Female" : (rawGender || "—");
 
   return (
-    <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+    <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
+      
       <InfoCard
         icon={<CalendarDays className="h-4 w-4 sm:h-5 sm:w-5" />}
-        title="Date of Birth"
-        value={
-          profile?.dob
-            ? new Date(profile.dob).toLocaleDateString("en-IN")
-            : "—"
-        }
-        subtitle={`Age ${age}`}
+        title="Age"
+        value={age !== "—" ? `${age} Years` : "—"}
       />
+      
       <InfoCard
         icon={<User className="h-4 w-4 sm:h-5 sm:w-5" />}
         title="Gender"
         value={gender}
       />
+      
       <InfoCard
         icon={<GraduationCap className="h-4 w-4 sm:h-5 sm:w-5" />}
         title="Education"
         value={education}
       />
-      <InfoCard
-        icon={<Briefcase className="h-4 w-4 sm:h-5 sm:w-5" />}
-        title="Profession"
-        value={profession}
-      />
+      
     </div>
   );
 }

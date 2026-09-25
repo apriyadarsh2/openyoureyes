@@ -15,13 +15,12 @@ import {
 } from "recharts";
 
 import { PoliticianProfile } from "@/src/components/types/politician";
-import { PARTY_COLORS } from "@/data/partyColors"; // Tumhari actual file ka path
+import { PARTY_COLORS } from "@/data/partyColors"; 
 
 interface Props {
   profile?: PoliticianProfile;
 }
 
-// Custom X-Axis Tick (Saal ke sath Constituency dikhane ke liye)
 const CustomXAxisTick = ({ x, y, payload }: any) => {
   const [year, constituency] = payload.value.split("|");
   return (
@@ -36,10 +35,9 @@ const CustomXAxisTick = ({ x, y, payload }: any) => {
   );
 };
 
-// Jeetne par Star (★) dikhane ke liye
 const WinIndicator = (props: any) => {
   const { x, y, width, value } = props;
-  if (!value) return null; // Agar hara hai toh kuch mat dikhao
+  if (!value) return null;
   return (
     <text
       x={x + width / 2}
@@ -63,19 +61,18 @@ export default function CareerPerformance({ profile }: Props) {
       .map((e) => {
         const partyAbbr = e.party.abbreviation;
         return {
-          tickKey: `${e.election.year}|${e.constituency.name_en}`, // X-axis ke liye unique string
+          tickKey: `${e.election.year}|${e.constituency.name_en}`, 
           year: e.election.year,
           voteShare: e.result.votes_pct,
           votes: e.result.votes,
           party: partyAbbr,
           constituency: e.constituency.name_en,
           winner: e.result.winner,
-          color: PARTY_COLORS[partyAbbr] || "#9ca3af", // Dynamic color from your file
+          color: PARTY_COLORS[partyAbbr] || "#9ca3af", 
         };
       });
   }, [profile.elections]);
 
-  // Upar Legend dikhane ke liye sirf unique parties nikalna
   const uniqueParties = useMemo(() => {
     const parties = new Map();
     chartData.forEach((d) => {

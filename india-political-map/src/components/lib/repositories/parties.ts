@@ -1,146 +1,157 @@
-import mockResponses from "@/data/mock_responses.json";
-
 import {
-  PartyHomeResponse,
+  PartyResponse,
   PartyListResponse,
-  PartyProfile,
-  PartyPresence,
-  PartyFinance,
-  PartyBonds,
-} from "../../types/party";
+  PartyFinanceResponse,
+  ElectoralBondResponse,
+  PartySummaryResponse,
+
+} from "../../types/parties";
+
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_URL;
 
 /* =========================================
-   Parties Home
+   Parties List
 ========================================= */
+export async function getParties(
+  limit = 50,
+  offset = 0,
+  partyType?: string,
+  search?: string
+): Promise<PartyListResponse> {
+  const params = new URLSearchParams({
+    limit: String(limit),
+    offset: String(offset),
+  });
 
-export function getPartiesHome() {
+  if (partyType) {
+    params.set("party_type", partyType);
+  }
 
-  return mockResponses[
-    "GET /api/v1/parties"
-  ] as unknown as PartyHomeResponse;
+  if (search?.trim()) {
+    params.set("search", search.trim());
+  }
 
-}
-
-/* =========================================
-   National Parties
-========================================= */
-
-export function getNationalParties() {
-
-  return mockResponses[
-    "GET /api/v1/parties/national"
-  ] as unknown as PartyListResponse;
-
-}
-
-/* =========================================
-   State Parties
-========================================= */
-
-export function getStateParties() {
-
-  return mockResponses[
-    "GET /api/v1/parties/state"
-  ] as unknown as PartyListResponse;
-
-}
-
-/* =========================================
-   Unrecognised Parties
-========================================= */
-
-export function getUnrecognisedParties() {
-
-  return mockResponses[
-    "GET /api/v1/parties/unrecognised"
-  ] as unknown as PartyListResponse;
-
-}
-
-/* =========================================
-   Historical Parties
-========================================= */
-
-export function getHistoricalParties() {
-
-  return mockResponses[
-    "GET /api/v1/parties/historical"
-  ] as unknown as PartyListResponse;
-
-}
-
-/* =========================================
-   Party Profile
-========================================= */
-
-export function getPartyProfile(
-  slug: string
-): PartyProfile | null {
-
-  const key =
-    `GET /api/v1/parties/${slug}`;
-
-  return (
-    mockResponses[
-      key as keyof typeof mockResponses
-    ] as unknown as PartyProfile
+  const response = await fetch(
+    `${API_BASE_URL}/api/v1/parties?${params.toString()}`,
+    {
+      cache: "no-store",
+    }
   );
 
+  if (!response.ok) {
+    throw new Error(
+      `Failed to fetch parties: ${response.status}`
+    );
+  }
+
+  return (await response.json()) as PartyListResponse;
 }
 
 /* =========================================
-   State Presence
+   Party By ID / Abbreviation
 ========================================= */
 
-export function getPartyPresence(
-  slug: string
-): PartyPresence | null {
-
-  const key =
-    `GET /api/v1/parties/${slug}/presence`;
-
-  return (
-    mockResponses[
-      key as keyof typeof mockResponses
-    ] as unknown as PartyPresence
+export async function getPartyProfile(
+  identifier: string
+): Promise<PartyResponse | null> {
+  const response = await fetch(
+    `${API_BASE_URL}/api/v1/parties/${encodeURIComponent(identifier)}`,
+    {
+      cache: "no-store",
+    }
   );
 
+  if (response.status === 404) {
+    return null;
+  }
+
+  if (!response.ok) {
+    throw new Error(
+      `Failed to fetch party: ${response.status}`
+    );
+  }
+
+  return (await response.json()) as PartyResponse;
 }
+
 
 /* =========================================
-   Finance
+   Party Finance
 ========================================= */
 
-export function getPartyFinance(
-  slug: string
-): PartyFinance | null {
-
-  const key =
-    `GET /api/v1/parties/${slug}/finance`;
-
-  return (
-    mockResponses[
-      key as keyof typeof mockResponses
-    ] as unknown as PartyFinance
+export async function getPartyFinance(
+  identifier: string
+): Promise<PartyFinanceResponse[]> {
+  const response = await fetch(
+    `${API_BASE_URL}/api/v1/parties/${encodeURIComponent(identifier)}/finance`,
+    {
+      cache: "no-store",
+    }
   );
 
+  if (response.status === 404) {
+    return [];
+  }
+
+  if (!response.ok) {
+    throw new Error(
+      `Failed to fetch party finance: ${response.status}`
+    );
+  }
+
+  return (await response.json()) as PartyFinanceResponse[];
 }
+
 
 /* =========================================
    Electoral Bonds
 ========================================= */
 
-export function getPartyBonds(
-  slug: string
-): PartyBonds | null {
+export async function getPartyBonds(
+  identifier: string,
+  limit = 100,
+  offset = 0
+): Promise<ElectoralBondResponse[]> {
+  const params = new URLSearchParams({
+    limit: String(limit),
+    offset: String(offset),
+  });
 
-  const key =
-    `GET /api/v1/parties/${slug}/bonds`;
-
-  return (
-    mockResponses[
-      key as keyof typeof mockResponses
-    ] as unknown as PartyBonds
+  const response = await fetch(
+    `${API_BASE_URL}/api/v1/parties/${encodeURIComponent(identifier)}/bonds?${params.toString()}`,
+    {
+      cache: "no-store",
+    }
   );
 
-} 
+  if (response.status === 404) {
+    return [];
+  }
+
+  if (!response.ok) {
+    throw new Error(
+      `Failed to fetch party bonds: ${response.status}`
+    );
+  }
+
+  return (await response.json()) as ElectoralBondResponse[];
+}
+
+
+export async function getPartySummary(): Promise<PartySummaryResponse> {
+  const response = await fetch(
+    `${API_BASE_URL}/api/v1/parties/summary`,
+    {
+      cache: "no-store",
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error(
+      `Failed to fetch party summary: ${response.status}`
+    );
+  }
+
+  return (await response.json()) as PartySummaryResponse;
+}

@@ -5,17 +5,13 @@ import {
   Wallet,
   Scale,
 } from "lucide-react";
-
 import { TimelineEvent } from "./TimelineTypes";
 
 interface Props {
   event: TimelineEvent;
 }
 
-export default function TimelineEventRow({
-  event,
-}: Props) {
-
+export default function TimelineEventRow({ event }: Props) {
   const Icon =
     event.type === "birth"
       ? Calendar
@@ -28,109 +24,74 @@ export default function TimelineEventRow({
       : Scale;
 
   const colors = {
-
-    birth: "bg-indigo-100 text-indigo-700",
-
-    education: "bg-purple-100 text-purple-700",
-
-    election: "bg-blue-100 text-blue-700",
-
-    asset: "bg-green-100 text-green-700",
-
-    criminal: "bg-red-100 text-red-700",
-
+    birth: "bg-indigo-500/10 text-indigo-400 border border-indigo-500/20",
+    education: "bg-purple-500/10 text-purple-400 border border-purple-500/20",
+    election: "bg-blue-500/10 text-blue-400 border border-blue-500/20",
+    asset: "bg-green-500/10 text-green-400 border border-green-500/20",
+    criminal: "bg-red-500/10 text-red-400 border border-red-500/20",
   };
 
   return (
-
     <div
       className="
-      flex
-      flex-col
-      gap-4
-
-      p-5
-
-      transition
-
-      hover:bg-slate-50
-
-      sm:flex-row
+        flex
+        flex-col
+        gap-5
+        p-6
+        transition
+        hover:bg-politic-inner
+        sm:flex-row
+        sm:items-start
       "
     >
-
       <div
         className={`
-        flex
-        h-12
-        w-12
-        items-center
-        justify-center
-
-        rounded-full
-
-        ${colors[event.type]}
+          flex
+          h-14
+          w-14
+          shrink-0
+          items-center
+          justify-center
+          rounded-2xl
+          ${colors[event.type]}
         `}
       >
-
-        <Icon size={20} />
-
+        <Icon size={24} />
       </div>
 
       <div className="flex-1">
-
         <div className="flex flex-wrap items-center gap-3">
-
-          <h3 className="text-lg font-semibold">
-
+          <h3 className="text-xl font-bold text-politic-text">
             {event.title}
-
           </h3>
 
           <span
             className={`
-            rounded-full
-
-            px-3
-            py-1
-
-            text-xs
-            font-semibold
-
-            ${colors[event.type]}
+              rounded-full
+              px-3
+              py-1
+              text-xs
+              font-bold
+              tracking-wider
+              ${colors[event.type]}
             `}
           >
-
             {event.type.toUpperCase()}
-
           </span>
-
         </div>
 
         {event.subtitle && (
-
-          <p className="mt-2 text-slate-500">
-
+          <p className="mt-2 text-base font-medium text-politic-muted">
             {event.subtitle}
-
           </p>
-
         )}
 
         {event.value && (
-
-          <p className="mt-3 font-semibold text-blue-700">
-
+          <p className="mt-3 text-lg font-bold text-blue-400">
             {event.value}
-
           </p>
-
         )}
-
       </div>
-
     </div>
-
   );
-
 }

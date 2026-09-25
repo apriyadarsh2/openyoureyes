@@ -48,3 +48,4 @@ export default function FinancialLiabilitiesTable({ disclosure }: Props) {
     </div>
   );
 }
+

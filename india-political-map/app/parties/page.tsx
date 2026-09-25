@@ -1,9 +1,15 @@
 import PartiesHome from "@/src/components/parties/PartiesHome";
 
-export default function Page() {
-  return (
-    <main className="mx-auto max-w-7xl px-6 py-10">
-      <PartiesHome />
-    </main>
-  );
+interface Props {
+  searchParams: Promise<{
+    search?: string;
+  }>;
+}
+
+export default async function Page({
+  searchParams,
+}: Props) {
+  const { search = "" } = await searchParams;
+
+  return <PartiesHome search={search} />;
 }

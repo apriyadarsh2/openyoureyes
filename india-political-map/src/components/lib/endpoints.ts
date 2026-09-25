@@ -1,7 +1,7 @@
 import mockData from "@/data/mock_responses.json";
 
 export const ENDPOINTS = {
-  politicians:
+  politicians: 
     mockData["GET /api/v1/politicians/search?page=1&limit=20"],
 
   constituencies:

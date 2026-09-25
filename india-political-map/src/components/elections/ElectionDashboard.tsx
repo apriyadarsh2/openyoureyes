@@ -1,5 +1,3 @@
-"use client";
-
 import { getElectionDashboard } from "../lib/repositories/elections";
 
 import ElectionHeader from "./ElectionHeader";
@@ -13,30 +11,40 @@ interface Props {
   year: number;
 }
 
-export default function ElectionDashboard({
+export default async function ElectionDashboard({
   year,
 }: Props) {
-  const dashboard = getElectionDashboard(year);
+  const dashboard = await getElectionDashboard(year);
 
   if (!dashboard) {
     return (
-      <h2 className="text-2xl font-semibold">
-        Election not found.
-      </h2>
+      <div className="flex min-h-[50vh] items-center justify-center">
+        <h2 className="text-2xl font-semibold text-politic-muted">
+          Election not found.
+        </h2>
+      </div>
     );
   }
 
   return (
     <div className="space-y-10">
-      <Breadcrumbs items={[
-    {
-      label: "Home",
-      href: "/",
-    },
-    {
-      label: "Elections",
-    },
-  ]}/>
+      <Breadcrumbs
+        items={[
+          {
+            label: "Home",
+            href: "/",
+          },
+          {
+            label: `Elections`,
+            href: "/elections",
+          },
+          {
+            label: `Elections ${dashboard.overview.year}`,
+          },
+          
+        ]}
+      />
+
       <ElectionHeader
         overview={dashboard.overview}
       />
@@ -44,13 +52,13 @@ export default function ElectionDashboard({
       <ElectionResultCard
         result={dashboard.result_summary}
       />
-      <ElectionTimeline
-      overview={dashboard.overview} />
 
-        <ElectionCardKPIs
-  national={dashboard.national_summary}
-  kpis={dashboard.kpis}
-/>
+      <ElectionCardKPIs
+        national={dashboard.national_summary}
+        kpis={dashboard.kpis}
+      />
+
+     
 
       <ElectionNavigation
         year={dashboard.overview.year}

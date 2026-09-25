@@ -1,67 +1,77 @@
-import mockResponses from "@/data/mock_responses.json";
+
+
 
 import {
   ConstituencyState,
-  ConstituencyStateResponse,
+
   ConstituencySummary,
-  ConstituencyListResponse,
+
   ConstituencyProfile,
 } from "../../types/constituency";
 
 /* -----------------------------
-   All States
+   All States (Mock Fallback)
 ------------------------------ */
 
-const statesResponse =
-  mockResponses[
-    "GET /api/v1/constituencies"
-  ] as ConstituencyStateResponse;
 
-export function getStates(): ConstituencyState[] {
-  return statesResponse.results;
+export async function getStates(): Promise<ConstituencyState[]> {
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+  try {
+    const res = await fetch(`${baseUrl}/api/v1/constituencies`, { cache: "no-store" });
+    if (res.ok) {
+      const data = await res.json();
+      return data.results;
+    }
+  } catch (error) {
+    console.error("Failed to fetch states:", error);
+  }
+  return [];
 }
 
 /* -----------------------------
-   State Details
+   State Details (Mock Fallback)
 ------------------------------ */
-
-export function getStateBySlug(
-  slug: string
-): ConstituencyState | undefined {
-  return statesResponse.results.find(
-    (state) => state.slug === slug
-  );
+export async function getStateBySlug(slug: string): Promise<ConstituencyState | undefined> {
+  const states = await getStates();
+  return states.find(s => s.slug === slug);
+}
+/* -----------------------------
+   Constituencies by State (Mock Fallback)
+------------------------------ */
+export async function getConstituenciesByState(slug: string): Promise<ConstituencySummary[]> {
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL ;
+  try {
+    const res = await fetch(`${baseUrl}/api/v1/constituencies/state/${slug}`, { cache: "no-store" });
+    if (res.ok) {
+      const data = await res.json();
+      return data.results;
+    }
+  } catch (error) {
+    console.error(`Failed to fetch constituencies for state ${slug}:`, error);
+  }
+  return [];
 }
 
 /* -----------------------------
-   Constituencies by State
+   Constituency Profile (Live DB)
 ------------------------------ */
-
-export function getConstituenciesByState(
-  slug: string
-): ConstituencySummary[] {
-  const key = `GET /api/v1/constituencies/${slug}`;
-
-  const response =
-    mockResponses[
-      key as keyof typeof mockResponses
-    ] as ConstituencyListResponse | undefined;
-
-  return response?.results ?? [];
-}
-
-/* -----------------------------
-   Constituency Profile
------------------------------- */
-
-export function getConstituencyProfile(
+export async function getConstituencyProfile(
   id: number
-): ConstituencyProfile | null {
-  const key = `GET /api/v1/constituencies/${id}`;
+): Promise<ConstituencyProfile | null> {
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
-  return (
-    (mockResponses[
-      key as keyof typeof mockResponses
-    ] as ConstituencyProfile) ?? null
-  );
+  try {
+    const res = await fetch(`${baseUrl}/api/v1/constituencies/${id}/profile`, {
+      cache: "no-store", 
+    });
+    
+    if (res.ok) {
+      return await res.json();
+    }
+    
+    return null; 
+  } catch (error) {
+    console.error(`Live API failed to fetch profile for Constituency ID ${id}:`, error);
+    return null;
+  }
 }

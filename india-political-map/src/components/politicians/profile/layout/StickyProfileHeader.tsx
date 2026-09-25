@@ -1,3 +1,5 @@
+
+
 import {
   Wallet,
   Scale,
@@ -15,15 +17,12 @@ interface Props {
 export default function ProfileHeader({
   politician,
 }: Props) {
-  const { summary, profile } = politician;
+  const { summary } = politician;
 
-  const wins =
-    profile?.elections.filter(
-      (e) => e.result.winner
-    ).length ?? 0;
+  // Use the pre-calculated wins from the backend summary!
+  const wins = summary.elections_won ?? 0;
 
   return (
-
     <header className="relative z-10 border-b border-[#2d3654] bg-[#14192b] py-4 lg:py-5">
       <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 lg:flex-row lg:items-center lg:justify-between lg:px-6">
 
@@ -32,10 +31,12 @@ export default function ProfileHeader({
           
           <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#2d3654] bg-[#2d3654]/50 text-lg font-bold text-amber-400 lg:h-14 lg:w-14 lg:text-xl">
             {summary.name_en
-              .split(" ")
-              .map((word) => word[0])
-              .join("")
-              .slice(0, 2)}
+              ? summary.name_en
+                  .split(" ")
+                  .map((word) => word[0])
+                  .join("")
+                  .slice(0, 2)
+              : "??"}
           </div>
 
           <div className="flex flex-col justify-center">
@@ -43,21 +44,22 @@ export default function ProfileHeader({
               {summary.name_en}
             </h1>
 
-            {profile?.name_hi && (
+            {/* Use summary.name_hi since profile is currently null */}
+            {summary.name_hi && (
               <p className="text-xs text-[#94A3B8] lg:text-sm">
-                {profile.name_hi}
+                {summary.name_hi}
               </p>
             )}
 
             <div className="mt-1.5 flex flex-wrap items-center gap-2 lg:gap-3">
               <span className="rounded-full border border-amber-500/20 bg-amber-500/10 px-2 py-0.5 text-[10px] font-semibold text-amber-400 lg:text-xs">
-                {summary.latest_party.abbreviation}
+                {summary.latest_party?.abbreviation || "IND"}
               </span>
 
               <div className="flex items-center gap-1 text-[10px] text-[#94A3B8] lg:text-xs">
                 <MapPin size={12} className="shrink-0" />
                 <span className="truncate sm:max-w-none">
-                  {summary.latest_constituency.name_en}
+                  {summary.latest_constituency?.name_en || "Unknown"}
                 </span>
               </div>
             </div>
@@ -71,13 +73,13 @@ export default function ProfileHeader({
             <HeaderCard
               icon={<Wallet size={16} />}
               label="Assets"
-              value={`₹${(summary.net_assets_inr / 10000000).toFixed(2)} Cr`}
+              value={`₹${((summary.net_assets_inr || 0) / 10000000).toFixed(2)} Cr`}
             />
 
             <HeaderCard
               icon={<Scale size={16} />}
               label="Cases"
-              value={summary.criminal_cases_count}
+              value={summary.criminal_cases_count || 0}
             />
 
             <HeaderCard
@@ -89,7 +91,7 @@ export default function ProfileHeader({
             <HeaderCard
               icon={<Vote size={16} />}
               label="Latest"
-              value={summary.latest_election_year}
+              value={summary.latest_election_year || "N/A"}
             />
           </div>
         </div>

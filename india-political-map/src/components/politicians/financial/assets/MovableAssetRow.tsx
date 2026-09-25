@@ -16,10 +16,9 @@ export default function MovableAssetRow({
 }: Props) {
   const [open, setOpen] = useState(false);
   const v = data.values;
-
+ 
   return (
     <>
-      {/* group class add ki hai taaki hover state sticky column ko bhi affect kare */}
       <tr
         onClick={() => setOpen(!open)}
         className="group cursor-pointer transition-colors hover:bg-white/5"
@@ -32,7 +31,6 @@ export default function MovableAssetRow({
           {title}
         </td>
         
-        {/* tabular-nums aur tracking-tight width save karte hain */}
         <td className="px-3 py-3 text-right text-xs sm:text-sm tabular-nums tracking-tight text-politic-muted">{formatNumber(v.self)}</td>
         <td className="px-3 py-3 text-right text-xs sm:text-sm tabular-nums tracking-tight text-politic-muted">{formatNumber(v.spouse)}</td>
         <td className="px-3 py-3 text-right text-xs sm:text-sm tabular-nums tracking-tight text-politic-muted">{formatNumber(v.huf)}</td>
@@ -44,11 +42,10 @@ export default function MovableAssetRow({
 
       {open && (
         <tr>
-          {/* Main dropdown container ki padding p-4 kardi */}
           <td colSpan={8} className="bg-politic-base p-3 sm:p-4 border-b border-politic-border shadow-inner">
             <div className="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-3">
               
-              {/* Cards ki padding p-3 kardi */}
+              
               <div className="rounded-xl border border-politic-border bg-politic-card p-3 shadow-sm">
                 <h4 className="mb-2 text-[10px] font-bold uppercase tracking-widest text-politic-muted border-b border-politic-border pb-1.5">
                   Self

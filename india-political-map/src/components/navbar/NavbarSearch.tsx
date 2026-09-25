@@ -5,7 +5,7 @@ import { Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 import SearchDropdown from "@/src/components/search/SearchDropdown";
-import usePoliticianSearch from "@/src/hooks/usePoliticianSearch";
+import useGlobalSearch from "@/src/hooks/useGlobalSearch";
 
 export default function NavbarSearch() {
   const router = useRouter();
@@ -13,11 +13,15 @@ export default function NavbarSearch() {
   const {
     query,
     setQuery,
-    filteredPoliticians,
-  } = usePoliticianSearch();
+    results,
+    loading,
+  } = useGlobalSearch();
 
-  const wrapperRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const wrapperRef =
+    useRef<HTMLDivElement>(null);
+
+  const inputRef =
+    useRef<HTMLInputElement>(null);
 
   function closeSearch() {
     setQuery("");
@@ -25,18 +29,28 @@ export default function NavbarSearch() {
   }
 
   function submitSearch() {
-    if (!query.trim()) return;
+    const value = query.trim();
 
-    router.push(`/search?q=${encodeURIComponent(query)}`);
+    if (!value) {
+      return;
+    }
 
     closeSearch();
+
+    router.push(
+      `/search?q=${encodeURIComponent(value)}`
+    );
   }
 
   useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
+    function handleClickOutside(
+      event: MouseEvent
+    ) {
       if (
         wrapperRef.current &&
-        !wrapperRef.current.contains(event.target as Node)
+        !wrapperRef.current.contains(
+          event.target as Node
+        )
       ) {
         closeSearch();
       }
@@ -56,7 +70,9 @@ export default function NavbarSearch() {
   }, []);
 
   useEffect(() => {
-    function handleEscape(event: KeyboardEvent) {
+    function handleEscape(
+      event: KeyboardEvent
+    ) {
       if (event.key === "Escape") {
         closeSearch();
       }
@@ -83,42 +99,51 @@ export default function NavbarSearch() {
       <input
         ref={inputRef}
         value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
+        onChange={(event) =>
+          setQuery(event.target.value)
+        }
+        onKeyDown={(event) => {
+          if (event.key === "Enter") {
             submitSearch();
           }
         }}
-        placeholder="Search politicians, parties, constituencies..."
+        placeholder="Search politicians, parties, constituencies, elections..."
         className="
           h-11
           w-full
           rounded-full
           border
-          border-white/10
+          border-[#3E445B]
           bg-[#101827]
           pl-11
           pr-12
           text-sm
-          text-white
-          placeholder-gray-500
+          text-[#F4F4F5]
+          placeholder:text-[#94A3B8]
           outline-none
           transition-all
           duration-200
-          focus:border-blue-500
-          focus:bg-[#101827]
+          focus:border-[#4F46E5]
           focus:ring-4
-          focus:ring-blue-500/20
+          focus:ring-[#4F46E5]/20
         "
       />
 
       <Search
         size={18}
-        className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"
+        className="
+          absolute
+          left-4
+          top-1/2
+          -translate-y-1/2
+          text-[#94A3B8]
+        "
       />
 
       <button
+        type="button"
         onClick={submitSearch}
+        aria-label="Search"
         className="
           absolute
           right-1
@@ -129,10 +154,10 @@ export default function NavbarSearch() {
           items-center
           justify-center
           rounded-full
-          bg-blue-600
+          bg-[#4F46E5]
           text-white
           transition
-          hover:bg-blue-500
+          hover:bg-[#4338CA]
         "
       >
         <Search size={16} />
@@ -140,10 +165,20 @@ export default function NavbarSearch() {
 
       {query.trim() !== "" && (
         <SearchDropdown
-          politicians={filteredPoliticians}
-          onSelect={closeSearch}
+          results={results}
+          onSelect={(result) => {
+            closeSearch();
+            router.push(result.href);
+          }}
         />
       )}
+
+      {loading &&
+        query.trim() !== "" && (
+          <div className="absolute left-1/2 top-full z-[1000] mt-2 -translate-x-1/2 text-xs text-[#94A3B8]">
+            Loading search…
+          </div>
+        )}
     </div>
   );
 }

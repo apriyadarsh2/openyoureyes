@@ -1,121 +1,81 @@
 "use client";
 
-import {
-  CalendarDays,
-  Landmark,
-  Vote,
-} from "lucide-react";
-
 import { ElectionOverview } from "../types/election";
 
 interface Props {
   overview: ElectionOverview;
 }
 
-export default function ElectionHeader({
-  overview,
-}: Props) {
+export default function ElectionHeader({ overview }: Props) {
   return (
-    <section
-      className="
-        relative
-        overflow-hidden
-        rounded-3xl
-        border
-        border-slate-200
-        bg-gradient-to-br
-        from-slate-50
-        via-blue-50
-        to-white
-        p-8
-        lg:p-10
-      "
-    >
-      {/* Background Glow */}
-
-      <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-blue-200/30 blur-3xl" />
-      <div className="absolute -bottom-24 left-0 h-64 w-64 rounded-full bg-sky-100/40 blur-3xl" />
-
-      <div className="relative flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-        {/* Left */}
-
-        <div>
-          <span className="inline-flex items-center rounded-full bg-blue-100 px-4 py-1 text-sm font-semibold text-blue-700">
-            {overview.type}
-          </span>
-
-          <h1 className="mt-4 text-5xl font-bold tracking-tight">
-            {overview.year}
-          </h1>
-
-          <p className="mt-2 text-xl font-medium text-slate-700">
-            {overview.lok_sabha}
-          </p>
-
-          <p className="mt-4 max-w-2xl leading-7 text-slate-600">
-            Parliamentary election conducted to elect members of the{" "}
-            {overview.lok_sabha}. Explore election results, voter
-            participation, government formation and national statistics.
-          </p>
-        </div>
-
-        {/* Right */}
-
-        <div className="rounded-2xl border border-white/70 bg-white/80 p-6 shadow-sm backdrop-blur">
-          <div className="space-y-5">
-            <div className="flex items-center gap-3">
-              <CalendarDays
-                className="text-blue-600"
-                size={20}
-              />
-
-              <div>
-                <p className="text-xs uppercase tracking-wide text-slate-500">
-                  Polling
-                </p>
-
-                <p className="font-semibold">
-                  {overview.polling_start} → {overview.polling_end}
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <Vote
-                className="text-green-600"
-                size={20}
-              />
-
-              <div>
-                <p className="text-xs uppercase tracking-wide text-slate-500">
-                  Counting
-                </p>
-
-                <p className="font-semibold">
-                  {overview.counting_date}
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <Landmark
-                className="text-purple-600"
-                size={20}
-              />
-
-              <div>
-                <p className="text-xs uppercase tracking-wide text-slate-500">
-                  Government Formed
-                </p>
-
-                <p className="font-semibold">
-                  {overview.government_formed}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div className="mb-10 mt-2 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+      
+      {/* Left: Typography */}
+      <div className="max-w-2xl">
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-politic-text">
+          Every <span className="text-politic-accent">Seat</span> Has a <span className="text-politic-accent">Story</span>.
+        </h1>
+        <p className="mt-4 text-base sm:text-lg leading-relaxed text-politic-muted">
+Explore every Lok Sabha General Election since 1951—trace the verdicts and political shifts that shaped the nation.        </p>
       </div>
-    </section>
+
+      {/* Right: Specific Election Mini-Stats */}
+      <div className="flex flex-wrap items-center gap-3 lg:justify-end">
+        
+        {/* Lok Sabha Stat */}
+        <div className="flex-1 sm:flex-none rounded-xl border border-politic-border bg-politic-card px-5 py-3 shadow-sm">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-politic-muted">
+            Lok Sabha
+          </p>
+          <p className="mt-1 text-2xl font-black text-politic-text">
+            {overview.lok_sabha}
+            <span className="text-sm font-bold text-politic-muted">
+              {getOrdinalSuffix(overview.lok_sabha)}
+            </span>
+          </p>
+        </div>
+
+        {/* Year Stat */}
+        <div className="flex-1 sm:flex-none rounded-xl border border-politic-border bg-politic-card px-5 py-3 shadow-sm">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-politic-muted">
+            {overview.election_type}
+          </p>
+          <p className="mt-1 text-2xl font-black text-politic-accent">
+            {overview.year}
+          </p>
+        </div>
+
+        {/* Result Date Stat */}
+        <div className="w-full sm:w-auto rounded-xl border border-politic-border bg-politic-card px-5 py-3 shadow-sm">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-politic-muted">
+            Result Date
+          </p>
+          <p className="mt-2 text-sm font-bold text-politic-text">
+            {overview.result_date}
+          </p>
+        </div>
+
+      </div>
+    </div>
   );
+}
+
+/* =========================================
+   Helpers
+========================================= */
+function getOrdinalSuffix(number: number): string {
+  const lastTwo = number % 100;
+  if (lastTwo >= 11 && lastTwo <= 13) {
+    return "th";
+  }
+  switch (number % 10) {
+    case 1:
+      return "st";
+    case 2:
+      return "nd";
+    case 3:
+      return "rd";
+    default:
+      return "th";
+  }
 }

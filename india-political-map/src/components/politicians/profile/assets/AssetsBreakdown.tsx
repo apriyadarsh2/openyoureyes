@@ -5,199 +5,137 @@ import {
   Banknote,
 } from "lucide-react";
 
-import { PoliticianProfile } from "@/src/components/types/politician";
+import { FinancialDisclosure } from "@/src/components/types/financial-disclosure";
 
 interface Props {
-  profile?: PoliticianProfile;
+  disclosure?: FinancialDisclosure;
 }
 
-export default function AssetsBreakdown({
-  profile,
-}: Props) {
-  if (!profile) return null;
+export default function AssetsBreakdown({ disclosure }: Props) {
+  if (!disclosure) return null;
 
-  const latest =
-    [...profile.elections].sort(
-      (a, b) => b.election.year - a.election.year
-    )[0];
-
-  const assets = latest.assets;
-
-  const total = assets.total_assets_inr;
-
+  // 1. Extract values safely
   const movable =
-    assets.movable_assets_inr ?? 0;
-
+    disclosure.assets?.movable_assets?.gross_total_movable?.total || 0;
   const immovable =
-    assets.immovable_assets_inr ?? 0;
+    disclosure.assets?.immovable_assets?.gross_total_immovable?.total || 0;
+  
+  const total = movable + immovable;
 
   const cash =
-    assets.cash_inr ?? 0;
+    disclosure.assets?.movable_assets?.cash_in_hand?.values?.total || 0;
 
-  const liabilities =
-    assets.total_liabilities_inr;
+  const privateLiabilities =
+    disclosure.liabilities?.financial_liabilities?.grand_total_private_liabilities?.total || 0;
+  const govtDues =
+    disclosure.liabilities?.government_dues?.grand_total_govt_dues?.total || 0;
+  
+  const liabilities = privateLiabilities + govtDues;
 
   return (
-    <div className="space-y-8">
-
+    <div className="space-y-5 sm:space-y-6">
       <div>
-
-        <h2 className="text-3xl font-bold">
+        <h2 className="text-xl sm:text-2xl font-bold text-politic-text">
           Assets Breakdown
         </h2>
-
-        <p className="mt-2 text-slate-500">
+        <p className="mt-1 text-xs sm:text-sm font-medium text-politic-muted">
           Latest declared financial disclosure.
         </p>
-
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2">
-
+      <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
         <AssetCard
           title="Movable Assets"
-          icon={<Wallet size={22} />}
+          icon={<Wallet size={20} />}
           value={movable}
           total={total}
           color="blue"
         />
-
         <AssetCard
           title="Immovable Assets"
-          icon={<Building2 size={22} />}
+          icon={<Building2 size={20} />}
           value={immovable}
           total={total}
           color="green"
         />
-
         <AssetCard
           title="Cash in Hand"
-          icon={<Banknote size={22} />}
+          icon={<Banknote size={20} />}
           value={cash}
           total={total}
           color="amber"
         />
-
         <AssetCard
-          title="Liabilities"
-          icon={<Landmark size={22} />}
+          title="Liabilities vs Assets"
+          icon={<Landmark size={20} />}
           value={liabilities}
           total={total}
           color="red"
         />
-
       </div>
-
     </div>
   );
 }
+
+// --- Card Component ---
 
 interface CardProps {
   title: string;
   value: number;
   total: number;
   icon: React.ReactNode;
-  color:
-    | "blue"
-    | "green"
-    | "amber"
-    | "red";
+  color: "blue" | "green" | "amber" | "red";
 }
 
-function AssetCard({
-  title,
-  value,
-  total,
-  icon,
-  color,
-}: CardProps) {
-  const percent =
-    total > 0
-      ? (value / total) * 100
-      : 0;
+function AssetCard({ title, value, total, icon, color }: CardProps) {
+  // Calculate percentage (guard against division by zero)
+  const percent = total > 0 ? (value / total) * 100 : 0;
 
   const colors = {
-    blue: {
-      bg: "bg-blue-100",
-      text: "text-blue-700",
-      bar: "bg-blue-600",
-    },
+    blue: { bg: "bg-blue-500/10", text: "text-blue-400", bar: "bg-blue-500" },
+    green: { bg: "bg-green-500/10", text: "text-green-400", bar: "bg-green-500" },
+    amber: { bg: "bg-amber-500/10", text: "text-amber-400", bar: "bg-amber-500" },
+    red: { bg: "bg-red-500/10", text: "text-red-400", bar: "bg-red-500" },
+  };
 
-    green: {
-      bg: "bg-green-100",
-      text: "text-green-700",
-      bar: "bg-green-600",
-    },
-
-    amber: {
-      bg: "bg-amber-100",
-      text: "text-amber-700",
-      bar: "bg-amber-500",
-    },
-
-    red: {
-      bg: "bg-red-100",
-      text: "text-red-700",
-      bar: "bg-red-600",
-    },
+  // Helper to dynamically format large currency values
+  const formatValue = (val: number) => {
+    if (val >= 10000000) return `₹${(val / 10000000).toFixed(2)} Cr`;
+    if (val >= 100000) return `₹${(val / 100000).toFixed(2)} Lac`;
+    return `₹${val.toLocaleString("en-IN")}`;
   };
 
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-
+    <div className="rounded-2xl border border-politic-border bg-politic-card p-4 sm:p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
       <div className="flex items-center gap-4">
-
-        <div
-          className={`rounded-xl p-3 ${colors[color].bg} ${colors[color].text}`}
-        >
+        <div className={`rounded-xl p-3 ${colors[color].bg} ${colors[color].text}`}>
           {icon}
         </div>
-
         <div>
-
-          <h3 className="font-semibold text-slate-800">
+          <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-politic-muted">
             {title}
           </h3>
-
-          <p className="text-sm text-slate-500">
-            ₹
-            {(value / 10000000).toFixed(2)} Cr
+          <p className="mt-0.5 text-lg sm:text-xl font-black text-politic-text">
+            {formatValue(value)}
           </p>
-
         </div>
-
       </div>
 
-      <div className="mt-6">
-
-        <div className="mb-2 flex justify-between text-sm">
-
-          <span className="text-slate-500">
-            Share
-          </span>
-
-          <span className="font-semibold">
+      <div className="mt-5 sm:mt-6">
+        <div className="mb-2 flex justify-between text-xs sm:text-sm">
+          <span className="font-medium text-politic-muted">Share of Total Assets</span>
+          <span className="font-bold text-politic-text">
             {percent.toFixed(1)}%
           </span>
-
         </div>
 
-        <div className="h-3 overflow-hidden rounded-full bg-slate-200">
-
+        <div className="h-2.5 overflow-hidden rounded-full bg-politic-inner">
           <div
             className={`${colors[color].bar} h-full rounded-full transition-all duration-700`}
-            style={{
-              width: `${Math.min(
-                percent,
-                100
-              )}%`,
-            }}
+            style={{ width: `${Math.min(percent, 100)}%` }}
           />
-
         </div>
-
       </div>
-
     </div>
   );
 }

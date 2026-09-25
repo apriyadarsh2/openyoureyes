@@ -20,8 +20,7 @@ const navigation = [
   { label: "Election History", href: "elections", icon: BookOpen },
   { label: "Criminal Cases", href: "criminal", icon: Scale },
   { label: "MPLADS", href: "mplads", icon: Landmark },
-  { label: "Timeline", href: "timeline", icon: Clock3 },
-  { label: "Analytics", href: "analytics", icon: BarChart3 },
+  // { label: "Analytics", href: "analytics", icon: BarChart3 },
 ];
 
 export default function ProfileSidebar() {
@@ -31,12 +30,10 @@ export default function ProfileSidebar() {
   return (
     <nav className="w-full rounded-2xl border border-politic-border bg-politic-card p-3 shadow-sm lg:p-5 lg:shadow-lg">
       
-      {/* Title - Sirf Desktop pe dikhega */}
       <h3 className="mb-4 hidden text-lg font-bold text-politic-text lg:block lg:mb-6">
         Navigation
       </h3>
 
-      {/* Nav Container: Mobile pe Horizontal Scroll, Desktop pe Vertical Stack */}
       <div className="flex flex-row gap-2 overflow-x-auto lg:flex-col lg:overflow-visible [&::-webkit-scrollbar]:hidden">
         {navigation.map(item => {
           const Icon = item.icon;
@@ -58,7 +55,6 @@ export default function ProfileSidebar() {
               }`}
             >
               <Icon size={18} className="shrink-0" />
-              {/* Text: Mobile pe chota, Desktop pe bada, aur next line pe wrap nahi hoga */}
               <span className="whitespace-nowrap text-xs sm:text-sm lg:text-base">
                 {item.label}
               </span>

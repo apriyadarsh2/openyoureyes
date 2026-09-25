@@ -1,191 +1,115 @@
+"use client";
+
 import {
-  TrendingUp,
   TrendingDown,
   Landmark,
   Wallet,
   Lightbulb,
   ArrowUpRight,
+  PieChart,
 } from "lucide-react";
 
-import { PoliticianProfile } from "@/src/components/types/politician";
+import { FinancialDisclosure } from "@/src/components/types/financial-disclosure";
 
 interface Props {
-  profile?: PoliticianProfile;
+  disclosure?: FinancialDisclosure; 
 }
 
-export default function AssetsInsights({
-  profile,
-}: Props) {
-  if (!profile) return null;
+export default function AssetsInsights({ disclosure }: Props) {
+  if (!disclosure) return null;
 
-  const elections = [...profile.elections].sort(
-    (a, b) => a.election.year - b.election.year
-  );
+  // 1. Extract values safely
+  const movable = disclosure.assets?.movable_assets?.gross_total_movable?.total || 0;
+  const immovable = disclosure.assets?.immovable_assets?.gross_total_immovable?.total || 0;
+  const cash = disclosure.assets?.movable_assets?.cash_in_hand?.values?.total || 0;
+  
+  const totalAssets = movable + immovable;
 
-  const first = elections[0];
-  const latest = elections[elections.length - 1];
+  const privateLiabilities = disclosure.liabilities?.financial_liabilities?.grand_total_private_liabilities?.total || 0;
+  const govtDues = disclosure.liabilities?.government_dues?.grand_total_govt_dues?.total || 0;
+  
+  const totalLiabilities = privateLiabilities + govtDues;
+  const netWorth = totalAssets - totalLiabilities;
 
-  const totalGrowth =
-    (
-      ((latest.assets.net_assets_inr -
-        first.assets.net_assets_inr) /
-        first.assets.net_assets_inr) *
-      100
-    );
-
-  const debtRatio =
-    (
-      (latest.assets.total_liabilities_inr /
-        latest.assets.total_assets_inr) *
-      100
-    );
-
-  const movable =
-    latest.assets.movable_assets_inr ?? 0;
-
-  const immovable =
-    latest.assets.immovable_assets_inr ?? 0;
-
-  const cash =
-    latest.assets.cash_inr ?? 0;
-
-  const totalAssets =
-    latest.assets.total_assets_inr;
-
-  const immovableShare =
-    (immovable / totalAssets) * 100;
-
-  const movableShare =
-    (movable / totalAssets) * 100;
-
-  const cashShare =
-    (cash / totalAssets) * 100;
-
-  let biggestJump = 0;
-  let jumpYear = latest.election.year;
-
-  for (let i = 1; i < elections.length; i++) {
-    const prev =
-      elections[i - 1].assets.net_assets_inr;
-
-    const curr =
-      elections[i].assets.net_assets_inr;
-
-    const growth =
-      ((curr - prev) / prev) * 100;
-
-    if (growth > biggestJump) {
-      biggestJump = growth;
-      jumpYear = elections[i].election.year;
-    }
-  }
+  // 2. Calculate Insight Ratios safely
+  const debtRatio = totalAssets > 0 ? (totalLiabilities / totalAssets) * 100 : 0;
+  const immovableShare = totalAssets > 0 ? (immovable / totalAssets) * 100 : 0;
+  const movableShare = totalAssets > 0 ? (movable / totalAssets) * 100 : 0;
+  const cashShare = totalAssets > 0 ? (cash / totalAssets) * 100 : 0;
 
   return (
-    <div className="space-y-6">
-
+    <div className="space-y-5 sm:space-y-6">
       <div>
-
-        <h2 className="text-3xl font-bold">
+        <h2 className="text-xl sm:text-2xl font-bold text-politic-text">
           Financial Insights
         </h2>
-
-        <p className="mt-2 text-slate-500">
+        <p className="mt-1 text-xs sm:text-sm font-medium text-politic-muted">
           Automatically generated from affidavit data.
         </p>
-
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-2">
-
+      <div className="grid gap-4 sm:gap-6 lg:grid-cols-2">
         <InsightCard
-          icon={<TrendingUp />}
+          icon={<Wallet size={20} />}
           color="green"
-          title="Overall Wealth Growth"
-          value={`${totalGrowth.toFixed(1)}%`}
-          description="Increase in declared net assets from first to latest election."
+          title="Net Worth to Assets Ratio"
+          value={`${totalAssets > 0 ? ((netWorth / totalAssets) * 100).toFixed(1) : 0}%`}
+          description="Percentage of total assets actually owned free of debt."
         />
-
         <InsightCard
-          icon={<Landmark />}
+          icon={<Landmark size={20} />}
           color="red"
           title="Debt Ratio"
           value={`${debtRatio.toFixed(1)}%`}
           description="Liabilities as a percentage of total declared assets."
         />
-
         <InsightCard
-          icon={<Wallet />}
+          icon={<PieChart size={20} />}
           color="blue"
-          title="Largest Wealth Jump"
-          value={`${biggestJump.toFixed(1)}%`}
-          description={`Highest increase occurred in ${jumpYear}.`}
+          title="Immovable Asset Weight"
+          value={`${immovableShare.toFixed(1)}%`}
+          description="Share of wealth tied up in land, properties, and real estate."
         />
-
         <InsightCard
-          icon={<TrendingDown />}
+          icon={<TrendingDown size={20} />}
           color="amber"
-          title="Cash Holdings"
-          value={`${cashShare.toFixed(1)}%`}
-          description="Share of cash compared to total declared assets."
+          title="Cash Liquidity"
+          value={`${cashShare.toFixed(2)}%`}
+          description="Share of cash in hand compared to total declared assets."
         />
-
       </div>
 
-      <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-
-        <div className="mb-6 flex items-center gap-3">
-
-          <Lightbulb className="text-yellow-500" />
-
-          <h3 className="text-2xl font-bold">
+      <div className="rounded-2xl border border-politic-border bg-politic-card p-5 sm:p-8 shadow-sm">
+        <div className="mb-5 sm:mb-6 flex items-center gap-3">
+          <Lightbulb className="text-yellow-500" size={24} />
+          <h3 className="text-lg sm:text-xl font-bold text-politic-text">
             Observations
           </h3>
-
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
+          <Observation text={`Immovable property (real estate/land) accounts for ${immovableShare.toFixed(1)}% of total declared assets.`} />
+          <Observation text={`Movable assets (cash, deposits, vehicles, jewelry) represent ${movableShare.toFixed(1)}% of total wealth.`} />
+          
+          {totalLiabilities > 0 ? (
+            <Observation text={`Current liabilities are ${debtRatio.toFixed(1)}% of total assets, indicating ${debtRatio < 10 ? "relatively low leverage." : debtRatio < 50 ? "moderate leverage." : "significant leverage."}`} />
+          ) : (
+            <Observation text={`The candidate has declared zero financial liabilities or government dues.`} />
+          )}
 
-          <Observation
-            text={`Immovable property accounts for ${immovableShare.toFixed(
-              1
-            )}% of declared assets.`}
-          />
-
-          <Observation
-            text={`Movable assets represent ${movableShare.toFixed(
-              1
-            )}% of total wealth.`}
-          />
-
-          <Observation
-            text={`Cash holdings account for only ${cashShare.toFixed(
-              1
-            )}% of total declared assets.`}
-          />
-
-          <Observation
-            text={`Declared wealth increased by ${totalGrowth.toFixed(
-              1
-            )}% between ${first.election.year} and ${latest.election.year}.`}
-          />
-
-          <Observation
-            text={`Current liabilities are ${debtRatio.toFixed(
-              1
-            )}% of total assets, indicating ${
-              debtRatio < 10
-                ? "relatively low leverage."
-                : "significant leverage."
-            }`}
-          />
-
+          {cashShare > 10 && (
+            <Observation text={`Cash holdings account for an unusually high ${cashShare.toFixed(1)}% of total declared assets.`} />
+          )}
+          {cashShare <= 10 && (
+             <Observation text={`Cash holdings account for a standard ${cashShare.toFixed(2)}% of total declared assets.`} />
+          )}
         </div>
-
       </div>
-
     </div>
   );
 }
+
+// --- Internal Components ---
 
 interface CardProps {
   title: string;
@@ -195,62 +119,43 @@ interface CardProps {
   color: "blue" | "green" | "red" | "amber";
 }
 
-function InsightCard({
-  title,
-  value,
-  description,
-  icon,
-  color,
-}: CardProps) {
+function InsightCard({ title, value, description, icon, color }: CardProps) {
   const colors = {
-    blue: "bg-blue-100 text-blue-700",
-    green: "bg-green-100 text-green-700",
-    red: "bg-red-100 text-red-700",
-    amber: "bg-amber-100 text-amber-700",
+    blue: "bg-blue-500/10 text-blue-400",
+    green: "bg-green-500/10 text-green-400",
+    red: "bg-red-500/10 text-red-400",
+    amber: "bg-amber-500/10 text-amber-400",
   };
 
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-
-      <div
-        className={`inline-flex rounded-xl p-3 ${colors[color]}`}
-      >
-        {icon}
+    <div className="flex flex-col rounded-2xl border border-politic-border bg-politic-card p-4 sm:p-6 shadow-sm">
+      <div className="flex items-start gap-4">
+        <div className={`inline-flex shrink-0 rounded-xl p-3 ${colors[color]}`}>
+          {icon}
+        </div>
+        <div>
+          <h3 className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-politic-muted">
+            {title}
+          </h3>
+          <p className="mt-1 text-xl sm:text-2xl font-black text-politic-text">
+            {value}
+          </p>
+        </div>
       </div>
-
-      <h3 className="mt-5 text-lg font-bold">
-        {title}
-      </h3>
-
-      <p className="mt-2 text-3xl font-bold">
-        {value}
-      </p>
-
-      <p className="mt-3 text-sm text-slate-500">
+      <p className="mt-4 text-xs sm:text-sm font-medium text-politic-muted">
         {description}
       </p>
-
     </div>
   );
 }
 
-function Observation({
-  text,
-}: {
-  text: string;
-}) {
+function Observation({ text }: { text: string }) {
   return (
-    <div className="flex items-start gap-3 rounded-xl bg-slate-50 p-4">
-
-      <ArrowUpRight
-        size={18}
-        className="mt-1 text-blue-600"
-      />
-
-      <p className="text-slate-700">
+    <div className="flex items-start gap-3 rounded-xl bg-politic-inner p-3 sm:p-4 border border-politic-border/50">
+      <ArrowUpRight size={18} className="mt-0.5 shrink-0 text-politic-accent" />
+      <p className="text-xs sm:text-sm font-medium text-politic-muted">
         {text}
       </p>
-
     </div>
   );
 }

@@ -1,50 +1,44 @@
-import { ENDPOINTS } from "../endpoints";
-import mockResponses from "@/data/mock_responses.json";
-import { getFinancialDisclosure } from "./financialDisclosure";
-
 import {
   Politician,
-  PoliticianSearchResponse,
-  PoliticianProfile,
-  PoliticianProfileResponse,
+  PoliticianProfileResponse, 
 } from "../../types/politician";
 
-const response =
-  ENDPOINTS.politicians as PoliticianSearchResponse;
+// 1. Live Fetch for All Politicians (List View)
+export async function getPoliticians(): Promise<Politician[]> {
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL ;
 
-export function getPoliticians(): Politician[] { 
-  return response.results;
+  try {
+    const res = await fetch(`${baseUrl}/api/v1/politicians`, {
+      cache: "no-store" 
+    });
+    
+    if (res.ok) {
+      return await res.json();
+    }
+    return []; // Returns empty if the server returns a 404/500
+  } catch (error) {
+    console.error("Live API failed to fetch politicians list:", error);
+    return []; 
+  }
 }
 
-export function getPoliticianById(id: string) {
-  return response.results.find(
-    politician => politician.id === id
-  );
-}
-
-export function getPoliticianProfile(
+// 2. Live Fetch for Individual Politician (Profile View)
+export async function getPoliticianProfile(
   id: string
-): PoliticianProfileResponse | null {
+): Promise<PoliticianProfileResponse | null> {
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
-  const summary = getPoliticianById(id);
-
-  if (!summary) {
+  try {
+    const res = await fetch(`${baseUrl}/api/v1/politicians/${id}`, {
+      cache: "no-store"
+    });
+    
+    if (res.ok) {
+      return await res.json(); 
+    }
+    return null; 
+  } catch (error) {
+    console.error(`Live API failed to fetch profile for ID ${id}:`, error);
     return null;
   }
-
-  const key = `GET /api/v1/politicians/${id}`;
-
-  const profile =
-    mockResponses[
-      key as keyof typeof mockResponses
-    ] as PoliticianProfile | undefined;
-
-    const financialDisclosure =
-    getFinancialDisclosure(id);
-
-  return {
-    summary,
-    profile,
-    financialDisclosure,
-  };
 }

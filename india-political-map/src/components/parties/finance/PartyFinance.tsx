@@ -1,7 +1,8 @@
-"use client";
-
 import Breadcrumbs from "../../ui/Breadcrumbs";
-import { getPartyFinance } from "../../lib/repositories/parties";
+import {
+  getPartyFinance,
+  getPartyProfile,
+} from "../../lib/repositories/parties";
 
 import FinanceTable from "./FinanceTable";
 
@@ -9,24 +10,28 @@ interface Props {
   slug: string;
 }
 
-export default function PartyFinance({
-  slug,
-}: Props) {
+export default async function PartyFinance({ slug }: Props) {
+  const [party, finance] = await Promise.all([
+    getPartyProfile(slug),
+    getPartyFinance(slug),
+  ]);
 
-  const finance =
-    getPartyFinance(slug);
-
-  if (!finance) {
+  if (!party) {
     return (
-      <h2 className="text-2xl font-semibold">
-        Finance data not found.
-      </h2>
+      <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-8">
+        <h2 className="text-xl font-semibold">
+          Party not found
+        </h2>
+
+        <p className="mt-2 text-[var(--muted)]">
+          The requested party could not be found.
+        </p>
+      </div>
     );
   }
 
   return (
     <div className="space-y-8">
-
       <Breadcrumbs
         items={[
           {
@@ -34,8 +39,8 @@ export default function PartyFinance({
             href: "/parties",
           },
           {
-            label: finance.party.abbreviation,
-            href: `/parties/${slug}`,
+            label: party.abbreviation || party.full_name_en || "Party",
+            href: `/parties/${party.id}`,
           },
           {
             label: "Finance",
@@ -44,21 +49,16 @@ export default function PartyFinance({
       />
 
       <div>
-
-        <h1 className="text-4xl font-bold">
+        <h1 className="text-3xl font-bold sm:text-4xl">
           Party Finance
         </h1>
 
-        <p className="mt-2 text-slate-500">
-          Annual income and expenditure
+        <p className="mt-2 text-[var(--muted)]">
+          Reported income and expenditure by financial year.
         </p>
-
       </div>
 
-      <FinanceTable
-        rows={finance.finance_by_year}
-      />
-
+      <FinanceTable rows={finance} />
     </div>
   );
 }

@@ -25,7 +25,7 @@ export default async function PoliticianLayout({
   const { id } = await params;
 
   const data =
-    getPoliticianProfile(id);
+     await getPoliticianProfile(id);
 
   if (!data) {
     notFound();
@@ -36,7 +36,7 @@ export default async function PoliticianLayout({
 
       <ProfileLayout
         hero={
-          <StickyProfileHeader
+          <StickyProfileHeader 
             politician={data}
           />
         }

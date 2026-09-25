@@ -1,67 +1,122 @@
-"use client";
+import {
+  Database,
+  Languages,
+  Tag,
+} from "lucide-react";
 
-import { PartyProfile } from "../../types/party";
+import { PartyResponse } from "../../types/parties";
 
 interface Props {
-  party: PartyProfile;
+  party: PartyResponse;
 }
 
-export default function PartyOverview({ party }: Props) {
+export default function PartyOverview({
+  party,
+}: Props) {
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5">
-      <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
-        
-        {/* Core Info - Fluid Row */}
-        <div className="flex flex-wrap gap-x-8 gap-y-4">
-          <Info label="Leader" value={party.overview.leader} />
-          <Info 
-            label="Political Position" 
-            value={party.overview.political_position ?? "-"} 
-          />
-          <Info 
-            label="Recognition" 
-            value={party.overview.recognition ?? "-"} 
-          />
-        </div>
+    <section
+      className="
+        overflow-hidden
+        rounded-2xl
+        border
+        border-[var(--border)]
+        bg-[var(--card)]
+        shadow-lg
+      "
+    >
 
-        {/* Divider for mobile only */}
-        <div className="h-px w-full bg-slate-100 md:hidden" />
+      {/* Header */}
 
-        {/* Ideologies - Right Aligned on Desktop */}
-        <div className="flex flex-col gap-1.5 md:min-w-[200px] md:items-end">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 md:text-right">
-            Ideology
-          </span>
-          <div className="flex flex-wrap gap-1.5 md:justify-end">
-            {party.overview.ideology?.length ? (
-              party.overview.ideology.map((item: string) => (
-                <span
-                  key={item}
-                  className="rounded-md bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-700 transition-colors hover:bg-slate-200"
-                >
-                  {item}
-                </span>
-              ))
-            ) : (
-              <span className="text-sm font-medium text-slate-900">-</span>
-            )}
-          </div>
-        </div>
+      <div
+        className="
+          border-b
+          border-[var(--border)]
+          px-5
+          py-5
+          sm:px-6
+        "
+      >
+        <h2 className="text-xl font-bold text-white">
+          Party Information
+        </h2>
+      </div>
+
+      {/* Information */}
+
+      <div
+        className="
+          grid
+          grid-cols-1
+          divide-y
+          divide-[var(--border)]
+          sm:grid-cols-2
+          sm:divide-x
+          sm:divide-y-0
+          lg:grid-cols-3
+        "
+      >
+
+        <Info
+          icon={Tag}
+          label="English Name"
+          value={party.full_name_en}
+        />
+
+        <Info
+          icon={Languages}
+          label="Hindi Name"
+          value={party.full_name_hi}
+        />
+
+        <Info
+          icon={Database}
+          label="Recognition Type"
+          value={party.party_type}
+        />
 
       </div>
-    </div>
+
+    </section>
   );
 }
 
-function Info({ label, value }: { label: string; value: string }) {
+function Info({
+  icon: Icon,
+  label,
+  value,
+}: {
+  icon: typeof Tag;
+  label: string;
+  value: string | null;
+}) {
   return (
-    <div className="flex flex-col gap-0.5">
-      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-        {label}
-      </span>
-      <span className="text-sm font-semibold text-slate-800">
-        {value}
-      </span>
+    <div className="p-5 sm:p-6">
+
+      <div className="flex items-center gap-2">
+
+        <Icon
+          size={16}
+          className="text-indigo-400"
+        />
+
+        <span
+          className="
+            text-[10px]
+            font-bold
+            uppercase
+            tracking-wider
+            text-slate-500
+          "
+        >
+          {label}
+        </span>
+
+      </div>
+
+      <p className="mt-3 break-words text-sm font-semibold text-slate-200">
+        {value || "Not available"}
+      </p>
+
     </div>
   );
 }

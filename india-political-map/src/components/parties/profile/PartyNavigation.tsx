@@ -4,102 +4,145 @@ import Link from "next/link";
 
 import {
   ArrowRight,
-  MapPinned,
   IndianRupee,
   Landmark,
 } from "lucide-react";
 
 interface Props {
-  slug: string;
+  identifier: string;
 }
 
 export default function PartyNavigation({
-  slug,
+  identifier,
 }: Props) {
-
   const items = [
     {
-      title: "State Presence",
+      title: "Party Finance",
       description:
-        "Lok Sabha, Rajya Sabha and State Legislature representation.",
-      href: `/parties/${slug}/presence`,
-      icon: MapPinned,
-    },
-    {
-      title: "Finance",
-      description:
-        "Annual income, expenditure and financial disclosures.",
-      href: `/parties/${slug}/finance`,
+        "Explore annual income, expenditure, contributions and available financial disclosures.",
+      href: `/parties/${identifier}/finance`,
       icon: IndianRupee,
+      iconClass:
+        "bg-emerald-500/10 text-emerald-400",
+      borderClass:
+        "hover:border-emerald-500/40",
     },
     {
       title: "Electoral Bonds",
       description:
-        "Electoral bond donations and funding history.",
-      href: `/parties/${slug}/bonds`,
+        "Explore electoral bond records associated with this political party.",
+      href: `/parties/${identifier}/bonds`,
       icon: Landmark,
+      iconClass:
+        "bg-amber-500/10 text-amber-400",
+      borderClass:
+        "hover:border-amber-500/40",
     },
   ];
 
   return (
-    <section className="space-y-6">
+    <section className="space-y-5">
+
+      {/* Heading */}
 
       <div>
-
-        <h2 className="text-2xl font-bold">
+        <h2 className="text-2xl font-bold text-white">
           Explore More
         </h2>
 
-        <p className="mt-1 text-sm text-slate-500">
-          Dive deeper into the party's political presence,
-          finances and funding information.
+        <p className="mt-1 text-sm text-[var(--muted)]">
+          Explore financial and funding information available
+          for this party.
         </p>
-
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      {/* Cards */}
 
+      <div
+        className="
+          grid
+          grid-cols-1
+          gap-4
+          md:grid-cols-2
+        "
+      >
         {items.map((item) => {
-
           const Icon = item.icon;
 
           return (
             <Link
               key={item.title}
               href={item.href}
-              className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-blue-500 hover:shadow-lg"
+              className={`
+                group
+                rounded-2xl
+                border
+                border-[var(--border)]
+                bg-[var(--card)]
+                p-5
+                shadow-lg
+                transition-all
+                duration-200
+                hover:-translate-y-1
+                hover:shadow-xl
+                ${item.borderClass}
+                sm:p-6
+              `}
             >
-              <div className="mb-6 flex items-center justify-between">
 
-                <div className="rounded-xl bg-blue-50 p-3">
+              <div className="flex items-start justify-between">
 
-                  <Icon
-                    size={26}
-                    className="text-blue-600"
-                  />
-
+                <div
+                  className={`
+                    flex
+                    h-12
+                    w-12
+                    items-center
+                    justify-center
+                    rounded-xl
+                    ${item.iconClass}
+                  `}
+                >
+                  <Icon size={23} />
                 </div>
 
-                <ArrowRight
-                  size={20}
-                  className="text-slate-400 transition-transform group-hover:translate-x-1"
-                />
+                <div
+                  className="
+                    flex
+                    h-9
+                    w-9
+                    items-center
+                    justify-center
+                    rounded-lg
+                    bg-slate-800/70
+                    text-slate-500
+                    transition
+                    group-hover:bg-slate-700
+                    group-hover:text-white
+                  "
+                >
+                  <ArrowRight
+                    size={18}
+                    className="
+                      transition-transform
+                      group-hover:translate-x-1
+                    "
+                  />
+                </div>
 
               </div>
 
-              <h3 className="text-lg font-semibold">
+              <h3 className="mt-6 text-lg font-semibold text-white">
                 {item.title}
               </h3>
 
-              <p className="mt-2 text-sm leading-6 text-slate-500">
+              <p className="mt-2 text-sm leading-6 text-[var(--muted)]">
                 {item.description}
               </p>
 
             </Link>
           );
-
         })}
-
       </div>
 
     </section>

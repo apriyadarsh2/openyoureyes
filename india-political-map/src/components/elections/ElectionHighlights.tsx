@@ -113,7 +113,7 @@ export default function ElectionHighlights() {
       {/* Majority */}
       <div
         className="
-          rounded-2xl
+          rounded-2xl 
           border
           border-slate-200
           bg-white

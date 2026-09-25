@@ -5,23 +5,35 @@ import ProfileInfoCards from "../layout/ProfileInfoCards";
 import Career from "../career/Career";
 
 export default function OverviewContent() {
-  const { summary, profile } = usePolitician();
+  const {
+    summary,
+    profile,
+    electoral_summary,
+  } = usePolitician();
 
+console.log("CAREER DATA:", {
+  profile,
+  electoral_summary,
+});
   return (
     <div className="space-y-6 lg:space-y-8">
       <div>
-        <h2 className="text-xl font-bold text-politic-text lg:text-2xl">Personal Details</h2>
-        <div className="mt-2 h-px w-full bg-politic-border"></div>
+        <h2 className="text-xl font-bold text-politic-text lg:text-2xl">
+          Personal Details
+        </h2>
+
+        <div className="mt-2 h-px w-full bg-politic-border" />
       </div>
 
-      <ProfileInfoCards 
+      <ProfileInfoCards
         summary={summary}
         profile={profile}
       />
 
       <Career
-    profile={profile}
-/>
+        profile={profile}
+        electoralSummary={electoral_summary}
+      />
     </div>
-  ); 
+  );
 }

@@ -1,141 +1,104 @@
-import mockResponses from "@/data/mock_responses.json";
-
 import {
   ElectionListResponse,
   ElectionSummary,
   ElectionDashboard,
-  AllianceOverviewResponse,
-  AllianceProfile,
   StateResultsResponse,
-  ElectionMargins,
-  ElectionTurnout,
 } from "../../types/election";
+
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_URL;
 
 /* =========================================
    Elections List
 ========================================= */
 
-const electionsResponse =
-  mockResponses[
-    "GET /api/v1/elections"
-  ] as unknown as ElectionListResponse;
+export async function getElections(): Promise<ElectionSummary[]> {
+  const response = await fetch(
+    `${API_BASE_URL}/api/v1/elections`,
+    {
+      cache: "no-store",
+    }
+  );
 
-export function getElections(): ElectionSummary[] {
-  return electionsResponse.results;
+  if (!response.ok) {
+    throw new Error(
+      `Failed to fetch elections: ${response.status}`
+    );
+  }
+
+  const data =
+    (await response.json()) as ElectionListResponse;
+
+  return data.results;
 }
 
-export function getElectionByYear(
+
+/* =========================================
+   Election By Year
+========================================= */
+
+export async function getElectionByYear(
   year: number
-): ElectionSummary | undefined {
-  return electionsResponse.results.find(
+): Promise<ElectionSummary | undefined> {
+  const elections = await getElections();
+
+  return elections.find(
     (election) => election.year === year
   );
 }
+
 
 /* =========================================
    Election Dashboard
 ========================================= */
 
-export function getElectionDashboard(
+export async function getElectionDashboard(
   year: number
-): ElectionDashboard | null {
-
-  const key = `GET /api/v1/elections/${year}`;
-
-  return (
-    mockResponses[
-      key as keyof typeof mockResponses
-    ] as unknown as ElectionDashboard
+): Promise<ElectionDashboard | null> {
+  const response = await fetch(
+    `${API_BASE_URL}/api/v1/elections/${year}`,
+    {
+      cache: "no-store",
+    }
   );
+
+  if (response.status === 404) {
+    return null;
+  }
+
+  if (!response.ok) {
+    throw new Error(
+      `Failed to fetch election dashboard: ${response.status}`
+    );
+  }
+
+  return (await response.json()) as ElectionDashboard;
 }
 
-/* =========================================
-   Alliances Overview
-========================================= */
-
-export function getAllianceOverview(
-  year: number
-): AllianceOverviewResponse | null {
-
-  const key =
-    `GET /api/v1/elections/${year}/alliances`;
-
-  return (
-    mockResponses[
-      key as keyof typeof mockResponses
-    ] as unknown as AllianceOverviewResponse
-  );
-}
-
-/* =========================================
-   Alliance Profile
-========================================= */
-
-export function getAllianceProfile(
-  year: number,
-  alliance: string
-): AllianceProfile | null {
-
-  const key =
-    `GET /api/v1/elections/${year}/alliances/${alliance}`;
-
-  return (
-    mockResponses[
-      key as keyof typeof mockResponses
-    ] as unknown as AllianceProfile
-  );
-}
 
 /* =========================================
    State Results
 ========================================= */
 
-export function getStateResults(
+export async function getStateResults(
   year: number
-): StateResultsResponse | null {
-
-  const key =
-    `GET /api/v1/elections/${year}/state-results`;
-
-  return (
-    mockResponses[
-      key as keyof typeof mockResponses
-    ] as unknown as StateResultsResponse
+): Promise<StateResultsResponse | null> {
+  const response = await fetch(
+    `${API_BASE_URL}/api/v1/elections/${year}/state-results`,
+    {
+      cache: "no-store",
+    }
   );
-}
 
-/* =========================================
-   Victory Margins
-========================================= */
+  if (response.status === 404) {
+    return null;
+  }
 
-export function getElectionMargins(
-  year: number
-): ElectionMargins | null {
+  if (!response.ok) {
+    throw new Error(
+      `Failed to fetch state results: ${response.status}`
+    );
+  }
 
-  const key =
-    `GET /api/v1/elections/${year}/margins`;
-
-  return (
-    mockResponses[
-      key as keyof typeof mockResponses
-    ] as unknown as ElectionMargins
-  );
-}
-
-/* =========================================
-   Turnout
-========================================= */
-
-export function getElectionTurnout(
-  year: number
-): ElectionTurnout | null {
-
-  const key =
-    `GET /api/v1/elections/${year}/turnout`;
-
-  return (
-    mockResponses[
-      key as keyof typeof mockResponses
-    ] as unknown as ElectionTurnout
-  );
+  return (await response.json()) as StateResultsResponse;
 }

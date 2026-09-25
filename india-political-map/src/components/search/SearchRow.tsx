@@ -4,117 +4,122 @@ import { useRouter } from "next/navigation";
 
 import {
   ArrowRight,
+  Calendar,
   Landmark,
   MapPin,
-  User,
+  Users,
 } from "lucide-react";
 
-import { Politician } from "@/src/components/types/politician";
+import {
+  GlobalSearchResult,
+} from "@/src/components/types/global_search";
 
 interface Props {
-  politician: Politician;
+  result: GlobalSearchResult;
   onSelect: () => void;
 }
 
+function getIcon(
+  type: GlobalSearchResult["type"]
+) {
+  switch (type) {
+    case "politician":
+      return Users;
+
+    case "constituency":
+      return MapPin;
+
+    case "party":
+      return Landmark;
+
+    case "election":
+      return Calendar;
+  }
+}
+
 export default function SearchRow({
-  politician,
+  result,
   onSelect,
 }: Props) {
   const router = useRouter();
 
+  const Icon = getIcon(result.type);
+
   function handleClick() {
     onSelect();
-
-    router.push(`/politicians/${politician.id}`);
+    router.push(result.href);
   }
 
   return (
     <button
+      type="button"
       onClick={handleClick}
       className="
         group
         flex
         w-full
         items-center
-        justify-between
-
+        gap-3
         border-b
-
-        px-5
-        py-4
-
+        border-[#3E445B]/60
+        px-4
+        py-3
         text-left
-
         transition
-
-        hover:bg-blue-50
+        hover:bg-[#101827]
+        sm:gap-4
+        sm:px-5
+        sm:py-4
       "
     >
-      <div className="flex items-center gap-4">
+      <div
+        className="
+          flex
+          h-10
+          w-10
+          shrink-0
+          items-center
+          justify-center
+          rounded-xl
+          bg-indigo-500/15
+          text-indigo-300
+          sm:h-11
+          sm:w-11
+        "
+      >
+        <Icon size={18} />
+      </div>
 
-        <div
+      <div className="min-w-0 flex-1">
+        <h3
           className="
-            flex
-            h-11
-            w-11
-            items-center
-            justify-center
-
-            rounded-full
-
-            bg-gradient-to-br
-            from-blue-500
-            to-indigo-600
+            truncate
+            font-semibold
+            text-[#F4F4F5]
+            transition
+            group-hover:text-indigo-300
           "
         >
-          <User
-            size={18}
-            className="text-white"
-          />
-        </div>
+          {result.title}
+        </h3>
 
-        <div>
-
-          <h3
-            className="
-              font-semibold
-              text-slate-900
-              transition
-              group-hover:text-blue-700
-            "
-          >
-            {politician.name_en}
-          </h3>
-
-          <div className="mt-1 flex flex-wrap items-center gap-3 text-sm text-slate-500">
-
-            <span className="font-medium">
-              {politician.latest_party.abbreviation}
-            </span>
-
-            <span className="flex items-center gap-1">
-              <MapPin size={13} />
-              {politician.latest_constituency.name_en}
-            </span>
-
-            <span className="flex items-center gap-1">
-              <Landmark size={13} />
-              {politician.latest_constituency.state}
-            </span>
-
-          </div>
-
-        </div>
-
+        {result.subtitle && (
+          <p className="mt-0.5 truncate text-sm text-[#94A3B8]">
+            {result.subtitle}
+          </p>
+        )}
       </div>
 
       <ArrowRight
         size={18}
         className="
-          text-slate-400
+          hidden
+          shrink-0
+          text-[#94A3B8]
           transition
           group-hover:translate-x-1
-          group-hover:text-blue-600
+          group-hover:text-indigo-300
+          sm:block
         "
       />
     </button>

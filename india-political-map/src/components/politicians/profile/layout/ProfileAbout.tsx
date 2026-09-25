@@ -44,11 +44,11 @@ export default function ProfileAbout({
         <AboutCard
           title="Gender"
           value={
-            profile.sex === "M"
+            profile.gender === "M"
               ? "Male"
-              : profile.sex === "F"
+              : profile.gender === "F"
               ? "Female"
-              : profile.sex
+              : profile.gender
           }
         />
 
@@ -62,10 +62,7 @@ export default function ProfileAbout({
           value={profile.education_detail}
         />
 
-        <AboutCard
-          title="Profession"
-          value={summary.profession}
-        />
+        
       </div>
     </section>
   );

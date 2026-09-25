@@ -10,14 +10,19 @@ export default function PartyInfoCard({
   children,
 }: Props) {
   return (
-    <div className="rounded-2xl border bg-white p-6 shadow-sm">
-
-      <h2 className="mb-6 text-xl font-bold">
+    <section
+      className="
+        rounded-2xl
+        border border-[var(--border)]
+        bg-[var(--card)]
+        p-5 sm:p-6
+      "
+    >
+      <h2 className="mb-5 text-lg font-bold text-[var(--foreground)] sm:text-xl">
         {title}
       </h2>
 
       {children}
-
-    </div>
+    </section>
   );
 }

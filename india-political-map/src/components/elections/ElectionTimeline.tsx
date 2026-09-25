@@ -1,109 +1,65 @@
 "use client";
 
-import {
-  CalendarRange,
-  Vote,
-  BarChart3,
-  Landmark,
-} from "lucide-react";
-
+import { CalendarDays, BarChart3 } from "lucide-react";
 import { ElectionOverview } from "../types/election";
 
 interface Props {
   overview: ElectionOverview;
 }
 
-const timeline = (
-  overview: ElectionOverview,
-) => [
-  {
-    title: "Polling Started",
-    date: overview.polling_start,
-    icon: CalendarRange,
-    color: "bg-blue-500",
-  },
-  {
-    title: "Polling Completed",
-    date: overview.polling_end,
-    icon: Vote,
-    color: "bg-indigo-500",
-  },
-  {
-    title: "Counting Day",
-    date: overview.counting_date,
-    icon: BarChart3,
-    color: "bg-green-500",
-  },
-  {
-    title: "Government Formed",
-    date: overview.government_formed,
-    icon: Landmark,
-    color: "bg-purple-500",
-  },
-];
-
-export default function ElectionTimeline({
-  overview,
-}: Props) {
-  const items = timeline(overview);
-
+export default function ElectionTimeline({ overview }: Props) {
   return (
-    <section className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+    <section className="rounded-3xl border border-politic-border bg-politic-card p-8 shadow-sm">
       <div className="mb-8">
-        <h2 className="text-2xl font-bold">
+        <h2 className="text-2xl font-bold text-politic-text">
           Election Timeline
         </h2>
-
-        <p className="mt-2 text-slate-500">
-          Major milestones from polling
-          to government formation.
+        <p className="mt-2 font-medium text-politic-muted">
+          Key recorded milestone for this election.
         </p>
       </div>
 
       <div className="relative ml-3">
-        {/* Vertical Line */}
+        {/* Vertical line - Dark Mode */}
+        <div className="absolute left-4 top-3 h-full w-0.5 bg-politic-border" />
 
-        <div className="absolute left-4 top-3 h-full w-0.5 bg-slate-200" />
+        <div className="relative flex items-start gap-5 group">
+          {/* Timeline icon */}
+          <div
+            className="
+              relative
+              z-10
+              flex
+              h-8
+              w-8
+              shrink-0
+              items-center
+              justify-center
+              rounded-full
+              border-4
+              border-politic-card
+              bg-green-500
+              text-white
+              shadow-md
+              transition-transform
+              group-hover:scale-110
+            "
+          >
+            <BarChart3 size={14} />
+          </div>
 
-        <div className="space-y-8">
-          {items.map((item) => {
-            const Icon = item.icon;
-
-            return (
-              <div
-                key={item.title}
-                className="relative flex items-start gap-5"
-              >
-                <div
-                  className={`
-                    relative
-                    z-10
-                    flex
-                    h-8
-                    w-8
-                    items-center
-                    justify-center
-                    rounded-full
-                    text-white
-                    shadow-md
-                    ${item.color}
-                  `}
-                >
-                  <Icon size={16} />
-                </div>
-
-                <div className="flex-1 rounded-2xl border border-slate-200 bg-slate-50 p-5 transition hover:border-blue-300 hover:bg-white hover:shadow-md">
-                  <p className="text-sm text-slate-500">
-                    {item.title}
-                  </p>
-
-                  <h3 className="mt-1 text-lg font-semibold">
-                    {item.date}
-                  </h3>
-                </div>
-              </div>
-            );
-          })}
+          {/* Content */}
+          <div className="flex-1 rounded-2xl border border-politic-border/50 bg-politic-inner p-5 transition hover:border-blue-500/50 hover:bg-politic-border/30 hover:shadow-lg hover:shadow-black/50">
+            <div className="flex items-center gap-2">
+              <CalendarDays size={16} className="text-blue-400" />
+              <p className="text-sm font-medium text-politic-muted">
+                Result Declared
+              </p>
+            </div>
+            <h3 className="mt-2 text-lg font-bold text-politic-text">
+              {overview.result_date}
+            </h3>
+          </div>
         </div>
       </div>
     </section>

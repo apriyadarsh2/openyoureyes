@@ -1,5 +1,5 @@
 
-import StateResultsPage from "@/src/components/elections/alliances/state-results/StateResultsPage";
+import StateResultsPage from "@/src/components/elections/state-results/StateResultsPage";
 
 
 interface Props {

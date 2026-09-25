@@ -1,7 +1,9 @@
-"use client";
 
 import Breadcrumbs from "../../ui/Breadcrumbs";
-import { getPartyBonds } from "../../lib/repositories/parties";
+import {
+  getPartyBonds,
+  getPartyProfile,
+} from "../../lib/repositories/parties";
 
 import BondsTable from "./BondsTable";
 
@@ -9,27 +11,36 @@ interface Props {
   slug: string;
 }
 
-export default function PartyBonds({
-  slug,
-}: Props) {
+export default async function PartyBonds({ slug }: Props) {
+  const [party, bonds] = await Promise.all([
+    getPartyProfile(slug),
+    getPartyBonds(slug),
+  ]);
 
-  const data =
-    getPartyBonds(slug);
-
-  if (!data) {
+  if (!party) {
     return (
-      <h2 className="text-2xl font-semibold">
-        Electoral bond data not found.
-      </h2>
+      <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-8">
+        <h2 className="text-xl font-semibold">
+          Party not found
+        </h2>
+
+        <p className="mt-2 text-[var(--muted)]">
+          The requested party could not be found.
+        </p>
+      </div>
     );
   }
 
-  const totalReceived =
-    `₹${(data.total_received_inr / 10000000).toFixed(2)} Cr`;
+  const totalReceived = bonds.reduce(
+    (total, bond) => total + (bond.denomination_inr ?? 0),
+    0
+  );
+
+  const formattedTotal =
+    `₹${(totalReceived / 10000000).toFixed(2)} Cr`;
 
   return (
     <div className="space-y-8">
-
       <Breadcrumbs
         items={[
           {
@@ -37,8 +48,8 @@ export default function PartyBonds({
             href: "/parties",
           },
           {
-            label: data.party.abbreviation,
-            href: `/parties/${slug}`,
+            label: party.abbreviation || party.full_name_en || "Party",
+            href: `/parties/${party.id}`,
           },
           {
             label: "Electoral Bonds",
@@ -46,38 +57,29 @@ export default function PartyBonds({
         ]}
       />
 
-      <div className="flex items-center justify-between">
-
+      <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <div>
-
-          <h1 className="text-4xl font-bold">
+          <h1 className="text-3xl font-bold sm:text-4xl">
             Electoral Bonds
           </h1>
 
-          <p className="mt-2 text-slate-500">
-            Bond receipts received by the party
+          <p className="mt-2 text-[var(--muted)]">
+            Electoral bond records associated with this party.
           </p>
-
         </div>
 
-        <div className="rounded-2xl bg-blue-50 px-6 py-4">
-
-          <p className="text-sm text-slate-500">
-            Total Received
+        <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] px-6 py-5">
+          <p className="text-sm text-[var(--muted)]">
+            Total Recorded Value
           </p>
 
-          <h2 className="text-3xl font-bold text-blue-700">
-            {totalReceived}
+          <h2 className="mt-1 text-2xl font-bold text-emerald-400 sm:text-3xl">
+            {formattedTotal}
           </h2>
-
         </div>
-
       </div>
 
-      <BondsTable
-        bonds={data.bonds}
-      />
-
+      <BondsTable bonds={bonds} />
     </div>
   );
 }

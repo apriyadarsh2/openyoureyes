@@ -1,7 +1,7 @@
 "use client";
 
 import { PoliticianProfile } from "@/src/components/types/politician";
-import { PARTY_COLORS } from "@/data/partyColors"; // Tumhari actual file ka path
+import { PARTY_COLORS } from "@/data/partyColors";
 
 interface Props {
   profile?: PoliticianProfile;

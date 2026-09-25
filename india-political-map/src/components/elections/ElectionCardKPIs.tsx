@@ -19,47 +19,76 @@ interface Props {
   kpis: ElectionKPIs;
 }
 
+function formatNumber(
+  value: number | null | undefined
+): string {
+  if (value === null || value === undefined) {
+    return "—";
+  }
+
+  return value.toLocaleString();
+}
+
+function formatPercentage(
+  value: number | null | undefined
+): string {
+  if (value === null || value === undefined) {
+    return "—";
+  }
+
+  return `${value}%`;
+}
+
 export default function ElectionCardKPIs({
   national,
   kpis,
 }: Props) {
-
   const stats = [
     {
       title: "Registered Voters",
-      value:
-        national.registered_voters.toLocaleString(),
+      value: formatNumber(
+        national.registered_voters
+      ),
       icon: Users,
       color: "bg-blue-50 text-blue-600",
     },
     {
       title: "Votes Polled",
-      value:
-        national.votes_polled.toLocaleString(),
+      value: formatNumber(
+        national.votes_polled
+      ),
       icon: Vote,
       color: "bg-green-50 text-green-600",
     },
     {
       title: "Turnout",
-      value: `${national.turnout_percentage}%`,
+      value: formatPercentage(
+        national.turnout_percentage
+      ),
       icon: Percent,
       color: "bg-orange-50 text-orange-600",
     },
     {
       title: "Recognized Parties",
-      value: kpis.recognized_parties,
+      value: formatNumber(
+        kpis.recognized_parties
+      ),
       icon: Building2,
       color: "bg-purple-50 text-purple-600",
     },
     {
       title: "Women MPs",
-      value: kpis.women_elected,
+      value: formatNumber(
+        kpis.women_elected
+      ),
       icon: UserCheck,
       color: "bg-pink-50 text-pink-600",
     },
     {
       title: "Registered Parties",
-      value: kpis.registered_parties,
+      value: formatNumber(
+        kpis.registered_parties
+      ),
       icon: Landmark,
       color: "bg-slate-100 text-slate-700",
     },
@@ -67,7 +96,6 @@ export default function ElectionCardKPIs({
 
   return (
     <section className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-
       <div className="mb-8">
         <h2 className="text-2xl font-bold">
           National Statistics
@@ -80,13 +108,10 @@ export default function ElectionCardKPIs({
       </div>
 
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-
         {stats.map((stat) => {
-
           const Icon = stat.icon;
 
           return (
-
             <div
               key={stat.title}
               className="
@@ -103,7 +128,6 @@ export default function ElectionCardKPIs({
                 hover:shadow-lg
               "
             >
-
               <div
                 className={`
                   mb-5
@@ -128,15 +152,10 @@ export default function ElectionCardKPIs({
               <h3 className="mt-2 text-3xl font-bold tracking-tight">
                 {stat.value}
               </h3>
-
             </div>
-
           );
-
         })}
-
       </div>
-
     </section>
   );
 }

@@ -35,7 +35,7 @@ export default function ProfileHero({
 
   const age = profile?.dob
     ? new Date().getFullYear() -
-      new Date(profile.dob).getFullYear()
+    new Date(profile.dob).getFullYear()
     : "-";
 
   return (

@@ -3,11 +3,9 @@ import AssetsContent from "@/src/components/politicians/profile/assets/AssetsCon
 
 export default function AssetsPage() {
   return (
-    <Section
-      
-      title="Assets History"
-    >
+    
+     
       <AssetsContent />
-    </Section>
+    
   );
 }

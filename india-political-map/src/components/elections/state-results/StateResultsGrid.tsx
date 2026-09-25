@@ -1,4 +1,4 @@
-import { StateResult } from "../../../types/election";
+import { StateResult } from "../../types/election";
 
 import StateResultCard from "./StateResultCard";
 

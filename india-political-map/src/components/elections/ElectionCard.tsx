@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 
 import {
@@ -14,6 +12,25 @@ import { ElectionSummary } from "../types/election";
 
 interface Props {
   election: ElectionSummary;
+}
+
+function getOrdinalSuffix(number: number): string {
+  const lastTwo = number % 100;
+
+  if (lastTwo >= 11 && lastTwo <= 13) {
+    return "th";
+  }
+
+  switch (number % 10) {
+    case 1:
+      return "st";
+    case 2:
+      return "nd";
+    case 3:
+      return "rd";
+    default:
+      return "th";
+  }
 }
 
 export default function ElectionCard({
@@ -38,7 +55,6 @@ export default function ElectionCard({
           shadow-sm
           transition-all
           duration-300
-
           hover:-translate-y-1
           hover:border-blue-500
           hover:shadow-2xl
@@ -58,12 +74,10 @@ export default function ElectionCard({
 
         <div className="flex flex-1 flex-col p-7">
 
-          {/* Year */}
+          {/* Header */}
 
           <div className="flex items-start justify-between">
-
             <div>
-
               <p className="text-sm font-medium uppercase tracking-wider text-blue-600">
                 General Election
               </p>
@@ -73,36 +87,30 @@ export default function ElectionCard({
               </h2>
 
               <p className="mt-1 text-slate-500">
-                {election.lok_sabha}th Lok Sabha
+                {election.lok_sabha}
+                {getOrdinalSuffix(election.lok_sabha)} Lok Sabha
               </p>
-
             </div>
 
-            <div
-              className="
-                rounded-2xl
-                bg-blue-50
-                p-3
-              "
-            >
+            <div className="rounded-2xl bg-blue-50 p-3">
               <Calendar
                 className="text-blue-600"
                 size={24}
               />
             </div>
-
           </div>
 
           {/* Divider */}
 
           <div className="my-7 h-px bg-slate-100" />
 
-          {/* Winner */}
+          {/* Election Summary */}
 
           <div className="space-y-5">
 
-            <div className="flex items-start gap-4">
+            {/* Seats Recorded */}
 
+            <div className="flex items-start gap-4">
               <div className="rounded-xl bg-green-100 p-3">
                 <Crown
                   size={20}
@@ -111,21 +119,19 @@ export default function ElectionCard({
               </div>
 
               <div>
-
                 <p className="text-sm text-slate-500">
-                  Winning Alliance
+                  Seats Recorded
                 </p>
 
                 <h3 className="text-xl font-semibold">
-                  {election.winner_alliance}
+                  {election.winner_seats}
                 </h3>
-
               </div>
-
             </div>
 
-            <div className="flex items-start gap-4">
+            {/* Majority Status */}
 
+            <div className="flex items-start gap-4">
               <div className="rounded-xl bg-blue-100 p-3">
                 <Users
                   size={20}
@@ -134,32 +140,8 @@ export default function ElectionCard({
               </div>
 
               <div>
-
                 <p className="text-sm text-slate-500">
-                  Seats Won
-                </p>
-
-                <h3 className="text-xl font-semibold">
-                  {election.winner_seats}
-                </h3>
-
-              </div>
-
-            </div>
-
-            <div className="flex items-start gap-4">
-
-              <div className="rounded-xl bg-purple-100 p-3">
-                <Landmark
-                  size={20}
-                  className="text-purple-700"
-                />
-              </div>
-
-              <div>
-
-                <p className="text-sm text-slate-500">
-                  Government
+                  Majority Status
                 </p>
 
                 <span
@@ -171,7 +153,6 @@ export default function ElectionCard({
                     py-1
                     text-sm
                     font-semibold
-
                     ${
                       election.majority
                         ? "bg-green-100 text-green-700"
@@ -179,11 +160,32 @@ export default function ElectionCard({
                     }
                   `}
                 >
-                  {election.status}
+                  {election.majority
+                    ? "Majority Threshold Reached"
+                    : "Below Majority Threshold"}
                 </span>
+              </div>
+            </div>
 
+            {/* Record Status */}
+
+            <div className="flex items-start gap-4">
+              <div className="rounded-xl bg-purple-100 p-3">
+                <Landmark
+                  size={20}
+                  className="text-purple-700"
+                />
               </div>
 
+              <div>
+                <p className="text-sm text-slate-500">
+                  Data Status
+                </p>
+
+                <span className="mt-1 inline-flex rounded-full bg-slate-100 px-3 py-1 text-sm font-semibold text-slate-700">
+                  {election.status}
+                </span>
+              </div>
             </div>
 
           </div>
@@ -191,17 +193,9 @@ export default function ElectionCard({
           {/* Footer */}
 
           <div className="mt-auto pt-8">
-
             <div className="h-px bg-slate-100" />
 
-            <div
-              className="
-                mt-5
-                flex
-                items-center
-                justify-between
-              "
-            >
+            <div className="mt-5 flex items-center justify-between">
               <span
                 className="
                   font-semibold
@@ -221,13 +215,10 @@ export default function ElectionCard({
                   group-hover:text-blue-600
                 "
               />
-
             </div>
-
           </div>
 
         </div>
-
       </article>
     </Link>
   );
