@@ -5,7 +5,7 @@ import {
 
 // 1. Live Fetch for All Politicians (List View)
 export async function getPoliticians(): Promise<Politician[]> {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL ;
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://72.60.103.117:8000" ;
 
   try {
     const res = await fetch(`${baseUrl}/api/v1/politicians`, {
@@ -26,7 +26,7 @@ export async function getPoliticians(): Promise<Politician[]> {
 export async function getPoliticianProfile(
   id: string
 ): Promise<PoliticianProfileResponse | null> {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://72.60.103.117:8000";
 
   try {
     const res = await fetch(`${baseUrl}/api/v1/politicians/${id}`, {

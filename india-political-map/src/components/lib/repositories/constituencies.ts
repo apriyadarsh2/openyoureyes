@@ -15,7 +15,7 @@ import {
 
 
 export async function getStates(): Promise<ConstituencyState[]> {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://72.60.103.117:8000";
   try {
     const res = await fetch(`${baseUrl}/api/v1/constituencies`, { cache: "no-store" });
     if (res.ok) {
@@ -39,7 +39,7 @@ export async function getStateBySlug(slug: string): Promise<ConstituencyState | 
    Constituencies by State (Mock Fallback)
 ------------------------------ */
 export async function getConstituenciesByState(slug: string): Promise<ConstituencySummary[]> {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL ;
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://72.60.103.117:8000" ;
   try {
     const res = await fetch(`${baseUrl}/api/v1/constituencies/state/${slug}`, { cache: "no-store" });
     if (res.ok) {
@@ -58,7 +58,7 @@ export async function getConstituenciesByState(slug: string): Promise<Constituen
 export async function getConstituencyProfile(
   id: number
 ): Promise<ConstituencyProfile | null> {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://72.60.103.117:8000";
 
   try {
     const res = await fetch(`${baseUrl}/api/v1/constituencies/${id}/profile`, {

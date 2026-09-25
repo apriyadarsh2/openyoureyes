@@ -10,7 +10,7 @@ import {
 export async function getFinancialDisclosure(
   id: string
 ): Promise<FinancialDisclosure | null> {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+  const baseUrl = process.env.;
 
   try {
     const res = await fetch(`${baseUrl}/api/v1/politicians/${id}`, {
